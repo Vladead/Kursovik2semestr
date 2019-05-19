@@ -18,9 +18,15 @@ public:
     BlocksList *field_of_activity;
     BlocksList *employer_applications;
 
+    char vacant;
+
+    Vacancy* next;
+
     Vacancy();
 
     ~Vacancy();
+
+    void MakeNewNode();
 };
 
 

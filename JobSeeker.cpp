@@ -14,6 +14,8 @@ JobSeeker::JobSeeker() {
     education = nullptr;
     schedule = nullptr;
     salary = nullptr;
+
+    next = nullptr;
 }
 
 JobSeeker::~JobSeeker() = default;

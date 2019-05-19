@@ -20,6 +20,8 @@ public:
     BlocksList *schedule;
     BlocksList *salary;
 
+    JobSeeker* next;
+
     JobSeeker();
 
     ~JobSeeker();

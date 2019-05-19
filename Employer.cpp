@@ -9,6 +9,8 @@ Employer::Employer() {
     field_of_activity = nullptr;
     address = nullptr;
     phone_number = nullptr;
+
+    next = nullptr;
 }
 
 Employer::~Employer() = default;

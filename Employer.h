@@ -10,10 +10,12 @@
 
 class Employer {
 public:
-    List1 *title;
-    List1 *field_of_activity;
-    List1 *address;
-    List1 *phone_number;
+    BlocksList *title;
+    BlocksList *field_of_activity;
+    BlocksList *address;
+    BlocksList *phone_number;
+
+    Employer* next;
 
     Employer();
 

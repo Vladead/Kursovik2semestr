@@ -5,10 +5,14 @@
 #include "Vacancy.h"
 #include "JobSeeker.h"
 #include "JobInfo.h"
+#include "Employer.h"
 
 using namespace std;
 
 int main() {
+    Vacancy list_of_vacancy;
+    Employer list_of_employers;
+    JobSeeker list_of_jobSeekers;
     JobInfo jobInfo;
     jobInfo.FillJobInfo();
     int way = 0;
@@ -23,12 +27,15 @@ int main() {
         switch (way) {
             case 1:
                 cout << "Режим соискателя" << endl;
+                JobSeekerMode(jobInfo, list_of_jobSeekers);
                 break;
             case 2:
                 cout << "Режим работодателя" << endl;
+                EmployerMode(jobInfo, list_of_employers);
                 break;
             case 3:
                 cout << "Режим добавления" << endl;
+                AddingMode(jobInfo, list_of_jobSeekers, list_of_employers, list_of_vacancy);
                 break;
             case 4:
                 cout << "Режим списка удовлетворенных вакансий" << endl;
@@ -42,33 +49,6 @@ int main() {
                 continue;
         }
     }
-//    fstream f;
-//    char temp = 0;
-//    bool way1 = true;
-//    int lineCount = 0, blocksCount = 0, symbolsCount = 0;
-//    f.open("../cmake-build-debug/VacancyMode.txt", ios::in);
-//    f.unsetf(ios::skipws);
-//    int position = 0;
-//    lineCount = LineCount(f);
-//    for (int i = 0; i < lineCount; i++) {
-//        position = f.tellg();
-//        symbolsCount = SymbolsCount(f, temp);
-//        blocksCount = BlocksInLine(symbolsCount);
-//        auto transit_line = new char[symbolsCount + 1];
-//        for (int j = 0; j < symbolsCount + 1; j++)
-//            transit_line[j] = 0;
-//        f.clear();
-//        f.seekg(position);
-//        for (int j = 0; j < symbolsCount; j++)
-//            f >> transit_line[j];
-//        f >> temp;
-//        way1 = CompareLine(jobInfo.position, transit_line, symbolsCount);
-//        InputOneLine(jobInfo.position, symbolsCount, blocksCount, transit_line);
-//        jobInfo.position.last->symbols_in_line = symbolsCount;
-//        delete[] transit_line;
-//    }
-//    f.setf(ios::skipws);
-//    f.close();
 
     return 0;
 }
