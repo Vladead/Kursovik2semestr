@@ -11,6 +11,8 @@
 #include "Form.h"
 #include "FormBlock.h"
 
+bool CompareLine(Form &InJobInfo, const char *temp_line, int symbols_count_of_temp);
+
 void CopyNodeFromList(Form &list_where_copy, Form &list_form_file);
 
 void getting_info_from_file(Form &form, std::fstream &input_file);

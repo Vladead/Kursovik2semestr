@@ -42,6 +42,33 @@ int main() {
                 continue;
         }
     }
+//    fstream f;
+//    char temp = 0;
+//    bool way1 = true;
+//    int lineCount = 0, blocksCount = 0, symbolsCount = 0;
+//    f.open("../cmake-build-debug/VacancyMode.txt", ios::in);
+//    f.unsetf(ios::skipws);
+//    int position = 0;
+//    lineCount = LineCount(f);
+//    for (int i = 0; i < lineCount; i++) {
+//        position = f.tellg();
+//        symbolsCount = SymbolsCount(f, temp);
+//        blocksCount = BlocksInLine(symbolsCount);
+//        auto transit_line = new char[symbolsCount + 1];
+//        for (int j = 0; j < symbolsCount + 1; j++)
+//            transit_line[j] = 0;
+//        f.clear();
+//        f.seekg(position);
+//        for (int j = 0; j < symbolsCount; j++)
+//            f >> transit_line[j];
+//        f >> temp;
+//        way1 = CompareLine(jobInfo.position, transit_line, symbolsCount);
+//        InputOneLine(jobInfo.position, symbolsCount, blocksCount, transit_line);
+//        jobInfo.position.last->symbols_in_line = symbolsCount;
+//        delete[] transit_line;
+//    }
+//    f.setf(ios::skipws);
+//    f.close();
 
     return 0;
 }

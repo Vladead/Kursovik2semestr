@@ -30,20 +30,40 @@ void SatisfiedVacancyMode() {
 
 }
 
-bool compareLine(Form &jobInfo) {
-//    bool flag = false;
-//    for (int i = 0; i < mas_a.size() - 1; i++) {
-//        flag = false;
-//        for (int j = 0; j < mas_b.size() - 1; j++) {
-//            if (mas_a[i] == mas_b[j]) {
-//                flag = true;
-//                break;
-//            }
-//            if (flag == false)
-//                return false;
-//        }
-//        return true;
-//    }
+bool CompareLine(Form &InJobInfo, const char *temp_line, int symbols_count_of_temp) {
+    FormBlock tempFormBlock;
+    InJobInfo.current = InJobInfo.head;
+    tempFormBlock.current = InJobInfo.current->line;
+    bool word_is_already_in_list = false, word_fits = true;
+    int k = 0;
+    while (InJobInfo.current != nullptr) {
+        if (InJobInfo.current->symbols_in_line == symbols_count_of_temp) {
+            for (int i = 0; i < symbols_count_of_temp; i++, k++) {
+                if (tempFormBlock.current->block->symbols[k] != temp_line[i]) {
+                    InJobInfo.current = InJobInfo.current->next;
+                    tempFormBlock.current = InJobInfo.current->line;
+                    word_fits = false;
+                    break;
+                }
+                if ((k + 1) % 5 == 0) {
+                    tempFormBlock.current = tempFormBlock.current->next;
+                    k = -1; // Из за инкрементирования вначале каждоой итерации
+                }
+            }
+            if (word_fits) {
+                word_is_already_in_list = true;
+                break;
+            }
+            word_fits = true;
+            k = 0;
+        } else {
+            InJobInfo.current = InJobInfo.current->next;
+            if(InJobInfo.current == nullptr)
+                break;
+            tempFormBlock.current = InJobInfo.current->line;
+        }
+    }
+    return word_is_already_in_list;
 }
 
 void getting_info_from_file(Form &form, fstream &input_file) {
@@ -54,8 +74,8 @@ void getting_info_from_file(Form &form, fstream &input_file) {
         input_file.close();
         exit(1);
     }
-    input_file.unsetf(ios::skipws);
 
+    input_file.unsetf(ios::skipws);
     int position = 0;
     lineCountFromInput = LineCount(input_file);
     for (int i = 0; i < lineCountFromInput; i++) {
@@ -63,6 +83,8 @@ void getting_info_from_file(Form &form, fstream &input_file) {
         symbols_count = SymbolsCount(input_file, temp);
         blocks_count = BlocksInLine(symbols_count);
         auto transit_line = new char[symbols_count + 1];
+        for (int j = 0; j < symbols_count + 1; j++)
+            transit_line[j] = 0;
         input_file.clear();
         input_file.seekg(position);
         for (int j = 0; j < symbols_count; j++)
@@ -163,6 +185,8 @@ int SymbolsCount(fstream &input_file, char temp) {
         input_file >> temp;
         if (input_file.eof() || (temp == '\n'))
             break;
+        if (temp == '\r')
+            symbols_count--;
         symbols_count++;
     } while (true);
 
