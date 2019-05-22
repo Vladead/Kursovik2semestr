@@ -8,6 +8,8 @@
 
 #include "LineWithMarker.h"
 
+#pragma pack(push, 1)
+
 class BlocksList {
 public:
     unsigned max_symbols_in_block;
@@ -21,6 +23,8 @@ public:
         delete block;
     }
 };
+
+#pragma pack(pop)
 
 
 #endif //KURSOVIK_BLOCKSLIST_H

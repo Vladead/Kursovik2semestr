@@ -5,7 +5,10 @@
 #ifndef KURSOVIK_JOBINFO_H
 #define KURSOVIK_JOBINFO_H
 
+
 #include "Form.h"
+
+#pragma pack(push, 1)
 
 class JobInfo {
 public:
@@ -18,6 +21,8 @@ public:
 
     void FillJobInfo();
 };
+
+#pragma pack(pop)
 
 
 #endif //KURSOVIK_JOBINFO_H

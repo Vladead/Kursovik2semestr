@@ -20,7 +20,7 @@ using namespace std;
 void JobSeekerMode(JobInfo &jobInfo, JobSeeker &jobSeeker) { //TODO добавить заполнение списка
     fstream input_file;
     char temp = 0;
-    int blocksCount = 0, symbolsCount = 0;
+    int blocksCount = 0, symbolsCount = 0, number_of_necessary_node = 0;
     input_file.open("../cmake-build-debug/AddingMode.txt", ios::in);
     input_file.unsetf(ios::skipws);
     int position = 0;
@@ -41,6 +41,7 @@ void JobSeekerMode(JobInfo &jobInfo, JobSeeker &jobSeeker) { //TODO добави
         InputOneLine(jobInfo.surname, symbolsCount, blocksCount, transit_line);
         jobInfo.surname.last->symbols_in_line = symbolsCount;
     }
+    number_of_necessary_node = NumberOfNecessaryNode(jobInfo.surname, transit_line, symbolsCount);
     delete[] transit_line;
 
     position = input_file.tellg();
@@ -59,6 +60,7 @@ void JobSeekerMode(JobInfo &jobInfo, JobSeeker &jobSeeker) { //TODO добави
         InputOneLine(jobInfo.name, symbolsCount, blocksCount, transit_line);
         jobInfo.name.last->symbols_in_line = symbolsCount;
     }
+    number_of_necessary_node = NumberOfNecessaryNode(jobInfo.name, transit_line, symbolsCount);
     delete[] transit_line;
 
     position = input_file.tellg();
@@ -77,6 +79,7 @@ void JobSeekerMode(JobInfo &jobInfo, JobSeeker &jobSeeker) { //TODO добави
         InputOneLine(jobInfo.patronymic, symbolsCount, blocksCount, transit_line);
         jobInfo.patronymic.last->symbols_in_line = symbolsCount;
     }
+    number_of_necessary_node = NumberOfNecessaryNode(jobInfo.patronymic, transit_line, symbolsCount);
     delete[] transit_line;
 
     position = input_file.tellg();
@@ -95,6 +98,7 @@ void JobSeekerMode(JobInfo &jobInfo, JobSeeker &jobSeeker) { //TODO добави
         InputOneLine(jobInfo.position, symbolsCount, blocksCount, transit_line);
         jobInfo.position.last->symbols_in_line = symbolsCount;
     }
+    number_of_necessary_node = NumberOfNecessaryNode(jobInfo.position, transit_line, symbolsCount);
     delete[] transit_line;
 
     position = input_file.tellg();
@@ -113,6 +117,7 @@ void JobSeekerMode(JobInfo &jobInfo, JobSeeker &jobSeeker) { //TODO добави
         InputOneLine(jobInfo.field_of_activity, symbolsCount, blocksCount, transit_line);
         jobInfo.field_of_activity.last->symbols_in_line = symbolsCount;
     }
+    number_of_necessary_node = NumberOfNecessaryNode(jobInfo.field_of_activity, transit_line, symbolsCount);
     delete[] transit_line;
 
     position = input_file.tellg();
@@ -131,6 +136,7 @@ void JobSeekerMode(JobInfo &jobInfo, JobSeeker &jobSeeker) { //TODO добави
         InputOneLine(jobInfo.work_experience, symbolsCount, blocksCount, transit_line);
         jobInfo.work_experience.last->symbols_in_line = symbolsCount;
     }
+    number_of_necessary_node = NumberOfNecessaryNode(jobInfo.work_experience, transit_line, symbolsCount);
     delete[] transit_line;
 
     position = input_file.tellg();
@@ -149,6 +155,7 @@ void JobSeekerMode(JobInfo &jobInfo, JobSeeker &jobSeeker) { //TODO добави
         InputOneLine(jobInfo.education, symbolsCount, blocksCount, transit_line);
         jobInfo.education.last->symbols_in_line = symbolsCount;
     }
+    number_of_necessary_node = NumberOfNecessaryNode(jobInfo.education, transit_line, symbolsCount);
     delete[] transit_line;
 
     position = input_file.tellg();
@@ -167,6 +174,7 @@ void JobSeekerMode(JobInfo &jobInfo, JobSeeker &jobSeeker) { //TODO добави
         InputOneLine(jobInfo.schedule, symbolsCount, blocksCount, transit_line);
         jobInfo.schedule.last->symbols_in_line = symbolsCount;
     }
+    number_of_necessary_node = NumberOfNecessaryNode(jobInfo.schedule, transit_line, symbolsCount);
     delete[] transit_line;
 
     position = input_file.tellg();
@@ -185,6 +193,7 @@ void JobSeekerMode(JobInfo &jobInfo, JobSeeker &jobSeeker) { //TODO добави
         InputOneLine(jobInfo.salary, symbolsCount, blocksCount, transit_line);
         jobInfo.salary.last->symbols_in_line = symbolsCount;
     }
+    number_of_necessary_node = NumberOfNecessaryNode(jobInfo.salary, transit_line, symbolsCount);
     delete[] transit_line;
 
     input_file.setf(ios::skipws);
@@ -432,7 +441,7 @@ void SatisfiedVacancyMode(Vacancy &satisfied_vacancy) {
 void Add(JobInfo &jobInfo, JobSeeker &jobSeeker) { //TODO добавить заполнение списка
     fstream input_file;
     char temp = 0;
-    int blocksCount = 0, symbolsCount = 0;
+    int blocksCount = 0, symbolsCount = 0, number_of_necessary_node = 0;
     input_file.open("../cmake-build-debug/AddingMode.txt", ios::in);
     input_file.unsetf(ios::skipws);
     int position = 0;
@@ -453,6 +462,7 @@ void Add(JobInfo &jobInfo, JobSeeker &jobSeeker) { //TODO добавить за�
         InputOneLine(jobInfo.surname, symbolsCount, blocksCount, transit_line);
         jobInfo.surname.last->symbols_in_line = symbolsCount;
     }
+    number_of_necessary_node = NumberOfNecessaryNode(jobInfo.surname, transit_line, symbolsCount);
     delete[] transit_line;
 
     position = input_file.tellg();
@@ -471,6 +481,7 @@ void Add(JobInfo &jobInfo, JobSeeker &jobSeeker) { //TODO добавить за�
         InputOneLine(jobInfo.name, symbolsCount, blocksCount, transit_line);
         jobInfo.name.last->symbols_in_line = symbolsCount;
     }
+    number_of_necessary_node = NumberOfNecessaryNode(jobInfo.name, transit_line, symbolsCount);
     delete[] transit_line;
 
     position = input_file.tellg();
@@ -489,6 +500,7 @@ void Add(JobInfo &jobInfo, JobSeeker &jobSeeker) { //TODO добавить за�
         InputOneLine(jobInfo.patronymic, symbolsCount, blocksCount, transit_line);
         jobInfo.patronymic.last->symbols_in_line = symbolsCount;
     }
+    number_of_necessary_node = NumberOfNecessaryNode(jobInfo.patronymic, transit_line, symbolsCount);
     delete[] transit_line;
 
     position = input_file.tellg();
@@ -507,6 +519,7 @@ void Add(JobInfo &jobInfo, JobSeeker &jobSeeker) { //TODO добавить за�
         InputOneLine(jobInfo.position, symbolsCount, blocksCount, transit_line);
         jobInfo.position.last->symbols_in_line = symbolsCount;
     }
+    number_of_necessary_node = NumberOfNecessaryNode(jobInfo.position, transit_line, symbolsCount);
     delete[] transit_line;
 
     position = input_file.tellg();
@@ -525,6 +538,7 @@ void Add(JobInfo &jobInfo, JobSeeker &jobSeeker) { //TODO добавить за�
         InputOneLine(jobInfo.field_of_activity, symbolsCount, blocksCount, transit_line);
         jobInfo.field_of_activity.last->symbols_in_line = symbolsCount;
     }
+    number_of_necessary_node = NumberOfNecessaryNode(jobInfo.field_of_activity, transit_line, symbolsCount);
     delete[] transit_line;
 
     position = input_file.tellg();
@@ -543,6 +557,7 @@ void Add(JobInfo &jobInfo, JobSeeker &jobSeeker) { //TODO добавить за�
         InputOneLine(jobInfo.work_experience, symbolsCount, blocksCount, transit_line);
         jobInfo.work_experience.last->symbols_in_line = symbolsCount;
     }
+    number_of_necessary_node = NumberOfNecessaryNode(jobInfo.work_experience, transit_line, symbolsCount);
     delete[] transit_line;
 
     position = input_file.tellg();
@@ -561,6 +576,7 @@ void Add(JobInfo &jobInfo, JobSeeker &jobSeeker) { //TODO добавить за�
         InputOneLine(jobInfo.education, symbolsCount, blocksCount, transit_line);
         jobInfo.education.last->symbols_in_line = symbolsCount;
     }
+    number_of_necessary_node = NumberOfNecessaryNode(jobInfo.education, transit_line, symbolsCount);
     delete[] transit_line;
 
     position = input_file.tellg();
@@ -579,6 +595,7 @@ void Add(JobInfo &jobInfo, JobSeeker &jobSeeker) { //TODO добавить за�
         InputOneLine(jobInfo.schedule, symbolsCount, blocksCount, transit_line);
         jobInfo.schedule.last->symbols_in_line = symbolsCount;
     }
+    number_of_necessary_node = NumberOfNecessaryNode(jobInfo.schedule, transit_line, symbolsCount);
     delete[] transit_line;
 
     position = input_file.tellg();
@@ -597,6 +614,7 @@ void Add(JobInfo &jobInfo, JobSeeker &jobSeeker) { //TODO добавить за�
         InputOneLine(jobInfo.salary, symbolsCount, blocksCount, transit_line);
         jobInfo.salary.last->symbols_in_line = symbolsCount;
     }
+    number_of_necessary_node = NumberOfNecessaryNode(jobInfo.salary, transit_line, symbolsCount);
     delete[] transit_line;
 
     input_file.setf(ios::skipws);
@@ -606,7 +624,7 @@ void Add(JobInfo &jobInfo, JobSeeker &jobSeeker) { //TODO добавить за�
 void Add(JobInfo &jobInfo, Employer &employer) { //TODO добавить заполнение списка
     fstream input_file;
     char temp = 0;
-    int blocksCount = 0, symbolsCount = 0;
+    int blocksCount = 0, symbolsCount = 0, number_of_necessary_node = 0;
     input_file.open("../cmake-build-debug/AddingMode.txt", ios::in);
     input_file.unsetf(ios::skipws);
     int position = 0;
@@ -627,6 +645,7 @@ void Add(JobInfo &jobInfo, Employer &employer) { //TODO добавить зап�
         InputOneLine(jobInfo.title, symbolsCount, blocksCount, transit_line);
         jobInfo.title.last->symbols_in_line = symbolsCount;
     }
+    number_of_necessary_node = NumberOfNecessaryNode(jobInfo.title, transit_line, symbolsCount);
     delete[] transit_line;
 
     position = input_file.tellg();
@@ -645,6 +664,7 @@ void Add(JobInfo &jobInfo, Employer &employer) { //TODO добавить зап�
         InputOneLine(jobInfo.field_of_activity, symbolsCount, blocksCount, transit_line);
         jobInfo.field_of_activity.last->symbols_in_line = symbolsCount;
     }
+    number_of_necessary_node = NumberOfNecessaryNode(jobInfo.field_of_activity, transit_line, symbolsCount);
     delete[] transit_line;
 
     position = input_file.tellg();
@@ -663,6 +683,7 @@ void Add(JobInfo &jobInfo, Employer &employer) { //TODO добавить зап�
         InputOneLine(jobInfo.address, symbolsCount, blocksCount, transit_line);
         jobInfo.address.last->symbols_in_line = symbolsCount;
     }
+    number_of_necessary_node = NumberOfNecessaryNode(jobInfo.address, transit_line, symbolsCount);
     delete[] transit_line;
 
     position = input_file.tellg();
@@ -681,6 +702,7 @@ void Add(JobInfo &jobInfo, Employer &employer) { //TODO добавить зап�
         InputOneLine(jobInfo.phone_number, symbolsCount, blocksCount, transit_line);
         jobInfo.phone_number.last->symbols_in_line = symbolsCount;
     }
+    number_of_necessary_node = NumberOfNecessaryNode(jobInfo.phone_number, transit_line, symbolsCount);
     delete[] transit_line;
 
     input_file.setf(ios::skipws);
@@ -836,6 +858,7 @@ void Add(JobInfo &jobInfo, Vacancy &vacancy) { //TODO добавить запо�
 }
 
 int NumberOfNecessaryNode(Form &InJobInfo, const char *temp_line, int symbols_count_of_temp) {
+    //---------------------------------------------------------------------Находит номер узла, в котором лежит temp_line
     FormBlock tempFormBlock;
     InJobInfo.current = InJobInfo.head;
     tempFormBlock.current = InJobInfo.current->line;
@@ -875,6 +898,7 @@ int NumberOfNecessaryNode(Form &InJobInfo, const char *temp_line, int symbols_co
 }
 
 bool WordIsInList(Form &InJobInfo, const char *temp_line, int symbols_count_of_temp) {
+    //-------------------------------------------------------------------Проверяет, есть ли в InJobInfo строка temp_line
     FormBlock tempFormBlock;
     InJobInfo.current = InJobInfo.head;
     tempFormBlock.current = InJobInfo.current->line;
@@ -1040,7 +1064,7 @@ int SymbolsCount(fstream &input_file, char temp) {
 }
 
 bool CheckFile(fstream &input_file) {
-    //----------------------------------------------------------------------------------------------------Проверка файла
+    //----------------------------------------------------------------------------------------------------Проверяет файл
     int position = 0;
     position = input_file.tellg();
 

@@ -6,6 +6,8 @@
 #define KURSOVIK_LINEWITHMARKER_H
 
 
+#pragma pack(push, 1)
+
 class LineWithMarker {
 public:
     char *symbols;
@@ -18,6 +20,8 @@ public:
         delete[] symbols;
     }
 };
+
+#pragma pack(pop)
 
 
 #endif //KURSOVIK_LINEWITHMARKER_H

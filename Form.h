@@ -8,6 +8,8 @@
 
 #include "List1.h"
 
+#pragma pack(push, 1)
+
 class Form {
 public:
     List1 *head, *current, *last;
@@ -18,6 +20,8 @@ public:
 
     ~Form() = default;
 };
+
+#pragma pack(pop)
 
 
 #endif //KURSOVIK_FORM_H

@@ -5,6 +5,7 @@
 #ifndef KURSOVIK_LIST1_H
 #define KURSOVIK_LIST1_H
 
+
 #include "BlocksList.h"
 
 #pragma pack(push, 1)
