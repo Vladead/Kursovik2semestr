@@ -15,41 +15,39 @@
 #include "JobSeeker.h"
 #include "Employer.h"
 
-void JobSeekerMode(JobInfo &jobInfo, JobSeeker &jobSeeker);
+void jobSeekerMode(JobInfo &jobInfo, JobSeeker &jobSeeker);
 
-void EmployerMode(JobInfo &jobInfo, Employer &employer);
+void employerMode(JobInfo &jobInfo, Employer &employer);
 
-void AddingMode(JobInfo &jobInfo, JobSeeker &jobSeeker, Employer &employer, Vacancy &vacancy);
+void addingMode(JobInfo &jobInfo, JobSeeker &jobSeeker, Employer &employer, Vacancy &vacancy);
 
-void SatisfiedVacancyMode(Vacancy &satisfied_vacancy);
+void satisfiedVacancyMode(Vacancy &satisfiedVacancy);
 
-void Add(JobInfo &jobInfo, JobSeeker &jobSeeker);
+void add(JobInfo &jobInfo, JobSeeker &jobSeeker);
 
-void Add(JobInfo &jobInfo, Employer &employer);
+void add(JobInfo &jobInfo, Employer &employer);
 
-void Add(JobInfo &jobInfo, Vacancy &vacancy);
+void add(JobInfo &jobInfo, Vacancy &vacancy);
 
-int NumberOfNecessaryNode(Form &InJobInfo, const char *temp_line, int symbols_count_of_temp);
+int findNumberOfNecessaryNode(Form &inJobInfo, const char *tempLine, int sizeOfTemp);
 
-bool WordIsInList(Form &InJobInfo, const char *temp_line, int symbols_count_of_temp);
+bool wordIsInList(Form &inJobInfo, const char *tempLine, int sizeOfTemp);
 
-void CopyNodeFromList(Form &list_where_copy, Form &list_form_file);
+void getInfoFromFile(Form &form, std::fstream &inputFile);
 
-void getting_info_from_file(Form &form, std::fstream &input_file);
+void inputOneLine(Form &form, int symbolsCount, int blocksCount, const char *transitLine);
 
-void InputOneLine(Form &form, int symbols_count, int blocks_count, const char *transit_line);
+int lineCount(std::fstream &inputFile);
 
-int LineCount(std::fstream &input_file);
+int countBlocksInLine(int symbolsCount);
 
-int BlocksInLine(int symbols_count);
+int countSymbols(std::fstream &inputFile, char temp);
 
-int SymbolsCount(std::fstream &input_file, char temp);
+bool checkFile(std::fstream &inputFile);
 
-bool CheckFile(std::fstream &input_file);
+void printForm(Form &form);
 
-void PrintForm(Form &form1);
-
-void DeleteList(Form &form);
+void deleteList(Form &form);
 
 
 #endif //KURSOVIK_PROCESSING_H

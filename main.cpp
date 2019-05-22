@@ -10,11 +10,11 @@
 using namespace std;
 
 int main() {
-    Vacancy list_of_vacancy, list_of_satisfied_vacancy;
-    Employer list_of_employers;
-    JobSeeker list_of_jobSeekers;
+    Vacancy listOfVacancy, listOfSatisfiedVacancy;
+    Employer listOfEmployers;
+    JobSeeker listOfJobSeekers;
     JobInfo jobInfo;
-    jobInfo.FillJobInfo();
+    jobInfo.fillJobInfo();
     int way = 0;
     bool stop = false;
     while (!stop) {
@@ -27,19 +27,19 @@ int main() {
         switch (way) {
             case 1:
                 cout << "Режим соискателя" << endl;
-                JobSeekerMode(jobInfo, list_of_jobSeekers);
+                jobSeekerMode(jobInfo, listOfJobSeekers);
                 break;
             case 2:
                 cout << "Режим работодателя" << endl;
-                EmployerMode(jobInfo, list_of_employers);
+                employerMode(jobInfo, listOfEmployers);
                 break;
             case 3:
                 cout << "Режим добавления" << endl;
-                AddingMode(jobInfo, list_of_jobSeekers, list_of_employers, list_of_vacancy);
+                addingMode(jobInfo, listOfJobSeekers, listOfEmployers, listOfVacancy);
                 break;
             case 4:
                 cout << "Режим списка удовлетворенных вакансий" << endl;
-                SatisfiedVacancyMode(list_of_satisfied_vacancy);
+                satisfiedVacancyMode(listOfSatisfiedVacancy);
                 break;
             case 5:
                 cout << "Выход" << endl;

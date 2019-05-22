@@ -16,9 +16,9 @@ public:
     BlocksList *schedule;
     BlocksList *salary;
     BlocksList *education;
-    BlocksList *work_experience;
-    BlocksList *field_of_activity;
-    BlocksList *employer_applications;
+    BlocksList *workExperience;
+    BlocksList *fieldOfActivity;
+    BlocksList *employerApplications;
 
     char vacant;
 
@@ -37,7 +37,7 @@ public:
 
     ~Vacancy();
 
-    void MakeNewNode();
+    void makeNewNode();
 };
 
 #pragma pack(pop)

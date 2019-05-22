@@ -11,10 +11,10 @@
 class LineWithMarker {
 public:
     char *symbols;
-    char Marker;
+    char marker;
 
-    LineWithMarker() : symbols(nullptr), Marker('@') {
-
+    LineWithMarker() : symbols(nullptr), marker(0) {
+        marker = '@';
     }
     ~LineWithMarker() {
         delete[] symbols;

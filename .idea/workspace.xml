@@ -12,12 +12,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b575b7c0-3780-440a-aaf9-4ca55d660df1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/BlocksList.h" beforeDir="false" afterPath="$PROJECT_DIR$/BlocksList.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Form.h" beforeDir="false" afterPath="$PROJECT_DIR$/Form.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JobInfo.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/JobInfo.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/JobInfo.h" beforeDir="false" afterPath="$PROJECT_DIR$/JobInfo.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JobSeeker.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/JobSeeker.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JobSeeker.h" beforeDir="false" afterPath="$PROJECT_DIR$/JobSeeker.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LineWithMarker.h" beforeDir="false" afterPath="$PROJECT_DIR$/LineWithMarker.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/List1.h" beforeDir="false" afterPath="$PROJECT_DIR$/List1.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Processing.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Processing.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Processing.h" beforeDir="false" afterPath="$PROJECT_DIR$/Processing.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vacancy.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Vacancy.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vacancy.h" beforeDir="false" afterPath="$PROJECT_DIR$/Vacancy.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
@@ -33,29 +38,11 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/JobSeeker.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="595">
-              <caret line="38" selection-start-line="38" selection-end-line="38" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/JobInfo.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" selection-start-line="11" selection-end-line="11" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="263">
-              <caret line="18" column="23" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
+            <state relative-caret-position="174">
+              <caret line="18" selection-start-line="18" selection-end-line="18" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -90,28 +77,28 @@
         <option value="$PROJECT_DIR$/cmake-build-debug/EmployerMode.txt" />
         <option value="$PROJECT_DIR$/cmake-build-debug/VacancyMode.txt" />
         <option value="$PROJECT_DIR$/cmake-build-debug/Position.txt" />
-        <option value="$PROJECT_DIR$/Vacancy.h" />
         <option value="$PROJECT_DIR$/Vacancy.cpp" />
         <option value="$PROJECT_DIR$/Employer.h" />
         <option value="$PROJECT_DIR$/Employer.cpp" />
-        <option value="$PROJECT_DIR$/JobSeeker.h" />
         <option value="$PROJECT_DIR$/JobSeeker.cpp" />
-        <option value="$PROJECT_DIR$/Processing.h" />
-        <option value="$PROJECT_DIR$/Processing.cpp" />
-        <option value="$PROJECT_DIR$/JobInfo.h" />
-        <option value="$PROJECT_DIR$/main.cpp" />
         <option value="$PROJECT_DIR$/Form.h" />
         <option value="$PROJECT_DIR$/List1.h" />
         <option value="$PROJECT_DIR$/BlocksList.h" />
+        <option value="$PROJECT_DIR$/JobInfo.h" />
+        <option value="$PROJECT_DIR$/JobSeeker.h" />
+        <option value="$PROJECT_DIR$/Vacancy.h" />
+        <option value="$PROJECT_DIR$/main.cpp" />
+        <option value="$PROJECT_DIR$/Processing.h" />
         <option value="$PROJECT_DIR$/LineWithMarker.h" />
+        <option value="$PROJECT_DIR$/Processing.cpp" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="690" />
-    <option name="y" value="-26" />
-    <option name="width" value="934" />
-    <option name="height" value="1055" />
+  <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="953" />
+    <option name="width" value="974" />
+    <option name="height" value="1047" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -196,24 +183,25 @@
       <workItem from="1558471869054" duration="2387000" />
       <workItem from="1558513298582" duration="2093000" />
       <workItem from="1558515947273" duration="7000" />
-      <workItem from="1558521981423" duration="4382000" />
+      <workItem from="1558521981423" duration="4711000" />
+      <workItem from="1558537813494" duration="3472000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="55155000" />
+    <option name="totallyTimeSpent" value="58956000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="953" y="0" width="974" height="1047" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26666668" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18997912" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32910052" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.41904762" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32905984" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32910052" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.29700854" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -235,11 +223,6 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/Vacancy.cpp</url>
-          <line>39</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/Processing.cpp</url>
           <line>412</line>
@@ -279,6 +262,11 @@
           <url>file://$PROJECT_DIR$/Processing.cpp</url>
           <line>848</line>
           <option name="timeStamp" value="21" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/main.cpp</url>
+          <line>17</line>
+          <option name="timeStamp" value="32" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -336,16 +324,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/cmake-build-debug/VacancyMode.txt" />
-    <entry file="file://$PROJECT_DIR$/JobInfo.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="32" column="55" selection-start-line="32" selection-start-column="55" selection-end-line="32" selection-end-column="55" />
-          <folding>
-            <element signature="e#41#59#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/cmake-build-debug/JobSeekerMode.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -405,53 +383,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Processing.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="23" column="54" lean-forward="true" selection-start-line="23" selection-start-column="54" selection-end-line="23" selection-end-column="54" />
-          <folding>
-            <element signature="e#104#122#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/JobSeeker.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="21" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/cmake-build-debug/AddingMode.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="20" selection-start-column="20" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Processing.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="711" column="45" selection-start-line="711" selection-start-column="45" selection-end-line="711" selection-end-column="45" />
-          <folding>
-            <element signature="e#42#61#0" expanded="true" />
-            <element signature="e#327#6912#0" />
-            <element signature="e#14851#15550#0" />
-            <element signature="e#15552#15584#0" />
-            <element signature="e#15586#22162#0" />
-            <element signature="e#22164#25278#0" />
-            <element signature="e#25280#30393#0" />
-            <element signature="e#30667#30703#0" />
-            <element signature="e#30395#31807#0" />
-            <element signature="e#31809#32992#0" />
-            <element signature="e#32994#34573#0" />
-            <element signature="e#34575#35046#0" />
-            <element signature="e#35048#35521#0" />
-            <element signature="e#35523#35954#0" />
-            <element signature="e#35956#36598#0" />
-            <element signature="e#36600#37263#0" />
-            <element signature="e#37265#37630#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -462,10 +397,96 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Employer.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="490">
+          <caret line="34" column="23" selection-start-line="34" selection-start-column="23" selection-end-line="34" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Form.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="4" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JobInfo.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="10" selection-start-line="21" selection-start-column="10" selection-end-line="21" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JobSeeker.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Vacancy.h">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="663">
+          <caret line="39" column="10" selection-start-line="39" selection-start-column="10" selection-end-line="39" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/List1.h">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
-          <caret line="18" column="32" lean-forward="true" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
+          <caret line="18" column="62" lean-forward="true" selection-start-line="18" selection-start-column="62" selection-end-line="18" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BlocksList.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="13" lean-forward="true" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LineWithMarker.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Processing.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="446">
+          <caret line="33" column="5" selection-start-line="33" selection-start-column="5" selection-end-line="33" selection-end-column="5" />
+          <folding>
+            <element signature="e#104#122#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Processing.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="599">
+          <caret line="1015" selection-start-line="1015" selection-end-line="1015" />
+          <folding>
+            <element signature="e#42#61#0" expanded="true" />
+            <element signature="e#327#7888#0" />
+            <element signature="e#7890#15859#0" />
+            <element signature="e#15861#16560#0" />
+            <element signature="e#16562#16620#0" />
+            <element signature="e#16622#24173#0" />
+            <element signature="e#24175#27762#0" />
+            <element signature="e#27764#33730#0" />
+            <element signature="e#33732#35392#0" />
+            <element signature="e#35394#36927#0" />
+            <element signature="e#36929#38112#0" />
+            <element signature="e#38114#39693#0" />
+            <element signature="e#39695#40166#0" />
+            <element signature="e#40168#40641#0" />
+            <element signature="e#40643#41074#0" />
+            <element signature="e#41076#41718#0" />
+            <element signature="e#41720#42383#0" />
+            <element signature="e#42385#42750#0" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -476,62 +497,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Employer.h">
+    <entry file="file://$PROJECT_DIR$/JobSeeker.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="490">
-          <caret line="34" column="23" selection-start-line="34" selection-start-column="23" selection-end-line="34" selection-end-column="23" />
+        <state relative-caret-position="255">
+          <caret line="15" column="21" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="21" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/JobSeeker.h">
+    <entry file="file://$PROJECT_DIR$/JobInfo.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="38" selection-start-line="38" selection-end-line="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/LineWithMarker.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="21" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/BlocksList.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="7" lean-forward="true" selection-start-line="13" selection-start-column="7" selection-end-line="13" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/List1.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="64" lean-forward="true" selection-start-line="18" selection-start-column="64" selection-end-line="18" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Form.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="5" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
+        <state relative-caret-position="442">
+          <caret line="26" column="28" selection-start-line="26" selection-start-column="28" selection-end-line="26" selection-end-column="28" />
+          <folding>
+            <element signature="e#41#59#0" expanded="true" />
+            <element signature="e#504#2198#0" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="263">
-          <caret line="18" column="23" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="23" />
+        <state relative-caret-position="174">
+          <caret line="18" selection-start-line="18" selection-end-line="18" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/JobInfo.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
         </state>
       </provider>
     </entry>

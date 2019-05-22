@@ -9,8 +9,8 @@ NodeJobSeeker::NodeJobSeeker() {
     name = nullptr;
     patronymic = nullptr;
     position = nullptr;
-    field_of_activity = nullptr;
-    work_experience = nullptr;
+    fieldOfActivity = nullptr;
+    workExperience = nullptr;
     education = nullptr;
     schedule = nullptr;
     salary = nullptr;
@@ -34,7 +34,7 @@ JobSeeker::~JobSeeker() {
     }
 }
 
-void JobSeeker::MakeNewNode() {
+void JobSeeker::makeNewNode() {
     auto *temp = new NodeJobSeeker;
     temp->next = nullptr;
 

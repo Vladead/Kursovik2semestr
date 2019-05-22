@@ -17,399 +17,399 @@
 
 using namespace std;
 
-void JobSeekerMode(JobInfo &jobInfo, JobSeeker &jobSeeker) { //TODO добавить заполнение списка
-    fstream input_file;
+void jobSeekerMode(JobInfo &jobInfo, JobSeeker &jobSeeker) { //TODO добавить заполнение списка, поменять файл
+    fstream inputFile;
     char temp = 0;
-    int blocksCount = 0, symbolsCount = 0, number_of_necessary_node = 0;
-    input_file.open("../cmake-build-debug/AddingMode.txt", ios::in);
-    input_file.unsetf(ios::skipws);
+    int blocksCount = 0, symbolsCount = 0, nodeNumber = 0;
+    inputFile.open("../cmake-build-debug/AddingMode.txt", ios::in);
+    inputFile.unsetf(ios::skipws);
     int position = 0;
 
-    position = input_file.tellg();
-    symbolsCount = SymbolsCount(input_file, temp);
-    blocksCount = BlocksInLine(symbolsCount);
-    auto transit_line = new char[symbolsCount + 1];
+    position = inputFile.tellg();
+    symbolsCount = countSymbols(inputFile, temp);
+    blocksCount = countBlocksInLine(symbolsCount);
+    auto transitLine = new char[symbolsCount + 1];
     for (int j = 0; j < symbolsCount + 1; j++)
-        transit_line[j] = 0;
-    input_file.clear();
-    input_file.seekg(position);
+        transitLine[j] = 0;
+    inputFile.clear();
+    inputFile.seekg(position);
     for (int j = 0; j < symbolsCount; j++)
-        input_file >> transit_line[j];
-    input_file >> temp;
-    input_file >> temp;
-    if (!WordIsInList(jobInfo.surname, transit_line, symbolsCount)) {
-        InputOneLine(jobInfo.surname, symbolsCount, blocksCount, transit_line);
-        jobInfo.surname.last->symbols_in_line = symbolsCount;
+        inputFile >> transitLine[j];
+    inputFile >> temp;
+    inputFile >> temp;
+    if (!wordIsInList(jobInfo.surname, transitLine, symbolsCount)) {
+        inputOneLine(jobInfo.surname, symbolsCount, blocksCount, transitLine);
+        jobInfo.surname.last->symbolsInLine = symbolsCount;
     }
-    number_of_necessary_node = NumberOfNecessaryNode(jobInfo.surname, transit_line, symbolsCount);
-    delete[] transit_line;
+    nodeNumber = findNumberOfNecessaryNode(jobInfo.surname, transitLine, symbolsCount);
+    delete[] transitLine;
 
-    position = input_file.tellg();
-    symbolsCount = SymbolsCount(input_file, temp);
-    blocksCount = BlocksInLine(symbolsCount);
-    transit_line = new char[symbolsCount + 1];
+    position = inputFile.tellg();
+    symbolsCount = countSymbols(inputFile, temp);
+    blocksCount = countBlocksInLine(symbolsCount);
+    transitLine = new char[symbolsCount + 1];
     for (int j = 0; j < symbolsCount + 1; j++)
-        transit_line[j] = 0;
-    input_file.clear();
-    input_file.seekg(position);
+        transitLine[j] = 0;
+    inputFile.clear();
+    inputFile.seekg(position);
     for (int j = 0; j < symbolsCount; j++)
-        input_file >> transit_line[j];
-    input_file >> temp;
-    input_file >> temp;
-    if (!WordIsInList(jobInfo.name, transit_line, symbolsCount)) {
-        InputOneLine(jobInfo.name, symbolsCount, blocksCount, transit_line);
-        jobInfo.name.last->symbols_in_line = symbolsCount;
+        inputFile >> transitLine[j];
+    inputFile >> temp;
+    inputFile >> temp;
+    if (!wordIsInList(jobInfo.name, transitLine, symbolsCount)) {
+        inputOneLine(jobInfo.name, symbolsCount, blocksCount, transitLine);
+        jobInfo.name.last->symbolsInLine = symbolsCount;
     }
-    number_of_necessary_node = NumberOfNecessaryNode(jobInfo.name, transit_line, symbolsCount);
-    delete[] transit_line;
+    nodeNumber = findNumberOfNecessaryNode(jobInfo.name, transitLine, symbolsCount);
+    delete[] transitLine;
 
-    position = input_file.tellg();
-    symbolsCount = SymbolsCount(input_file, temp);
-    blocksCount = BlocksInLine(symbolsCount);
-    transit_line = new char[symbolsCount + 1];
+    position = inputFile.tellg();
+    symbolsCount = countSymbols(inputFile, temp);
+    blocksCount = countBlocksInLine(symbolsCount);
+    transitLine = new char[symbolsCount + 1];
     for (int j = 0; j < symbolsCount + 1; j++)
-        transit_line[j] = 0;
-    input_file.clear();
-    input_file.seekg(position);
+        transitLine[j] = 0;
+    inputFile.clear();
+    inputFile.seekg(position);
     for (int j = 0; j < symbolsCount; j++)
-        input_file >> transit_line[j];
-    input_file >> temp;
-    input_file >> temp;
-    if (!WordIsInList(jobInfo.patronymic, transit_line, symbolsCount)) {
-        InputOneLine(jobInfo.patronymic, symbolsCount, blocksCount, transit_line);
-        jobInfo.patronymic.last->symbols_in_line = symbolsCount;
+        inputFile >> transitLine[j];
+    inputFile >> temp;
+    inputFile >> temp;
+    if (!wordIsInList(jobInfo.patronymic, transitLine, symbolsCount)) {
+        inputOneLine(jobInfo.patronymic, symbolsCount, blocksCount, transitLine);
+        jobInfo.patronymic.last->symbolsInLine = symbolsCount;
     }
-    number_of_necessary_node = NumberOfNecessaryNode(jobInfo.patronymic, transit_line, symbolsCount);
-    delete[] transit_line;
+    nodeNumber = findNumberOfNecessaryNode(jobInfo.patronymic, transitLine, symbolsCount);
+    delete[] transitLine;
 
-    position = input_file.tellg();
-    symbolsCount = SymbolsCount(input_file, temp);
-    blocksCount = BlocksInLine(symbolsCount);
-    transit_line = new char[symbolsCount + 1];
+    position = inputFile.tellg();
+    symbolsCount = countSymbols(inputFile, temp);
+    blocksCount = countBlocksInLine(symbolsCount);
+    transitLine = new char[symbolsCount + 1];
     for (int j = 0; j < symbolsCount + 1; j++)
-        transit_line[j] = 0;
-    input_file.clear();
-    input_file.seekg(position);
+        transitLine[j] = 0;
+    inputFile.clear();
+    inputFile.seekg(position);
     for (int j = 0; j < symbolsCount; j++)
-        input_file >> transit_line[j];
-    input_file >> temp;
-    input_file >> temp;
-    if (!WordIsInList(jobInfo.position, transit_line, symbolsCount)) {
-        InputOneLine(jobInfo.position, symbolsCount, blocksCount, transit_line);
-        jobInfo.position.last->symbols_in_line = symbolsCount;
+        inputFile >> transitLine[j];
+    inputFile >> temp;
+    inputFile >> temp;
+    if (!wordIsInList(jobInfo.position, transitLine, symbolsCount)) {
+        inputOneLine(jobInfo.position, symbolsCount, blocksCount, transitLine);
+        jobInfo.position.last->symbolsInLine = symbolsCount;
     }
-    number_of_necessary_node = NumberOfNecessaryNode(jobInfo.position, transit_line, symbolsCount);
-    delete[] transit_line;
+    nodeNumber = findNumberOfNecessaryNode(jobInfo.position, transitLine, symbolsCount);
+    delete[] transitLine;
 
-    position = input_file.tellg();
-    symbolsCount = SymbolsCount(input_file, temp);
-    blocksCount = BlocksInLine(symbolsCount);
-    transit_line = new char[symbolsCount + 1];
+    position = inputFile.tellg();
+    symbolsCount = countSymbols(inputFile, temp);
+    blocksCount = countBlocksInLine(symbolsCount);
+    transitLine = new char[symbolsCount + 1];
     for (int j = 0; j < symbolsCount + 1; j++)
-        transit_line[j] = 0;
-    input_file.clear();
-    input_file.seekg(position);
+        transitLine[j] = 0;
+    inputFile.clear();
+    inputFile.seekg(position);
     for (int j = 0; j < symbolsCount; j++)
-        input_file >> transit_line[j];
-    input_file >> temp;
-    input_file >> temp;
-    if (!WordIsInList(jobInfo.field_of_activity, transit_line, symbolsCount)) {
-        InputOneLine(jobInfo.field_of_activity, symbolsCount, blocksCount, transit_line);
-        jobInfo.field_of_activity.last->symbols_in_line = symbolsCount;
+        inputFile >> transitLine[j];
+    inputFile >> temp;
+    inputFile >> temp;
+    if (!wordIsInList(jobInfo.fieldOfActivity, transitLine, symbolsCount)) {
+        inputOneLine(jobInfo.fieldOfActivity, symbolsCount, blocksCount, transitLine);
+        jobInfo.fieldOfActivity.last->symbolsInLine = symbolsCount;
     }
-    number_of_necessary_node = NumberOfNecessaryNode(jobInfo.field_of_activity, transit_line, symbolsCount);
-    delete[] transit_line;
+    nodeNumber = findNumberOfNecessaryNode(jobInfo.fieldOfActivity, transitLine, symbolsCount);
+    delete[] transitLine;
 
-    position = input_file.tellg();
-    symbolsCount = SymbolsCount(input_file, temp);
-    blocksCount = BlocksInLine(symbolsCount);
-    transit_line = new char[symbolsCount + 1];
+    position = inputFile.tellg();
+    symbolsCount = countSymbols(inputFile, temp);
+    blocksCount = countBlocksInLine(symbolsCount);
+    transitLine = new char[symbolsCount + 1];
     for (int j = 0; j < symbolsCount + 1; j++)
-        transit_line[j] = 0;
-    input_file.clear();
-    input_file.seekg(position);
+        transitLine[j] = 0;
+    inputFile.clear();
+    inputFile.seekg(position);
     for (int j = 0; j < symbolsCount; j++)
-        input_file >> transit_line[j];
-    input_file >> temp;
-    input_file >> temp;
-    if (!WordIsInList(jobInfo.work_experience, transit_line, symbolsCount)) {
-        InputOneLine(jobInfo.work_experience, symbolsCount, blocksCount, transit_line);
-        jobInfo.work_experience.last->symbols_in_line = symbolsCount;
+        inputFile >> transitLine[j];
+    inputFile >> temp;
+    inputFile >> temp;
+    if (!wordIsInList(jobInfo.workExperience, transitLine, symbolsCount)) {
+        inputOneLine(jobInfo.workExperience, symbolsCount, blocksCount, transitLine);
+        jobInfo.workExperience.last->symbolsInLine = symbolsCount;
     }
-    number_of_necessary_node = NumberOfNecessaryNode(jobInfo.work_experience, transit_line, symbolsCount);
-    delete[] transit_line;
+    nodeNumber = findNumberOfNecessaryNode(jobInfo.workExperience, transitLine, symbolsCount);
+    delete[] transitLine;
 
-    position = input_file.tellg();
-    symbolsCount = SymbolsCount(input_file, temp);
-    blocksCount = BlocksInLine(symbolsCount);
-    transit_line = new char[symbolsCount + 1];
+    position = inputFile.tellg();
+    symbolsCount = countSymbols(inputFile, temp);
+    blocksCount = countBlocksInLine(symbolsCount);
+    transitLine = new char[symbolsCount + 1];
     for (int j = 0; j < symbolsCount + 1; j++)
-        transit_line[j] = 0;
-    input_file.clear();
-    input_file.seekg(position);
+        transitLine[j] = 0;
+    inputFile.clear();
+    inputFile.seekg(position);
     for (int j = 0; j < symbolsCount; j++)
-        input_file >> transit_line[j];
-    input_file >> temp;
-    input_file >> temp;
-    if (!WordIsInList(jobInfo.education, transit_line, symbolsCount)) {
-        InputOneLine(jobInfo.education, symbolsCount, blocksCount, transit_line);
-        jobInfo.education.last->symbols_in_line = symbolsCount;
+        inputFile >> transitLine[j];
+    inputFile >> temp;
+    inputFile >> temp;
+    if (!wordIsInList(jobInfo.education, transitLine, symbolsCount)) {
+        inputOneLine(jobInfo.education, symbolsCount, blocksCount, transitLine);
+        jobInfo.education.last->symbolsInLine = symbolsCount;
     }
-    number_of_necessary_node = NumberOfNecessaryNode(jobInfo.education, transit_line, symbolsCount);
-    delete[] transit_line;
+    nodeNumber = findNumberOfNecessaryNode(jobInfo.education, transitLine, symbolsCount);
+    delete[] transitLine;
 
-    position = input_file.tellg();
-    symbolsCount = SymbolsCount(input_file, temp);
-    blocksCount = BlocksInLine(symbolsCount);
-    transit_line = new char[symbolsCount + 1];
+    position = inputFile.tellg();
+    symbolsCount = countSymbols(inputFile, temp);
+    blocksCount = countBlocksInLine(symbolsCount);
+    transitLine = new char[symbolsCount + 1];
     for (int j = 0; j < symbolsCount + 1; j++)
-        transit_line[j] = 0;
-    input_file.clear();
-    input_file.seekg(position);
+        transitLine[j] = 0;
+    inputFile.clear();
+    inputFile.seekg(position);
     for (int j = 0; j < symbolsCount; j++)
-        input_file >> transit_line[j];
-    input_file >> temp;
-    input_file >> temp;
-    if (!WordIsInList(jobInfo.schedule, transit_line, symbolsCount)) {
-        InputOneLine(jobInfo.schedule, symbolsCount, blocksCount, transit_line);
-        jobInfo.schedule.last->symbols_in_line = symbolsCount;
+        inputFile >> transitLine[j];
+    inputFile >> temp;
+    inputFile >> temp;
+    if (!wordIsInList(jobInfo.schedule, transitLine, symbolsCount)) {
+        inputOneLine(jobInfo.schedule, symbolsCount, blocksCount, transitLine);
+        jobInfo.schedule.last->symbolsInLine = symbolsCount;
     }
-    number_of_necessary_node = NumberOfNecessaryNode(jobInfo.schedule, transit_line, symbolsCount);
-    delete[] transit_line;
+    nodeNumber = findNumberOfNecessaryNode(jobInfo.schedule, transitLine, symbolsCount);
+    delete[] transitLine;
 
-    position = input_file.tellg();
-    symbolsCount = SymbolsCount(input_file, temp);
-    blocksCount = BlocksInLine(symbolsCount);
-    transit_line = new char[symbolsCount + 1];
+    position = inputFile.tellg();
+    symbolsCount = countSymbols(inputFile, temp);
+    blocksCount = countBlocksInLine(symbolsCount);
+    transitLine = new char[symbolsCount + 1];
     for (int j = 0; j < symbolsCount + 1; j++)
-        transit_line[j] = 0;
-    input_file.clear();
-    input_file.seekg(position);
+        transitLine[j] = 0;
+    inputFile.clear();
+    inputFile.seekg(position);
     for (int j = 0; j < symbolsCount; j++)
-        input_file >> transit_line[j];
-    input_file >> temp;
-    input_file >> temp;
-    if (!WordIsInList(jobInfo.salary, transit_line, symbolsCount)) {
-        InputOneLine(jobInfo.salary, symbolsCount, blocksCount, transit_line);
-        jobInfo.salary.last->symbols_in_line = symbolsCount;
+        inputFile >> transitLine[j];
+    inputFile >> temp;
+    inputFile >> temp;
+    if (!wordIsInList(jobInfo.salary, transitLine, symbolsCount)) {
+        inputOneLine(jobInfo.salary, symbolsCount, blocksCount, transitLine);
+        jobInfo.salary.last->symbolsInLine = symbolsCount;
     }
-    number_of_necessary_node = NumberOfNecessaryNode(jobInfo.salary, transit_line, symbolsCount);
-    delete[] transit_line;
+    nodeNumber = findNumberOfNecessaryNode(jobInfo.salary, transitLine, symbolsCount);
+    delete[] transitLine;
 
-    input_file.setf(ios::skipws);
-    input_file.close();
+    inputFile.setf(ios::skipws);
+    inputFile.close();
 }
 
-void EmployerMode(JobInfo &jobInfo, Employer &employer) { //TODO добавить заполнение списка
-    fstream input_file;
+void employerMode(JobInfo &jobInfo, Employer &employer) { //TODO добавить заполнение списка
+    fstream inputFile;
     char temp = 0;
     int blocksCount = 0, symbolsCount = 0;
-    input_file.open("../cmake-build-debug/EmployerMode.txt", ios::in);
-    input_file.unsetf(ios::skipws);
+    inputFile.open("../cmake-build-debug/EmployerMode.txt", ios::in);
+    inputFile.unsetf(ios::skipws);
     int position = 0;
 
-    position = input_file.tellg();
-    symbolsCount = SymbolsCount(input_file, temp);
-    blocksCount = BlocksInLine(symbolsCount);
-    auto transit_line = new char[symbolsCount + 1];
+    position = inputFile.tellg();
+    symbolsCount = countSymbols(inputFile, temp);
+    blocksCount = countBlocksInLine(symbolsCount);
+    auto transitLine = new char[symbolsCount + 1];
     for (int j = 0; j < symbolsCount + 1; j++)
-        transit_line[j] = 0;
-    input_file.clear();
-    input_file.seekg(position);
+        transitLine[j] = 0;
+    inputFile.clear();
+    inputFile.seekg(position);
     for (int j = 0; j < symbolsCount; j++)
-        input_file >> transit_line[j];
-    input_file >> temp;
-    input_file >> temp;
-    if (!WordIsInList(jobInfo.title, transit_line, symbolsCount)) {
-        InputOneLine(jobInfo.title, symbolsCount, blocksCount, transit_line);
-        jobInfo.title.last->symbols_in_line = symbolsCount;
+        inputFile >> transitLine[j];
+    inputFile >> temp;
+    inputFile >> temp;
+    if (!wordIsInList(jobInfo.title, transitLine, symbolsCount)) {
+        inputOneLine(jobInfo.title, symbolsCount, blocksCount, transitLine);
+        jobInfo.title.last->symbolsInLine = symbolsCount;
     }
-    delete[] transit_line;
+    delete[] transitLine;
 
-    position = input_file.tellg();
-    symbolsCount = SymbolsCount(input_file, temp);
-    blocksCount = BlocksInLine(symbolsCount);
-    transit_line = new char[symbolsCount + 1];
+    position = inputFile.tellg();
+    symbolsCount = countSymbols(inputFile, temp);
+    blocksCount = countBlocksInLine(symbolsCount);
+    transitLine = new char[symbolsCount + 1];
     for (int j = 0; j < symbolsCount + 1; j++)
-        transit_line[j] = 0;
-    input_file.clear();
-    input_file.seekg(position);
+        transitLine[j] = 0;
+    inputFile.clear();
+    inputFile.seekg(position);
     for (int j = 0; j < symbolsCount; j++)
-        input_file >> transit_line[j];
-    input_file >> temp;
-    input_file >> temp;
-    if (!WordIsInList(jobInfo.field_of_activity, transit_line, symbolsCount)) {
-        InputOneLine(jobInfo.field_of_activity, symbolsCount, blocksCount, transit_line);
-        jobInfo.field_of_activity.last->symbols_in_line = symbolsCount;
+        inputFile >> transitLine[j];
+    inputFile >> temp;
+    inputFile >> temp;
+    if (!wordIsInList(jobInfo.fieldOfActivity, transitLine, symbolsCount)) {
+        inputOneLine(jobInfo.fieldOfActivity, symbolsCount, blocksCount, transitLine);
+        jobInfo.fieldOfActivity.last->symbolsInLine = symbolsCount;
     }
-    delete[] transit_line;
+    delete[] transitLine;
 
-    position = input_file.tellg();
-    symbolsCount = SymbolsCount(input_file, temp);
-    blocksCount = BlocksInLine(symbolsCount);
-    transit_line = new char[symbolsCount + 1];
+    position = inputFile.tellg();
+    symbolsCount = countSymbols(inputFile, temp);
+    blocksCount = countBlocksInLine(symbolsCount);
+    transitLine = new char[symbolsCount + 1];
     for (int j = 0; j < symbolsCount + 1; j++)
-        transit_line[j] = 0;
-    input_file.clear();
-    input_file.seekg(position);
+        transitLine[j] = 0;
+    inputFile.clear();
+    inputFile.seekg(position);
     for (int j = 0; j < symbolsCount; j++)
-        input_file >> transit_line[j];
-    input_file >> temp;
-    input_file >> temp;
-    if (!WordIsInList(jobInfo.address, transit_line, symbolsCount)) {
-        InputOneLine(jobInfo.address, symbolsCount, blocksCount, transit_line);
-        jobInfo.address.last->symbols_in_line = symbolsCount;
+        inputFile >> transitLine[j];
+    inputFile >> temp;
+    inputFile >> temp;
+    if (!wordIsInList(jobInfo.address, transitLine, symbolsCount)) {
+        inputOneLine(jobInfo.address, symbolsCount, blocksCount, transitLine);
+        jobInfo.address.last->symbolsInLine = symbolsCount;
     }
-    delete[] transit_line;
+    delete[] transitLine;
 
-    position = input_file.tellg();
-    symbolsCount = SymbolsCount(input_file, temp);
-    blocksCount = BlocksInLine(symbolsCount);
-    transit_line = new char[symbolsCount + 1];
+    position = inputFile.tellg();
+    symbolsCount = countSymbols(inputFile, temp);
+    blocksCount = countBlocksInLine(symbolsCount);
+    transitLine = new char[symbolsCount + 1];
     for (int j = 0; j < symbolsCount + 1; j++)
-        transit_line[j] = 0;
-    input_file.clear();
-    input_file.seekg(position);
+        transitLine[j] = 0;
+    inputFile.clear();
+    inputFile.seekg(position);
     for (int j = 0; j < symbolsCount; j++)
-        input_file >> transit_line[j];
-    input_file >> temp;
-    input_file >> temp;
-    if (!WordIsInList(jobInfo.phone_number, transit_line, symbolsCount)) {
-        InputOneLine(jobInfo.phone_number, symbolsCount, blocksCount, transit_line);
-        jobInfo.phone_number.last->symbols_in_line = symbolsCount;
+        inputFile >> transitLine[j];
+    inputFile >> temp;
+    inputFile >> temp;
+    if (!wordIsInList(jobInfo.phoneNumber, transitLine, symbolsCount)) {
+        inputOneLine(jobInfo.phoneNumber, symbolsCount, blocksCount, transitLine);
+        jobInfo.phoneNumber.last->symbolsInLine = symbolsCount;
     }
-    delete[] transit_line;
+    delete[] transitLine;
 
-    position = input_file.tellg();
-    symbolsCount = SymbolsCount(input_file, temp);
-    blocksCount = BlocksInLine(symbolsCount);
-    transit_line = new char[symbolsCount + 1];
+    position = inputFile.tellg();
+    symbolsCount = countSymbols(inputFile, temp);
+    blocksCount = countBlocksInLine(symbolsCount);
+    transitLine = new char[symbolsCount + 1];
     for (int j = 0; j < symbolsCount + 1; j++)
-        transit_line[j] = 0;
-    input_file.clear();
-    input_file.seekg(position);
+        transitLine[j] = 0;
+    inputFile.clear();
+    inputFile.seekg(position);
     for (int j = 0; j < symbolsCount; j++)
-        input_file >> transit_line[j];
-    input_file >> temp;
-    input_file >> temp;
-    if (!WordIsInList(jobInfo.position, transit_line, symbolsCount)) {
-        InputOneLine(jobInfo.position, symbolsCount, blocksCount, transit_line);
-        jobInfo.position.last->symbols_in_line = symbolsCount;
+        inputFile >> transitLine[j];
+    inputFile >> temp;
+    inputFile >> temp;
+    if (!wordIsInList(jobInfo.position, transitLine, symbolsCount)) {
+        inputOneLine(jobInfo.position, symbolsCount, blocksCount, transitLine);
+        jobInfo.position.last->symbolsInLine = symbolsCount;
     }
-    delete[] transit_line;
+    delete[] transitLine;
 
-    position = input_file.tellg();
-    symbolsCount = SymbolsCount(input_file, temp);
-    blocksCount = BlocksInLine(symbolsCount);
-    transit_line = new char[symbolsCount + 1];
+    position = inputFile.tellg();
+    symbolsCount = countSymbols(inputFile, temp);
+    blocksCount = countBlocksInLine(symbolsCount);
+    transitLine = new char[symbolsCount + 1];
     for (int j = 0; j < symbolsCount + 1; j++)
-        transit_line[j] = 0;
-    input_file.clear();
-    input_file.seekg(position);
+        transitLine[j] = 0;
+    inputFile.clear();
+    inputFile.seekg(position);
     for (int j = 0; j < symbolsCount; j++)
-        input_file >> transit_line[j];
-    input_file >> temp;
-    input_file >> temp;
-    if (!WordIsInList(jobInfo.schedule, transit_line, symbolsCount)) {
-        InputOneLine(jobInfo.schedule, symbolsCount, blocksCount, transit_line);
-        jobInfo.schedule.last->symbols_in_line = symbolsCount;
+        inputFile >> transitLine[j];
+    inputFile >> temp;
+    inputFile >> temp;
+    if (!wordIsInList(jobInfo.schedule, transitLine, symbolsCount)) {
+        inputOneLine(jobInfo.schedule, symbolsCount, blocksCount, transitLine);
+        jobInfo.schedule.last->symbolsInLine = symbolsCount;
     }
-    delete[] transit_line;
+    delete[] transitLine;
 
-    position = input_file.tellg();
-    symbolsCount = SymbolsCount(input_file, temp);
-    blocksCount = BlocksInLine(symbolsCount);
-    transit_line = new char[symbolsCount + 1];
+    position = inputFile.tellg();
+    symbolsCount = countSymbols(inputFile, temp);
+    blocksCount = countBlocksInLine(symbolsCount);
+    transitLine = new char[symbolsCount + 1];
     for (int j = 0; j < symbolsCount + 1; j++)
-        transit_line[j] = 0;
-    input_file.clear();
-    input_file.seekg(position);
+        transitLine[j] = 0;
+    inputFile.clear();
+    inputFile.seekg(position);
     for (int j = 0; j < symbolsCount; j++)
-        input_file >> transit_line[j];
-    input_file >> temp;
-    input_file >> temp;
-    if (!WordIsInList(jobInfo.salary, transit_line, symbolsCount)) {
-        InputOneLine(jobInfo.salary, symbolsCount, blocksCount, transit_line);
-        jobInfo.salary.last->symbols_in_line = symbolsCount;
+        inputFile >> transitLine[j];
+    inputFile >> temp;
+    inputFile >> temp;
+    if (!wordIsInList(jobInfo.salary, transitLine, symbolsCount)) {
+        inputOneLine(jobInfo.salary, symbolsCount, blocksCount, transitLine);
+        jobInfo.salary.last->symbolsInLine = symbolsCount;
     }
-    delete[] transit_line;
+    delete[] transitLine;
 
-    position = input_file.tellg();
-    symbolsCount = SymbolsCount(input_file, temp);
-    blocksCount = BlocksInLine(symbolsCount);
-    transit_line = new char[symbolsCount + 1];
+    position = inputFile.tellg();
+    symbolsCount = countSymbols(inputFile, temp);
+    blocksCount = countBlocksInLine(symbolsCount);
+    transitLine = new char[symbolsCount + 1];
     for (int j = 0; j < symbolsCount + 1; j++)
-        transit_line[j] = 0;
-    input_file.clear();
-    input_file.seekg(position);
+        transitLine[j] = 0;
+    inputFile.clear();
+    inputFile.seekg(position);
     for (int j = 0; j < symbolsCount; j++)
-        input_file >> transit_line[j];
-    input_file >> temp;
-    input_file >> temp;
-    if (!WordIsInList(jobInfo.education, transit_line, symbolsCount)) {
-        InputOneLine(jobInfo.education, symbolsCount, blocksCount, transit_line);
-        jobInfo.education.last->symbols_in_line = symbolsCount;
+        inputFile >> transitLine[j];
+    inputFile >> temp;
+    inputFile >> temp;
+    if (!wordIsInList(jobInfo.education, transitLine, symbolsCount)) {
+        inputOneLine(jobInfo.education, symbolsCount, blocksCount, transitLine);
+        jobInfo.education.last->symbolsInLine = symbolsCount;
     }
-    delete[] transit_line;
+    delete[] transitLine;
 
-    position = input_file.tellg();
-    symbolsCount = SymbolsCount(input_file, temp);
-    blocksCount = BlocksInLine(symbolsCount);
-    transit_line = new char[symbolsCount + 1];
+    position = inputFile.tellg();
+    symbolsCount = countSymbols(inputFile, temp);
+    blocksCount = countBlocksInLine(symbolsCount);
+    transitLine = new char[symbolsCount + 1];
     for (int j = 0; j < symbolsCount + 1; j++)
-        transit_line[j] = 0;
-    input_file.clear();
-    input_file.seekg(position);
+        transitLine[j] = 0;
+    inputFile.clear();
+    inputFile.seekg(position);
     for (int j = 0; j < symbolsCount; j++)
-        input_file >> transit_line[j];
-    input_file >> temp;
-    input_file >> temp;
-    if (!WordIsInList(jobInfo.field_of_activity, transit_line, symbolsCount)) {
-        InputOneLine(jobInfo.field_of_activity, symbolsCount, blocksCount, transit_line);
-        jobInfo.field_of_activity.last->symbols_in_line = symbolsCount;
+        inputFile >> transitLine[j];
+    inputFile >> temp;
+    inputFile >> temp;
+    if (!wordIsInList(jobInfo.fieldOfActivity, transitLine, symbolsCount)) {
+        inputOneLine(jobInfo.fieldOfActivity, symbolsCount, blocksCount, transitLine);
+        jobInfo.fieldOfActivity.last->symbolsInLine = symbolsCount;
     }
-    delete[] transit_line;
+    delete[] transitLine;
 
-    position = input_file.tellg();
-    symbolsCount = SymbolsCount(input_file, temp);
-    blocksCount = BlocksInLine(symbolsCount);
-    transit_line = new char[symbolsCount + 1];
+    position = inputFile.tellg();
+    symbolsCount = countSymbols(inputFile, temp);
+    blocksCount = countBlocksInLine(symbolsCount);
+    transitLine = new char[symbolsCount + 1];
     for (int j = 0; j < symbolsCount + 1; j++)
-        transit_line[j] = 0;
-    input_file.clear();
-    input_file.seekg(position);
+        transitLine[j] = 0;
+    inputFile.clear();
+    inputFile.seekg(position);
     for (int j = 0; j < symbolsCount; j++)
-        input_file >> transit_line[j];
-    input_file >> temp;
-    input_file >> temp;
-    if (!WordIsInList(jobInfo.work_experience, transit_line, symbolsCount)) {
-        InputOneLine(jobInfo.work_experience, symbolsCount, blocksCount, transit_line);
-        jobInfo.work_experience.last->symbols_in_line = symbolsCount;
+        inputFile >> transitLine[j];
+    inputFile >> temp;
+    inputFile >> temp;
+    if (!wordIsInList(jobInfo.workExperience, transitLine, symbolsCount)) {
+        inputOneLine(jobInfo.workExperience, symbolsCount, blocksCount, transitLine);
+        jobInfo.workExperience.last->symbolsInLine = symbolsCount;
     }
-    delete[] transit_line;
+    delete[] transitLine;
 
-    position = input_file.tellg();
-    symbolsCount = SymbolsCount(input_file, temp);
-    blocksCount = BlocksInLine(symbolsCount);
-    transit_line = new char[symbolsCount + 1];
+    position = inputFile.tellg();
+    symbolsCount = countSymbols(inputFile, temp);
+    blocksCount = countBlocksInLine(symbolsCount);
+    transitLine = new char[symbolsCount + 1];
     for (int j = 0; j < symbolsCount + 1; j++)
-        transit_line[j] = 0;
-    input_file.clear();
-    input_file.seekg(position);
+        transitLine[j] = 0;
+    inputFile.clear();
+    inputFile.seekg(position);
     for (int j = 0; j < symbolsCount; j++)
-        input_file >> transit_line[j];
-    input_file >> temp;
-    input_file >> temp;
-    if (!WordIsInList(jobInfo.title, transit_line, symbolsCount)) {
+        inputFile >> transitLine[j];
+    inputFile >> temp;
+    inputFile >> temp;
+    if (!wordIsInList(jobInfo.title, transitLine, symbolsCount)) {
         cout << "Такой компании нет в базе данных" << endl; //TODO довести до ума
     }
-    delete[] transit_line;
+    delete[] transitLine;
 
-    input_file.setf(ios::skipws);
-    input_file.close();
+    inputFile.setf(ios::skipws);
+    inputFile.close();
 }
 
-void AddingMode(JobInfo &jobInfo, JobSeeker &jobSeeker, Employer &employer, Vacancy &vacancy) {
+void addingMode(JobInfo &jobInfo, JobSeeker &jobSeeker, Employer &employer, Vacancy &vacancy) {
     int way = 0;
     cout << "1 - Соискателя\n"
          << "2 - Работодателя\n"
@@ -418,15 +418,15 @@ void AddingMode(JobInfo &jobInfo, JobSeeker &jobSeeker, Employer &employer, Vaca
     cin >> way;
     switch (way) {
         case 1:
-            Add(jobInfo, jobSeeker);
+            add(jobInfo, jobSeeker);
             cout << "Соискатель добавлен" << endl;
             break;
         case 2:
-            Add(jobInfo, employer);
+            add(jobInfo, employer);
             cout << "Работодатель добавлен" << endl;
             break;
         case 3:
-            Add(jobInfo, vacancy);
+            add(jobInfo, vacancy);
             cout << "Вакансия добавлена" << endl;
             break;
         default:
@@ -434,445 +434,445 @@ void AddingMode(JobInfo &jobInfo, JobSeeker &jobSeeker, Employer &employer, Vaca
     }
 }
 
-void SatisfiedVacancyMode(Vacancy &satisfied_vacancy) {
+void satisfiedVacancyMode(Vacancy &satisfiedVacancy) {
 
 }
 
-void Add(JobInfo &jobInfo, JobSeeker &jobSeeker) { //TODO добавить заполнение списка
-    fstream input_file;
+void add(JobInfo &jobInfo, JobSeeker &jobSeeker) { //TODO добавить заполнение списка
+    fstream inputFile;
     char temp = 0;
-    int blocksCount = 0, symbolsCount = 0, number_of_necessary_node = 0;
-    input_file.open("../cmake-build-debug/AddingMode.txt", ios::in);
-    input_file.unsetf(ios::skipws);
+    int blocksCount = 0, symbolsCount = 0, nodeNumber = 0;
+    inputFile.open("../cmake-build-debug/AddingMode.txt", ios::in);
+    inputFile.unsetf(ios::skipws);
     int position = 0;
 
-    position = input_file.tellg();
-    symbolsCount = SymbolsCount(input_file, temp);
-    blocksCount = BlocksInLine(symbolsCount);
-    auto transit_line = new char[symbolsCount + 1];
+    position = inputFile.tellg();
+    symbolsCount = countSymbols(inputFile, temp);
+    blocksCount = countBlocksInLine(symbolsCount);
+    auto transitLine = new char[symbolsCount + 1];
     for (int j = 0; j < symbolsCount + 1; j++)
-        transit_line[j] = 0;
-    input_file.clear();
-    input_file.seekg(position);
+        transitLine[j] = 0;
+    inputFile.clear();
+    inputFile.seekg(position);
     for (int j = 0; j < symbolsCount; j++)
-        input_file >> transit_line[j];
-    input_file >> temp;
-    input_file >> temp;
-    if (!WordIsInList(jobInfo.surname, transit_line, symbolsCount)) {
-        InputOneLine(jobInfo.surname, symbolsCount, blocksCount, transit_line);
-        jobInfo.surname.last->symbols_in_line = symbolsCount;
+        inputFile >> transitLine[j];
+    inputFile >> temp;
+    inputFile >> temp;
+    if (!wordIsInList(jobInfo.surname, transitLine, symbolsCount)) {
+        inputOneLine(jobInfo.surname, symbolsCount, blocksCount, transitLine);
+        jobInfo.surname.last->symbolsInLine = symbolsCount;
     }
-    number_of_necessary_node = NumberOfNecessaryNode(jobInfo.surname, transit_line, symbolsCount);
-    delete[] transit_line;
+    nodeNumber = findNumberOfNecessaryNode(jobInfo.surname, transitLine, symbolsCount);
+    delete[] transitLine;
 
-    position = input_file.tellg();
-    symbolsCount = SymbolsCount(input_file, temp);
-    blocksCount = BlocksInLine(symbolsCount);
-    transit_line = new char[symbolsCount + 1];
+    position = inputFile.tellg();
+    symbolsCount = countSymbols(inputFile, temp);
+    blocksCount = countBlocksInLine(symbolsCount);
+    transitLine = new char[symbolsCount + 1];
     for (int j = 0; j < symbolsCount + 1; j++)
-        transit_line[j] = 0;
-    input_file.clear();
-    input_file.seekg(position);
+        transitLine[j] = 0;
+    inputFile.clear();
+    inputFile.seekg(position);
     for (int j = 0; j < symbolsCount; j++)
-        input_file >> transit_line[j];
-    input_file >> temp;
-    input_file >> temp;
-    if (!WordIsInList(jobInfo.name, transit_line, symbolsCount)) {
-        InputOneLine(jobInfo.name, symbolsCount, blocksCount, transit_line);
-        jobInfo.name.last->symbols_in_line = symbolsCount;
+        inputFile >> transitLine[j];
+    inputFile >> temp;
+    inputFile >> temp;
+    if (!wordIsInList(jobInfo.name, transitLine, symbolsCount)) {
+        inputOneLine(jobInfo.name, symbolsCount, blocksCount, transitLine);
+        jobInfo.name.last->symbolsInLine = symbolsCount;
     }
-    number_of_necessary_node = NumberOfNecessaryNode(jobInfo.name, transit_line, symbolsCount);
-    delete[] transit_line;
+    nodeNumber = findNumberOfNecessaryNode(jobInfo.name, transitLine, symbolsCount);
+    delete[] transitLine;
 
-    position = input_file.tellg();
-    symbolsCount = SymbolsCount(input_file, temp);
-    blocksCount = BlocksInLine(symbolsCount);
-    transit_line = new char[symbolsCount + 1];
+    position = inputFile.tellg();
+    symbolsCount = countSymbols(inputFile, temp);
+    blocksCount = countBlocksInLine(symbolsCount);
+    transitLine = new char[symbolsCount + 1];
     for (int j = 0; j < symbolsCount + 1; j++)
-        transit_line[j] = 0;
-    input_file.clear();
-    input_file.seekg(position);
+        transitLine[j] = 0;
+    inputFile.clear();
+    inputFile.seekg(position);
     for (int j = 0; j < symbolsCount; j++)
-        input_file >> transit_line[j];
-    input_file >> temp;
-    input_file >> temp;
-    if (!WordIsInList(jobInfo.patronymic, transit_line, symbolsCount)) {
-        InputOneLine(jobInfo.patronymic, symbolsCount, blocksCount, transit_line);
-        jobInfo.patronymic.last->symbols_in_line = symbolsCount;
+        inputFile >> transitLine[j];
+    inputFile >> temp;
+    inputFile >> temp;
+    if (!wordIsInList(jobInfo.patronymic, transitLine, symbolsCount)) {
+        inputOneLine(jobInfo.patronymic, symbolsCount, blocksCount, transitLine);
+        jobInfo.patronymic.last->symbolsInLine = symbolsCount;
     }
-    number_of_necessary_node = NumberOfNecessaryNode(jobInfo.patronymic, transit_line, symbolsCount);
-    delete[] transit_line;
+    nodeNumber = findNumberOfNecessaryNode(jobInfo.patronymic, transitLine, symbolsCount);
+    delete[] transitLine;
 
-    position = input_file.tellg();
-    symbolsCount = SymbolsCount(input_file, temp);
-    blocksCount = BlocksInLine(symbolsCount);
-    transit_line = new char[symbolsCount + 1];
+    position = inputFile.tellg();
+    symbolsCount = countSymbols(inputFile, temp);
+    blocksCount = countBlocksInLine(symbolsCount);
+    transitLine = new char[symbolsCount + 1];
     for (int j = 0; j < symbolsCount + 1; j++)
-        transit_line[j] = 0;
-    input_file.clear();
-    input_file.seekg(position);
+        transitLine[j] = 0;
+    inputFile.clear();
+    inputFile.seekg(position);
     for (int j = 0; j < symbolsCount; j++)
-        input_file >> transit_line[j];
-    input_file >> temp;
-    input_file >> temp;
-    if (!WordIsInList(jobInfo.position, transit_line, symbolsCount)) {
-        InputOneLine(jobInfo.position, symbolsCount, blocksCount, transit_line);
-        jobInfo.position.last->symbols_in_line = symbolsCount;
+        inputFile >> transitLine[j];
+    inputFile >> temp;
+    inputFile >> temp;
+    if (!wordIsInList(jobInfo.position, transitLine, symbolsCount)) {
+        inputOneLine(jobInfo.position, symbolsCount, blocksCount, transitLine);
+        jobInfo.position.last->symbolsInLine = symbolsCount;
     }
-    number_of_necessary_node = NumberOfNecessaryNode(jobInfo.position, transit_line, symbolsCount);
-    delete[] transit_line;
+    nodeNumber = findNumberOfNecessaryNode(jobInfo.position, transitLine, symbolsCount);
+    delete[] transitLine;
 
-    position = input_file.tellg();
-    symbolsCount = SymbolsCount(input_file, temp);
-    blocksCount = BlocksInLine(symbolsCount);
-    transit_line = new char[symbolsCount + 1];
+    position = inputFile.tellg();
+    symbolsCount = countSymbols(inputFile, temp);
+    blocksCount = countBlocksInLine(symbolsCount);
+    transitLine = new char[symbolsCount + 1];
     for (int j = 0; j < symbolsCount + 1; j++)
-        transit_line[j] = 0;
-    input_file.clear();
-    input_file.seekg(position);
+        transitLine[j] = 0;
+    inputFile.clear();
+    inputFile.seekg(position);
     for (int j = 0; j < symbolsCount; j++)
-        input_file >> transit_line[j];
-    input_file >> temp;
-    input_file >> temp;
-    if (!WordIsInList(jobInfo.field_of_activity, transit_line, symbolsCount)) {
-        InputOneLine(jobInfo.field_of_activity, symbolsCount, blocksCount, transit_line);
-        jobInfo.field_of_activity.last->symbols_in_line = symbolsCount;
+        inputFile >> transitLine[j];
+    inputFile >> temp;
+    inputFile >> temp;
+    if (!wordIsInList(jobInfo.fieldOfActivity, transitLine, symbolsCount)) {
+        inputOneLine(jobInfo.fieldOfActivity, symbolsCount, blocksCount, transitLine);
+        jobInfo.fieldOfActivity.last->symbolsInLine = symbolsCount;
     }
-    number_of_necessary_node = NumberOfNecessaryNode(jobInfo.field_of_activity, transit_line, symbolsCount);
-    delete[] transit_line;
+    nodeNumber = findNumberOfNecessaryNode(jobInfo.fieldOfActivity, transitLine, symbolsCount);
+    delete[] transitLine;
 
-    position = input_file.tellg();
-    symbolsCount = SymbolsCount(input_file, temp);
-    blocksCount = BlocksInLine(symbolsCount);
-    transit_line = new char[symbolsCount + 1];
+    position = inputFile.tellg();
+    symbolsCount = countSymbols(inputFile, temp);
+    blocksCount = countBlocksInLine(symbolsCount);
+    transitLine = new char[symbolsCount + 1];
     for (int j = 0; j < symbolsCount + 1; j++)
-        transit_line[j] = 0;
-    input_file.clear();
-    input_file.seekg(position);
+        transitLine[j] = 0;
+    inputFile.clear();
+    inputFile.seekg(position);
     for (int j = 0; j < symbolsCount; j++)
-        input_file >> transit_line[j];
-    input_file >> temp;
-    input_file >> temp;
-    if (!WordIsInList(jobInfo.work_experience, transit_line, symbolsCount)) {
-        InputOneLine(jobInfo.work_experience, symbolsCount, blocksCount, transit_line);
-        jobInfo.work_experience.last->symbols_in_line = symbolsCount;
+        inputFile >> transitLine[j];
+    inputFile >> temp;
+    inputFile >> temp;
+    if (!wordIsInList(jobInfo.workExperience, transitLine, symbolsCount)) {
+        inputOneLine(jobInfo.workExperience, symbolsCount, blocksCount, transitLine);
+        jobInfo.workExperience.last->symbolsInLine = symbolsCount;
     }
-    number_of_necessary_node = NumberOfNecessaryNode(jobInfo.work_experience, transit_line, symbolsCount);
-    delete[] transit_line;
+    nodeNumber = findNumberOfNecessaryNode(jobInfo.workExperience, transitLine, symbolsCount);
+    delete[] transitLine;
 
-    position = input_file.tellg();
-    symbolsCount = SymbolsCount(input_file, temp);
-    blocksCount = BlocksInLine(symbolsCount);
-    transit_line = new char[symbolsCount + 1];
+    position = inputFile.tellg();
+    symbolsCount = countSymbols(inputFile, temp);
+    blocksCount = countBlocksInLine(symbolsCount);
+    transitLine = new char[symbolsCount + 1];
     for (int j = 0; j < symbolsCount + 1; j++)
-        transit_line[j] = 0;
-    input_file.clear();
-    input_file.seekg(position);
+        transitLine[j] = 0;
+    inputFile.clear();
+    inputFile.seekg(position);
     for (int j = 0; j < symbolsCount; j++)
-        input_file >> transit_line[j];
-    input_file >> temp;
-    input_file >> temp;
-    if (!WordIsInList(jobInfo.education, transit_line, symbolsCount)) {
-        InputOneLine(jobInfo.education, symbolsCount, blocksCount, transit_line);
-        jobInfo.education.last->symbols_in_line = symbolsCount;
+        inputFile >> transitLine[j];
+    inputFile >> temp;
+    inputFile >> temp;
+    if (!wordIsInList(jobInfo.education, transitLine, symbolsCount)) {
+        inputOneLine(jobInfo.education, symbolsCount, blocksCount, transitLine);
+        jobInfo.education.last->symbolsInLine = symbolsCount;
     }
-    number_of_necessary_node = NumberOfNecessaryNode(jobInfo.education, transit_line, symbolsCount);
-    delete[] transit_line;
+    nodeNumber = findNumberOfNecessaryNode(jobInfo.education, transitLine, symbolsCount);
+    delete[] transitLine;
 
-    position = input_file.tellg();
-    symbolsCount = SymbolsCount(input_file, temp);
-    blocksCount = BlocksInLine(symbolsCount);
-    transit_line = new char[symbolsCount + 1];
+    position = inputFile.tellg();
+    symbolsCount = countSymbols(inputFile, temp);
+    blocksCount = countBlocksInLine(symbolsCount);
+    transitLine = new char[symbolsCount + 1];
     for (int j = 0; j < symbolsCount + 1; j++)
-        transit_line[j] = 0;
-    input_file.clear();
-    input_file.seekg(position);
+        transitLine[j] = 0;
+    inputFile.clear();
+    inputFile.seekg(position);
     for (int j = 0; j < symbolsCount; j++)
-        input_file >> transit_line[j];
-    input_file >> temp;
-    input_file >> temp;
-    if (!WordIsInList(jobInfo.schedule, transit_line, symbolsCount)) {
-        InputOneLine(jobInfo.schedule, symbolsCount, blocksCount, transit_line);
-        jobInfo.schedule.last->symbols_in_line = symbolsCount;
+        inputFile >> transitLine[j];
+    inputFile >> temp;
+    inputFile >> temp;
+    if (!wordIsInList(jobInfo.schedule, transitLine, symbolsCount)) {
+        inputOneLine(jobInfo.schedule, symbolsCount, blocksCount, transitLine);
+        jobInfo.schedule.last->symbolsInLine = symbolsCount;
     }
-    number_of_necessary_node = NumberOfNecessaryNode(jobInfo.schedule, transit_line, symbolsCount);
-    delete[] transit_line;
+    nodeNumber = findNumberOfNecessaryNode(jobInfo.schedule, transitLine, symbolsCount);
+    delete[] transitLine;
 
-    position = input_file.tellg();
-    symbolsCount = SymbolsCount(input_file, temp);
-    blocksCount = BlocksInLine(symbolsCount);
-    transit_line = new char[symbolsCount + 1];
+    position = inputFile.tellg();
+    symbolsCount = countSymbols(inputFile, temp);
+    blocksCount = countBlocksInLine(symbolsCount);
+    transitLine = new char[symbolsCount + 1];
     for (int j = 0; j < symbolsCount + 1; j++)
-        transit_line[j] = 0;
-    input_file.clear();
-    input_file.seekg(position);
+        transitLine[j] = 0;
+    inputFile.clear();
+    inputFile.seekg(position);
     for (int j = 0; j < symbolsCount; j++)
-        input_file >> transit_line[j];
-    input_file >> temp;
-    input_file >> temp;
-    if (!WordIsInList(jobInfo.salary, transit_line, symbolsCount)) {
-        InputOneLine(jobInfo.salary, symbolsCount, blocksCount, transit_line);
-        jobInfo.salary.last->symbols_in_line = symbolsCount;
+        inputFile >> transitLine[j];
+    inputFile >> temp;
+    inputFile >> temp;
+    if (!wordIsInList(jobInfo.salary, transitLine, symbolsCount)) {
+        inputOneLine(jobInfo.salary, symbolsCount, blocksCount, transitLine);
+        jobInfo.salary.last->symbolsInLine = symbolsCount;
     }
-    number_of_necessary_node = NumberOfNecessaryNode(jobInfo.salary, transit_line, symbolsCount);
-    delete[] transit_line;
+    nodeNumber = findNumberOfNecessaryNode(jobInfo.salary, transitLine, symbolsCount);
+    delete[] transitLine;
 
-    input_file.setf(ios::skipws);
-    input_file.close();
+    inputFile.setf(ios::skipws);
+    inputFile.close();
 }
 
-void Add(JobInfo &jobInfo, Employer &employer) { //TODO добавить заполнение списка
-    fstream input_file;
+void add(JobInfo &jobInfo, Employer &employer) { //TODO добавить заполнение списка
+    fstream inputFile;
     char temp = 0;
-    int blocksCount = 0, symbolsCount = 0, number_of_necessary_node = 0;
-    input_file.open("../cmake-build-debug/AddingMode.txt", ios::in);
-    input_file.unsetf(ios::skipws);
+    int blocksCount = 0, symbolsCount = 0, nodeNumber = 0;
+    inputFile.open("../cmake-build-debug/AddingMode.txt", ios::in);
+    inputFile.unsetf(ios::skipws);
     int position = 0;
 
-    position = input_file.tellg();
-    symbolsCount = SymbolsCount(input_file, temp);
-    blocksCount = BlocksInLine(symbolsCount);
-    auto transit_line = new char[symbolsCount + 1];
+    position = inputFile.tellg();
+    symbolsCount = countSymbols(inputFile, temp);
+    blocksCount = countBlocksInLine(symbolsCount);
+    auto transitLine = new char[symbolsCount + 1];
     for (int j = 0; j < symbolsCount + 1; j++)
-        transit_line[j] = 0;
-    input_file.clear();
-    input_file.seekg(position);
+        transitLine[j] = 0;
+    inputFile.clear();
+    inputFile.seekg(position);
     for (int j = 0; j < symbolsCount; j++)
-        input_file >> transit_line[j];
-    input_file >> temp;
-    input_file >> temp;
-    if (!WordIsInList(jobInfo.title, transit_line, symbolsCount)) {
-        InputOneLine(jobInfo.title, symbolsCount, blocksCount, transit_line);
-        jobInfo.title.last->symbols_in_line = symbolsCount;
+        inputFile >> transitLine[j];
+    inputFile >> temp;
+    inputFile >> temp;
+    if (!wordIsInList(jobInfo.title, transitLine, symbolsCount)) {
+        inputOneLine(jobInfo.title, symbolsCount, blocksCount, transitLine);
+        jobInfo.title.last->symbolsInLine = symbolsCount;
     }
-    number_of_necessary_node = NumberOfNecessaryNode(jobInfo.title, transit_line, symbolsCount);
-    delete[] transit_line;
+    nodeNumber = findNumberOfNecessaryNode(jobInfo.title, transitLine, symbolsCount);
+    delete[] transitLine;
 
-    position = input_file.tellg();
-    symbolsCount = SymbolsCount(input_file, temp);
-    blocksCount = BlocksInLine(symbolsCount);
-    transit_line = new char[symbolsCount + 1];
+    position = inputFile.tellg();
+    symbolsCount = countSymbols(inputFile, temp);
+    blocksCount = countBlocksInLine(symbolsCount);
+    transitLine = new char[symbolsCount + 1];
     for (int j = 0; j < symbolsCount + 1; j++)
-        transit_line[j] = 0;
-    input_file.clear();
-    input_file.seekg(position);
+        transitLine[j] = 0;
+    inputFile.clear();
+    inputFile.seekg(position);
     for (int j = 0; j < symbolsCount; j++)
-        input_file >> transit_line[j];
-    input_file >> temp;
-    input_file >> temp;
-    if (!WordIsInList(jobInfo.field_of_activity, transit_line, symbolsCount)) {
-        InputOneLine(jobInfo.field_of_activity, symbolsCount, blocksCount, transit_line);
-        jobInfo.field_of_activity.last->symbols_in_line = symbolsCount;
+        inputFile >> transitLine[j];
+    inputFile >> temp;
+    inputFile >> temp;
+    if (!wordIsInList(jobInfo.fieldOfActivity, transitLine, symbolsCount)) {
+        inputOneLine(jobInfo.fieldOfActivity, symbolsCount, blocksCount, transitLine);
+        jobInfo.fieldOfActivity.last->symbolsInLine = symbolsCount;
     }
-    number_of_necessary_node = NumberOfNecessaryNode(jobInfo.field_of_activity, transit_line, symbolsCount);
-    delete[] transit_line;
+    nodeNumber = findNumberOfNecessaryNode(jobInfo.fieldOfActivity, transitLine, symbolsCount);
+    delete[] transitLine;
 
-    position = input_file.tellg();
-    symbolsCount = SymbolsCount(input_file, temp);
-    blocksCount = BlocksInLine(symbolsCount);
-    transit_line = new char[symbolsCount + 1];
+    position = inputFile.tellg();
+    symbolsCount = countSymbols(inputFile, temp);
+    blocksCount = countBlocksInLine(symbolsCount);
+    transitLine = new char[symbolsCount + 1];
     for (int j = 0; j < symbolsCount + 1; j++)
-        transit_line[j] = 0;
-    input_file.clear();
-    input_file.seekg(position);
+        transitLine[j] = 0;
+    inputFile.clear();
+    inputFile.seekg(position);
     for (int j = 0; j < symbolsCount; j++)
-        input_file >> transit_line[j];
-    input_file >> temp;
-    input_file >> temp;
-    if (!WordIsInList(jobInfo.address, transit_line, symbolsCount)) {
-        InputOneLine(jobInfo.address, symbolsCount, blocksCount, transit_line);
-        jobInfo.address.last->symbols_in_line = symbolsCount;
+        inputFile >> transitLine[j];
+    inputFile >> temp;
+    inputFile >> temp;
+    if (!wordIsInList(jobInfo.address, transitLine, symbolsCount)) {
+        inputOneLine(jobInfo.address, symbolsCount, blocksCount, transitLine);
+        jobInfo.address.last->symbolsInLine = symbolsCount;
     }
-    number_of_necessary_node = NumberOfNecessaryNode(jobInfo.address, transit_line, symbolsCount);
-    delete[] transit_line;
+    nodeNumber = findNumberOfNecessaryNode(jobInfo.address, transitLine, symbolsCount);
+    delete[] transitLine;
 
-    position = input_file.tellg();
-    symbolsCount = SymbolsCount(input_file, temp);
-    blocksCount = BlocksInLine(symbolsCount);
-    transit_line = new char[symbolsCount + 1];
+    position = inputFile.tellg();
+    symbolsCount = countSymbols(inputFile, temp);
+    blocksCount = countBlocksInLine(symbolsCount);
+    transitLine = new char[symbolsCount + 1];
     for (int j = 0; j < symbolsCount + 1; j++)
-        transit_line[j] = 0;
-    input_file.clear();
-    input_file.seekg(position);
+        transitLine[j] = 0;
+    inputFile.clear();
+    inputFile.seekg(position);
     for (int j = 0; j < symbolsCount; j++)
-        input_file >> transit_line[j];
-    input_file >> temp;
-    input_file >> temp;
-    if (!WordIsInList(jobInfo.phone_number, transit_line, symbolsCount)) {
-        InputOneLine(jobInfo.phone_number, symbolsCount, blocksCount, transit_line);
-        jobInfo.phone_number.last->symbols_in_line = symbolsCount;
+        inputFile >> transitLine[j];
+    inputFile >> temp;
+    inputFile >> temp;
+    if (!wordIsInList(jobInfo.phoneNumber, transitLine, symbolsCount)) {
+        inputOneLine(jobInfo.phoneNumber, symbolsCount, blocksCount, transitLine);
+        jobInfo.phoneNumber.last->symbolsInLine = symbolsCount;
     }
-    number_of_necessary_node = NumberOfNecessaryNode(jobInfo.phone_number, transit_line, symbolsCount);
-    delete[] transit_line;
+    nodeNumber = findNumberOfNecessaryNode(jobInfo.phoneNumber, transitLine, symbolsCount);
+    delete[] transitLine;
 
-    input_file.setf(ios::skipws);
-    input_file.close();
+    inputFile.setf(ios::skipws);
+    inputFile.close();
 }
 
-void Add(JobInfo &jobInfo, Vacancy &vacancy) { //TODO добавить заполнение списка
-    fstream input_file;
+void add(JobInfo &jobInfo, Vacancy &vacancy) { //TODO добавить заполнение списка
+    fstream inputFile;
     char temp = 0;
-    int blocksCount = 0, symbolsCount = 0, number_of_necessary_node = 0;
-    input_file.open("../cmake-build-debug/AddingMode.txt", ios::in);
-    input_file.unsetf(ios::skipws);
+    int blocksCount = 0, symbolsCount = 0, nodeNumber = 0;
+    inputFile.open("../cmake-build-debug/AddingMode.txt", ios::in);
+    inputFile.unsetf(ios::skipws);
     int position = 0;
 
-    if(vacancy.head != vacancy.last) {
-        vacancy.MakeNewNode();
+    if (vacancy.head != vacancy.last) {
+        vacancy.makeNewNode();
     }
 
-    position = input_file.tellg();
-    symbolsCount = SymbolsCount(input_file, temp);
-    blocksCount = BlocksInLine(symbolsCount);
-    auto transit_line = new char[symbolsCount + 1];
+    position = inputFile.tellg();
+    symbolsCount = countSymbols(inputFile, temp);
+    blocksCount = countBlocksInLine(symbolsCount);
+    auto transitLine = new char[symbolsCount + 1];
     for (int j = 0; j < symbolsCount + 1; j++)
-        transit_line[j] = 0;
-    input_file.clear();
-    input_file.seekg(position);
+        transitLine[j] = 0;
+    inputFile.clear();
+    inputFile.seekg(position);
     for (int j = 0; j < symbolsCount; j++)
-        input_file >> transit_line[j];
-    input_file >> temp;
-    input_file >> temp;
-    if (!WordIsInList(jobInfo.position, transit_line, symbolsCount)) {
-        InputOneLine(jobInfo.position, symbolsCount, blocksCount, transit_line);
-        jobInfo.position.last->symbols_in_line = symbolsCount;
+        inputFile >> transitLine[j];
+    inputFile >> temp;
+    inputFile >> temp;
+    if (!wordIsInList(jobInfo.position, transitLine, symbolsCount)) {
+        inputOneLine(jobInfo.position, symbolsCount, blocksCount, transitLine);
+        jobInfo.position.last->symbolsInLine = symbolsCount;
     }
-    number_of_necessary_node = NumberOfNecessaryNode(jobInfo.position, transit_line, symbolsCount);
-    delete[] transit_line;
+    nodeNumber = findNumberOfNecessaryNode(jobInfo.position, transitLine, symbolsCount);
+    delete[] transitLine;
 
-    position = input_file.tellg();
-    symbolsCount = SymbolsCount(input_file, temp);
-    blocksCount = BlocksInLine(symbolsCount);
-    transit_line = new char[symbolsCount + 1];
+    position = inputFile.tellg();
+    symbolsCount = countSymbols(inputFile, temp);
+    blocksCount = countBlocksInLine(symbolsCount);
+    transitLine = new char[symbolsCount + 1];
     for (int j = 0; j < symbolsCount + 1; j++)
-        transit_line[j] = 0;
-    input_file.clear();
-    input_file.seekg(position);
+        transitLine[j] = 0;
+    inputFile.clear();
+    inputFile.seekg(position);
     for (int j = 0; j < symbolsCount; j++)
-        input_file >> transit_line[j];
-    input_file >> temp;
-    input_file >> temp;
-    if (!WordIsInList(jobInfo.schedule, transit_line, symbolsCount)) {
-        InputOneLine(jobInfo.schedule, symbolsCount, blocksCount, transit_line);
-        jobInfo.schedule.last->symbols_in_line = symbolsCount;
+        inputFile >> transitLine[j];
+    inputFile >> temp;
+    inputFile >> temp;
+    if (!wordIsInList(jobInfo.schedule, transitLine, symbolsCount)) {
+        inputOneLine(jobInfo.schedule, symbolsCount, blocksCount, transitLine);
+        jobInfo.schedule.last->symbolsInLine = symbolsCount;
     }
-    number_of_necessary_node = NumberOfNecessaryNode(jobInfo.schedule, transit_line, symbolsCount);
-    delete[] transit_line;
+    nodeNumber = findNumberOfNecessaryNode(jobInfo.schedule, transitLine, symbolsCount);
+    delete[] transitLine;
 
-    position = input_file.tellg();
-    symbolsCount = SymbolsCount(input_file, temp);
-    blocksCount = BlocksInLine(symbolsCount);
-    transit_line = new char[symbolsCount + 1];
+    position = inputFile.tellg();
+    symbolsCount = countSymbols(inputFile, temp);
+    blocksCount = countBlocksInLine(symbolsCount);
+    transitLine = new char[symbolsCount + 1];
     for (int j = 0; j < symbolsCount + 1; j++)
-        transit_line[j] = 0;
-    input_file.clear();
-    input_file.seekg(position);
+        transitLine[j] = 0;
+    inputFile.clear();
+    inputFile.seekg(position);
     for (int j = 0; j < symbolsCount; j++)
-        input_file >> transit_line[j];
-    input_file >> temp;
-    input_file >> temp;
-    if (!WordIsInList(jobInfo.salary, transit_line, symbolsCount)) {
-        InputOneLine(jobInfo.salary, symbolsCount, blocksCount, transit_line);
-        jobInfo.salary.last->symbols_in_line = symbolsCount;
+        inputFile >> transitLine[j];
+    inputFile >> temp;
+    inputFile >> temp;
+    if (!wordIsInList(jobInfo.salary, transitLine, symbolsCount)) {
+        inputOneLine(jobInfo.salary, symbolsCount, blocksCount, transitLine);
+        jobInfo.salary.last->symbolsInLine = symbolsCount;
     }
-    number_of_necessary_node = NumberOfNecessaryNode(jobInfo.salary, transit_line, symbolsCount);
-    delete[] transit_line;
+    nodeNumber = findNumberOfNecessaryNode(jobInfo.salary, transitLine, symbolsCount);
+    delete[] transitLine;
 
-    position = input_file.tellg();
-    symbolsCount = SymbolsCount(input_file, temp);
-    blocksCount = BlocksInLine(symbolsCount);
-    transit_line = new char[symbolsCount + 1];
+    position = inputFile.tellg();
+    symbolsCount = countSymbols(inputFile, temp);
+    blocksCount = countBlocksInLine(symbolsCount);
+    transitLine = new char[symbolsCount + 1];
     for (int j = 0; j < symbolsCount + 1; j++)
-        transit_line[j] = 0;
-    input_file.clear();
-    input_file.seekg(position);
+        transitLine[j] = 0;
+    inputFile.clear();
+    inputFile.seekg(position);
     for (int j = 0; j < symbolsCount; j++)
-        input_file >> transit_line[j];
-    input_file >> temp;
-    input_file >> temp;
-    if (!WordIsInList(jobInfo.education, transit_line, symbolsCount)) {
-        InputOneLine(jobInfo.education, symbolsCount, blocksCount, transit_line);
-        jobInfo.education.last->symbols_in_line = symbolsCount;
+        inputFile >> transitLine[j];
+    inputFile >> temp;
+    inputFile >> temp;
+    if (!wordIsInList(jobInfo.education, transitLine, symbolsCount)) {
+        inputOneLine(jobInfo.education, symbolsCount, blocksCount, transitLine);
+        jobInfo.education.last->symbolsInLine = symbolsCount;
     }
-    number_of_necessary_node = NumberOfNecessaryNode(jobInfo.education, transit_line, symbolsCount);
-    delete[] transit_line;
+    nodeNumber = findNumberOfNecessaryNode(jobInfo.education, transitLine, symbolsCount);
+    delete[] transitLine;
 
-    position = input_file.tellg();
-    symbolsCount = SymbolsCount(input_file, temp);
-    blocksCount = BlocksInLine(symbolsCount);
-    transit_line = new char[symbolsCount + 1];
+    position = inputFile.tellg();
+    symbolsCount = countSymbols(inputFile, temp);
+    blocksCount = countBlocksInLine(symbolsCount);
+    transitLine = new char[symbolsCount + 1];
     for (int j = 0; j < symbolsCount + 1; j++)
-        transit_line[j] = 0;
-    input_file.clear();
-    input_file.seekg(position);
+        transitLine[j] = 0;
+    inputFile.clear();
+    inputFile.seekg(position);
     for (int j = 0; j < symbolsCount; j++)
-        input_file >> transit_line[j];
-    input_file >> temp;
-    input_file >> temp;
-    if (!WordIsInList(jobInfo.field_of_activity, transit_line, symbolsCount)) {
-        InputOneLine(jobInfo.field_of_activity, symbolsCount, blocksCount, transit_line);
-        jobInfo.field_of_activity.last->symbols_in_line = symbolsCount;
+        inputFile >> transitLine[j];
+    inputFile >> temp;
+    inputFile >> temp;
+    if (!wordIsInList(jobInfo.fieldOfActivity, transitLine, symbolsCount)) {
+        inputOneLine(jobInfo.fieldOfActivity, symbolsCount, blocksCount, transitLine);
+        jobInfo.fieldOfActivity.last->symbolsInLine = symbolsCount;
     }
-    number_of_necessary_node = NumberOfNecessaryNode(jobInfo.field_of_activity, transit_line, symbolsCount);
-    delete[] transit_line;
+    nodeNumber = findNumberOfNecessaryNode(jobInfo.fieldOfActivity, transitLine, symbolsCount);
+    delete[] transitLine;
 
-    position = input_file.tellg();
-    symbolsCount = SymbolsCount(input_file, temp);
-    blocksCount = BlocksInLine(symbolsCount);
-    transit_line = new char[symbolsCount + 1];
+    position = inputFile.tellg();
+    symbolsCount = countSymbols(inputFile, temp);
+    blocksCount = countBlocksInLine(symbolsCount);
+    transitLine = new char[symbolsCount + 1];
     for (int j = 0; j < symbolsCount + 1; j++)
-        transit_line[j] = 0;
-    input_file.clear();
-    input_file.seekg(position);
+        transitLine[j] = 0;
+    inputFile.clear();
+    inputFile.seekg(position);
     for (int j = 0; j < symbolsCount; j++)
-        input_file >> transit_line[j];
-    input_file >> temp;
-    input_file >> temp;
-    if (!WordIsInList(jobInfo.work_experience, transit_line, symbolsCount)) {
-        InputOneLine(jobInfo.work_experience, symbolsCount, blocksCount, transit_line);
-        jobInfo.work_experience.last->symbols_in_line = symbolsCount;
+        inputFile >> transitLine[j];
+    inputFile >> temp;
+    inputFile >> temp;
+    if (!wordIsInList(jobInfo.workExperience, transitLine, symbolsCount)) {
+        inputOneLine(jobInfo.workExperience, symbolsCount, blocksCount, transitLine);
+        jobInfo.workExperience.last->symbolsInLine = symbolsCount;
     }
-    number_of_necessary_node = NumberOfNecessaryNode(jobInfo.work_experience, transit_line, symbolsCount);
-    delete[] transit_line;
+    nodeNumber = findNumberOfNecessaryNode(jobInfo.workExperience, transitLine, symbolsCount);
+    delete[] transitLine;
 
-    position = input_file.tellg();
-    symbolsCount = SymbolsCount(input_file, temp);
-    blocksCount = BlocksInLine(symbolsCount);
-    transit_line = new char[symbolsCount + 1];
+    position = inputFile.tellg();
+    symbolsCount = countSymbols(inputFile, temp);
+    blocksCount = countBlocksInLine(symbolsCount);
+    transitLine = new char[symbolsCount + 1];
     for (int j = 0; j < symbolsCount + 1; j++)
-        transit_line[j] = 0;
-    input_file.clear();
-    input_file.seekg(position);
+        transitLine[j] = 0;
+    inputFile.clear();
+    inputFile.seekg(position);
     for (int j = 0; j < symbolsCount; j++)
-        input_file >> transit_line[j];
-    input_file >> temp;
-    input_file >> temp;
-    if (!WordIsInList(jobInfo.title, transit_line, symbolsCount)) {
+        inputFile >> transitLine[j];
+    inputFile >> temp;
+    inputFile >> temp;
+    if (!wordIsInList(jobInfo.title, transitLine, symbolsCount)) {
         cout << "Такой компании нет в базе данных" << endl;
     }
-    number_of_necessary_node = NumberOfNecessaryNode(jobInfo.title, transit_line, symbolsCount);
-    delete[] transit_line;
+    nodeNumber = findNumberOfNecessaryNode(jobInfo.title, transitLine, symbolsCount);
+    delete[] transitLine;
 
-    input_file.setf(ios::skipws);
-    input_file.close();
+    inputFile.setf(ios::skipws);
+    inputFile.close();
 }
 
-int NumberOfNecessaryNode(Form &InJobInfo, const char *temp_line, int symbols_count_of_temp) {
-    //---------------------------------------------------------------------Находит номер узла, в котором лежит temp_line
+int findNumberOfNecessaryNode(Form &inJobInfo, const char *tempLine, int sizeOfTemp) {
+    //---------------------------------------------------------------------Находит номер узла, в котором лежит tempLine
     FormBlock tempFormBlock;
-    InJobInfo.current = InJobInfo.head;
-    tempFormBlock.current = InJobInfo.current->line;
-    int number_of_necessary_node = 0;
-    bool word_is_already_in_list = false, word_fits = true;
+    inJobInfo.current = inJobInfo.head;
+    tempFormBlock.current = inJobInfo.current->line;
+    int nodeNumber = 0;
+    bool wordIsAlreadyInList = false, wordFits = true;
     int k = 0;
-    while (InJobInfo.current != nullptr) {
-        if (InJobInfo.current->symbols_in_line == symbols_count_of_temp) {
-            number_of_necessary_node++;
-            for (int i = 0; i < symbols_count_of_temp; i++, k++) {
-                if (tempFormBlock.current->block->symbols[k] != temp_line[i]) {
-                    InJobInfo.current = InJobInfo.current->next;
-                    tempFormBlock.current = InJobInfo.current->line;
-                    word_fits = false;
+    while (inJobInfo.current != nullptr) {
+        if (inJobInfo.current->symbolsInLine == sizeOfTemp) {
+            nodeNumber++;
+            for (int i = 0; i < sizeOfTemp; i++, k++) {
+                if (tempFormBlock.current->block->symbols[k] != tempLine[i]) {
+                    inJobInfo.current = inJobInfo.current->next;
+                    tempFormBlock.current = inJobInfo.current->line;
+                    wordFits = false;
                     break;
                 }
                 if ((k + 1) % 5 == 0) {
@@ -880,37 +880,37 @@ int NumberOfNecessaryNode(Form &InJobInfo, const char *temp_line, int symbols_co
                     k = -1; // Из за инкрементирования в начале каждой итерации
                 }
             }
-            if (word_fits) {
-                word_is_already_in_list = true;
+            if (wordFits) {
+                wordIsAlreadyInList = true;
                 break;
             }
-            word_fits = true;
+            wordFits = true;
             k = 0;
         } else {
-            InJobInfo.current = InJobInfo.current->next;
-            if (InJobInfo.current == nullptr)
+            inJobInfo.current = inJobInfo.current->next;
+            if (inJobInfo.current == nullptr)
                 break;
-            tempFormBlock.current = InJobInfo.current->line;
-            number_of_necessary_node++;
+            tempFormBlock.current = inJobInfo.current->line;
+            nodeNumber++;
         }
     }
-    return number_of_necessary_node;
+    return nodeNumber;
 }
 
-bool WordIsInList(Form &InJobInfo, const char *temp_line, int symbols_count_of_temp) {
-    //-------------------------------------------------------------------Проверяет, есть ли в InJobInfo строка temp_line
+bool wordIsInList(Form &inJobInfo, const char *tempLine, int sizeOfTemp) {
+    //-------------------------------------------------------------------Проверяет, есть ли в inJobInfo строка tempLine
     FormBlock tempFormBlock;
-    InJobInfo.current = InJobInfo.head;
-    tempFormBlock.current = InJobInfo.current->line;
-    bool word_is_already_in_list = false, word_fits = true;
+    inJobInfo.current = inJobInfo.head;
+    tempFormBlock.current = inJobInfo.current->line;
+    bool wordIsAlreadyInList = false, wordFits = true;
     int k = 0;
-    while (InJobInfo.current != nullptr) {
-        if (InJobInfo.current->symbols_in_line == symbols_count_of_temp) {
-            for (int i = 0; i < symbols_count_of_temp; i++, k++) {
-                if (tempFormBlock.current->block->symbols[k] != temp_line[i]) {
-                    InJobInfo.current = InJobInfo.current->next;
-                    tempFormBlock.current = InJobInfo.current->line;
-                    word_fits = false;
+    while (inJobInfo.current != nullptr) {
+        if (inJobInfo.current->symbolsInLine == sizeOfTemp) {
+            for (int i = 0; i < sizeOfTemp; i++, k++) {
+                if (tempFormBlock.current->block->symbols[k] != tempLine[i]) {
+                    inJobInfo.current = inJobInfo.current->next;
+                    tempFormBlock.current = inJobInfo.current->line;
+                    wordFits = false;
                     break;
                 }
                 if ((k + 1) % 5 == 0) {
@@ -918,75 +918,75 @@ bool WordIsInList(Form &InJobInfo, const char *temp_line, int symbols_count_of_t
                     k = -1; // Из за инкрементирования в начале каждой итерации
                 }
             }
-            if (word_fits) {
-                word_is_already_in_list = true;
+            if (wordFits) {
+                wordIsAlreadyInList = true;
                 break;
             }
-            word_fits = true;
+            wordFits = true;
             k = 0;
         } else {
-            InJobInfo.current = InJobInfo.current->next;
-            if (InJobInfo.current == nullptr)
+            inJobInfo.current = inJobInfo.current->next;
+            if (inJobInfo.current == nullptr)
                 break;
-            tempFormBlock.current = InJobInfo.current->line;
+            tempFormBlock.current = inJobInfo.current->line;
         }
     }
-    return word_is_already_in_list;
+    return wordIsAlreadyInList;
 }
 
-void getting_info_from_file(Form &form, fstream &input_file) {
+void getInfoFromFile(Form &form, fstream &inputFile) {
     //--------------------------------------------------------------------------------------------Чтение данных из файла
     char temp = 0;
-    int symbols_count = 0, blocks_count = 0, lineCountFromInput = 0;
-    if (!CheckFile(input_file)) {
-        input_file.close();
+    int symbolsCount = 0, blocksCount = 0, lineCountFromInput = 0;
+    if (!checkFile(inputFile)) {
+        inputFile.close();
         exit(1);
     }
 
-    input_file.unsetf(ios::skipws);
+    inputFile.unsetf(ios::skipws);
     int position = 0;
-    lineCountFromInput = LineCount(input_file);
+    lineCountFromInput = lineCount(inputFile);
     for (int i = 0; i < lineCountFromInput; i++) {
-        position = input_file.tellg();
-        symbols_count = SymbolsCount(input_file, temp);
-        blocks_count = BlocksInLine(symbols_count);
-        auto transit_line = new char[symbols_count + 1];
-        for (int j = 0; j < symbols_count + 1; j++)
-            transit_line[j] = 0;
-        input_file.clear();
-        input_file.seekg(position);
-        for (int j = 0; j < symbols_count; j++)
-            input_file >> transit_line[j];
-        input_file >> temp;
-        InputOneLine(form, symbols_count, blocks_count, transit_line);
-        form.last->symbols_in_line = symbols_count;
-        delete[] transit_line;
+        position = inputFile.tellg();
+        symbolsCount = countSymbols(inputFile, temp);
+        blocksCount = countBlocksInLine(symbolsCount);
+        auto transitLine = new char[symbolsCount + 1];
+        for (int j = 0; j < symbolsCount + 1; j++)
+            transitLine[j] = 0;
+        inputFile.clear();
+        inputFile.seekg(position);
+        for (int j = 0; j < symbolsCount; j++)
+            inputFile >> transitLine[j];
+        inputFile >> temp;
+        inputOneLine(form, symbolsCount, blocksCount, transitLine);
+        form.last->symbolsInLine = symbolsCount;
+        delete[] transitLine;
     }
 
-    input_file.setf(ios::skipws);
+    inputFile.setf(ios::skipws);
 }
 
-void InputOneLine(Form &form, int symbols_count, int blocks_count, const char *transit_line) {
+void inputOneLine(Form &form, int symbolsCount, int blocksCount, const char *transitLine) {
     //--------------------------------------------------------------------------Записывает в список одну строку из файла
     FormBlock formBlock;
     auto *temp = new List1;
 
     int j = 0;
     int k = 0;
-    for (int i = 0; i < blocks_count; i++) {
+    for (int i = 0; i < blocksCount; i++) {
         auto *temp1 = new BlocksList;
         temp1->block = new LineWithMarker;
         temp1->block->symbols = new char[temp1->max_symbols_in_block];
         for (int b = 0; b < temp1->max_symbols_in_block + 1; b++)
             temp1->block->symbols[b] = 0;
         k = 0;
-        if (symbols_count - j == 1 && symbols_count % 5 == 0) { // Для записи толлько одного маркер
+        if (symbolsCount - j == 1 && symbolsCount % 5 == 0) { // Для записи толлько одного маркер
             j += 2;
         }
-        for (; k < temp1->max_symbols_in_block && j < symbols_count; j++) {
-            temp1->block->symbols[k] = transit_line[j];
+        for (; k < temp1->max_symbols_in_block && j < symbolsCount; j++) {
+            temp1->block->symbols[k] = transitLine[j];
             k++;
-            if (j + 1 >= symbols_count) {
+            if (j + 1 >= symbolsCount) {
                 break;
             }
         }
@@ -1000,7 +1000,7 @@ void InputOneLine(Form &form, int symbols_count, int blocks_count, const char *t
         }
 
     }
-    formBlock.last->block->symbols[k] = formBlock.last->block->Marker;
+    formBlock.last->block->symbols[k] = formBlock.last->block->marker;
     formBlock.head = nullptr;
     formBlock.last = nullptr;
 
@@ -1013,103 +1013,103 @@ void InputOneLine(Form &form, int symbols_count, int blocks_count, const char *t
     }
 }
 
-int LineCount(fstream &input_file) {
+int lineCount(fstream &inputFile) {
     //----------------------------------------------------------------------------------Находит количество строк в файле
     char trash = 0;
-    int line_count = 0, position = 0;
-    position = input_file.tellg();
+    int lineCount = 0, position = 0;
+    position = inputFile.tellg();
 
-    while (!input_file.eof()) {
-        input_file >> trash;
+    while (!inputFile.eof()) {
+        inputFile >> trash;
         if (trash == '\n')
-            line_count++;
+            lineCount++;
     }
-    line_count++;
-    input_file.clear();
-    input_file.seekg(position);
+    lineCount++;
+    inputFile.clear();
+    inputFile.seekg(position);
 
-    return line_count;
+    return lineCount;
 }
 
-int BlocksInLine(int symbols_count) {
+int countBlocksInLine(int symbolsCount) {
     //------------------------------------------------------------Находит количество блоков, в которое поместится строка
-    int should_be_blocks = 0;
-    bool is_odd = false;
-    const unsigned size_of_block = 5;
-    symbols_count++;
-    if (symbols_count % 5 != 0) {
-        is_odd = true;
+    int shouldBeBlocks = 0;
+    bool isOdd = false;
+    const unsigned sizeOfBlock = 5;
+    symbolsCount++;
+    if (symbolsCount % 5 != 0) {
+        isOdd = true;
     }
-    should_be_blocks = symbols_count / size_of_block;
-    if (is_odd) {
-        should_be_blocks++;
+    shouldBeBlocks = symbolsCount / sizeOfBlock;
+    if (isOdd) {
+        shouldBeBlocks++;
     }
 
-    return should_be_blocks;
+    return shouldBeBlocks;
 }
 
-int SymbolsCount(fstream &input_file, char temp) {
+int countSymbols(fstream &inputFile, char temp) {
     //------------------------------------------------------------------------Находит количество символов в строке файла
-    int symbols_count = 0;
+    int symbolsCount = 0;
     do {
-        input_file >> temp;
-        if (input_file.eof() || (temp == '\n'))
+        inputFile >> temp;
+        if (inputFile.eof() || (temp == '\n'))
             break;
         if (temp == '\r')
-            symbols_count--;
-        symbols_count++;
+            symbolsCount--;
+        symbolsCount++;
     } while (true);
 
-    return symbols_count;
+    return symbolsCount;
 }
 
-bool CheckFile(fstream &input_file) {
+bool checkFile(fstream &inputFile) {
     //----------------------------------------------------------------------------------------------------Проверяет файл
     int position = 0;
-    position = input_file.tellg();
+    position = inputFile.tellg();
 
-    if (!input_file.is_open()) {
+    if (!inputFile.is_open()) {
         cout << "Произошла ошибка открытия файла" << endl;
         return false;
     } else {
         long file_size;
-        input_file.seekg(0, ios::end);
-        file_size = input_file.tellg();
+        inputFile.seekg(0, ios::end);
+        file_size = inputFile.tellg();
         if (file_size == 0) {
             cout << "А файл то пуст :D" << endl;
             return false;
         }
     }
-    input_file.clear();
-    input_file.seekg(position);
+    inputFile.clear();
+    inputFile.seekg(position);
     return true;
 }
 
-void PrintForm(Form &form1) { // Надо дописать
-    fstream output_file;
-    output_file.open("output_file.txt", std::ios::out);
+void printForm(Form &form) { // Надо дописать
+    fstream outputFile;
+    outputFile.open("output_file.txt", std::ios::out);
 
-    auto temp = form1.head;
-    auto temp1 = form1.head->line;
-    output_file << "Первый список: " << endl;
+    auto temp = form.head;
+    auto temp1 = form.head->line;
+    outputFile << "Первый список: " << endl;
     while (temp != nullptr) {
-        for (int i = 0; temp1->block->symbols[i] != temp1->block->Marker; i++) {
-            output_file << temp1->block->symbols[i];
+        for (int i = 0; temp1->block->symbols[i] != temp1->block->marker; i++) {
+            outputFile << temp1->block->symbols[i];
             if (i == 4) {
                 temp1 = temp1->next;
                 i = -1;
             }
         }
-        output_file << endl;
+        outputFile << endl;
         temp = temp->next;
         if (temp != nullptr)
             temp1 = temp->line;
     }
 
-    output_file.close();
+    outputFile.close();
 }
 
-void DeleteList(Form &form) {
+void deleteList(Form &form) {
     //-----------------------------------------------------------------------------------------------------Удаляет спиок
     while (form.head != nullptr) {
         form.current = form.head->next;

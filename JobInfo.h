@@ -12,14 +12,14 @@
 
 class JobInfo {
 public:
-    Form address, education, field_of_activity, patronymic, phone_number, position, salary, schedule, surname, title,
-            work_experience, name;
+    Form address, education, fieldOfActivity, patronymic, phoneNumber, position, salary, schedule, surname, title,
+            workExperience, name;
 
     JobInfo();
 
     ~JobInfo();
 
-    void FillJobInfo();
+    void fillJobInfo();
 };
 
 #pragma pack(pop)

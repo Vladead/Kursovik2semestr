@@ -9,9 +9,9 @@ Node::Node() {
     schedule = nullptr;
     salary = nullptr;
     education = nullptr;
-    work_experience = nullptr;
-    field_of_activity = nullptr;
-    employer_applications = nullptr;
+    workExperience = nullptr;
+    fieldOfActivity = nullptr;
+    employerApplications = nullptr;
 
     vacant = 'n';
 
@@ -34,7 +34,7 @@ Vacancy::~Vacancy() {
     }
 }
 
-void Vacancy::MakeNewNode() {
+void Vacancy::makeNewNode() {
     auto *temp = new Node;
     temp->next = nullptr;
 

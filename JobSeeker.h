@@ -16,8 +16,8 @@ public:
     BlocksList *name;
     BlocksList *patronymic;
     BlocksList *position;
-    BlocksList *field_of_activity;
-    BlocksList *work_experience;
+    BlocksList *fieldOfActivity;
+    BlocksList *workExperience;
     BlocksList *education;
     BlocksList *schedule;
     BlocksList *salary;
@@ -37,7 +37,7 @@ public:
 
     ~JobSeeker();
 
-    void MakeNewNode();
+    void makeNewNode();
 };
 
 #pragma pack(pop)
