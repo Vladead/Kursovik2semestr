@@ -4,7 +4,7 @@
 
 #include "JobSeeker.h"
 
-JobSeeker::JobSeeker() {
+NodeJobSeeker::NodeJobSeeker() {
     surname = nullptr;
     name = nullptr;
     patronymic = nullptr;
@@ -18,4 +18,31 @@ JobSeeker::JobSeeker() {
     next = nullptr;
 }
 
-JobSeeker::~JobSeeker() = default;
+NodeJobSeeker::~NodeJobSeeker() = default;
+
+JobSeeker::JobSeeker() {
+    head = nullptr;
+    last = nullptr;
+}
+
+JobSeeker::~JobSeeker() {
+    NodeJobSeeker *temp;
+    while (head) {
+        temp = head->next;
+        delete head;
+        head = temp;
+    }
+}
+
+void JobSeeker::MakeNewNode() {
+    auto *temp = new NodeJobSeeker;
+    temp->next = nullptr;
+
+    if (head != nullptr) {
+        last->next = temp;
+        last = temp;
+        last->next = nullptr;
+    } else {
+        head = last = temp;
+    }
+}

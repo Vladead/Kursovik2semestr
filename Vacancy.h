@@ -8,7 +8,9 @@
 
 #include "List1.h"
 
-class Vacancy {
+#pragma pack(push, 1)
+
+class Node {
 public:
     BlocksList *position;
     BlocksList *schedule;
@@ -20,7 +22,16 @@ public:
 
     char vacant;
 
-    Vacancy* next;
+    Node *next;
+
+    Node();
+
+    ~Node();
+};
+
+class Vacancy {
+public:
+    Node *head, *last;
 
     Vacancy();
 
@@ -28,6 +39,8 @@ public:
 
     void MakeNewNode();
 };
+
+#pragma pack(pop)
 
 
 #endif //KURSOVIK_VACANCY_H

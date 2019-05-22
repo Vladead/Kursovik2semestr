@@ -4,13 +4,13 @@
 
 #include "Vacancy.h"
 
-Vacancy::Vacancy() {
+Node::Node() {
     position = nullptr;
     schedule = nullptr;
     salary = nullptr;
     education = nullptr;
-    field_of_activity = nullptr;
     work_experience = nullptr;
+    field_of_activity = nullptr;
     employer_applications = nullptr;
 
     vacant = 'n';
@@ -18,9 +18,31 @@ Vacancy::Vacancy() {
     next = nullptr;
 }
 
-Vacancy::~Vacancy() = default;
+Node::~Node() = default;
+
+Vacancy::Vacancy() {
+    head = nullptr;
+    last = nullptr;
+}
+
+Vacancy::~Vacancy() {
+    Node *temp;
+    while (head) {
+        temp = head->next;
+        delete head;
+        head = temp;
+    }
+}
 
 void Vacancy::MakeNewNode() {
-    auto* temp = new Vacancy;
-    this->next = temp;
+    auto *temp = new Node;
+    temp->next = nullptr;
+
+    if (head != nullptr) {
+        last->next = temp;
+        last = temp;
+        last->next = nullptr;
+    } else {
+        head = last = temp;
+    }
 }

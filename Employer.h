@@ -8,19 +8,34 @@
 
 #include "List1.h"
 
-class Employer {
+#pragma pack(push, 1)
+
+class NodeEmp {
 public:
     BlocksList *title;
     BlocksList *field_of_activity;
     BlocksList *address;
     BlocksList *phone_number;
 
-    Employer* next;
+    NodeEmp *next;
+
+    NodeEmp();
+
+    ~NodeEmp();
+};
+
+class Employer {
+public:
+    NodeEmp *head, *last;
 
     Employer();
 
     ~Employer();
+
+    void MakeNewNode();
 };
+
+#pragma pack(pop)
 
 
 #endif //KURSOVIK_EMPLOYER_H

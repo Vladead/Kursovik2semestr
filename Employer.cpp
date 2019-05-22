@@ -4,7 +4,7 @@
 
 #include "Employer.h"
 
-Employer::Employer() {
+NodeEmp::NodeEmp() {
     title = nullptr;
     field_of_activity = nullptr;
     address = nullptr;
@@ -13,4 +13,31 @@ Employer::Employer() {
     next = nullptr;
 }
 
-Employer::~Employer() = default;
+NodeEmp::~NodeEmp() = default;
+
+Employer::Employer() {
+    head = nullptr;
+    last = nullptr;
+}
+
+Employer::~Employer() {
+    NodeEmp *temp;
+    while (head) {
+        temp = head->next;
+        delete head;
+        head = temp;
+    }
+}
+
+void Employer::MakeNewNode() {
+    auto *temp = new NodeEmp;
+    temp->next = nullptr;
+
+    if (head != nullptr) {
+        last->next = temp;
+        last = temp;
+        last->next = nullptr;
+    } else {
+        head = last = temp;
+    }
+}

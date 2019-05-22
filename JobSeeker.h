@@ -8,7 +8,9 @@
 
 #include "List1.h"
 
-class JobSeeker {
+#pragma pack(push, 1)
+
+class NodeJobSeeker {
 public:
     BlocksList *surname;
     BlocksList *name;
@@ -20,12 +22,25 @@ public:
     BlocksList *schedule;
     BlocksList *salary;
 
-    JobSeeker* next;
+    NodeJobSeeker *next;
+
+    NodeJobSeeker();
+
+    ~NodeJobSeeker();
+};
+
+class JobSeeker {
+public:
+    NodeJobSeeker *head, *last;
 
     JobSeeker();
 
     ~JobSeeker();
+
+    void MakeNewNode();
 };
+
+#pragma pack(pop)
 
 
 #endif //KURSOVIK_JOBSEEKER_H
