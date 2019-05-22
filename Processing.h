@@ -21,11 +21,15 @@ void EmployerMode(JobInfo &jobInfo, Employer &employer);
 
 void AddingMode(JobInfo &jobInfo, JobSeeker &jobSeeker, Employer &employer, Vacancy &vacancy);
 
+void SatisfiedVacancyMode(Vacancy &satisfied_vacancy);
+
 void Add(JobInfo &jobInfo, JobSeeker &jobSeeker);
 
 void Add(JobInfo &jobInfo, Employer &employer);
 
 void Add(JobInfo &jobInfo, Vacancy &vacancy);
+
+int NumberOfNecessaryNode(Form &InJobInfo, const char *temp_line, int symbols_count_of_temp);
 
 bool WordIsInList(Form &InJobInfo, const char *temp_line, int symbols_count_of_temp);
 

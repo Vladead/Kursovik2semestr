@@ -10,7 +10,7 @@
 using namespace std;
 
 int main() {
-    Vacancy list_of_vacancy;
+    Vacancy list_of_vacancy, list_of_satisfied_vacancy;
     Employer list_of_employers;
     JobSeeker list_of_jobSeekers;
     JobInfo jobInfo;
@@ -39,6 +39,7 @@ int main() {
                 break;
             case 4:
                 cout << "Режим списка удовлетворенных вакансий" << endl;
+                SatisfiedVacancyMode(list_of_satisfied_vacancy);
                 break;
             case 5:
                 cout << "Выход" << endl;

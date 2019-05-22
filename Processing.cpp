@@ -17,7 +17,7 @@
 
 using namespace std;
 
-void JobSeekerMode(JobInfo &jobInfo, JobSeeker &jobSeeker) {
+void JobSeekerMode(JobInfo &jobInfo, JobSeeker &jobSeeker) { //TODO добавить заполнение списка
     fstream input_file;
     char temp = 0;
     int blocksCount = 0, symbolsCount = 0;
@@ -191,7 +191,7 @@ void JobSeekerMode(JobInfo &jobInfo, JobSeeker &jobSeeker) {
     input_file.close();
 }
 
-void EmployerMode(JobInfo &jobInfo, Employer &employer) {
+void EmployerMode(JobInfo &jobInfo, Employer &employer) { //TODO добавить заполнение списка
     fstream input_file;
     char temp = 0;
     int blocksCount = 0, symbolsCount = 0;
@@ -425,11 +425,11 @@ void AddingMode(JobInfo &jobInfo, JobSeeker &jobSeeker, Employer &employer, Vaca
     }
 }
 
-void SatisfiedVacancyMode() {
+void SatisfiedVacancyMode(Vacancy &satisfied_vacancy) {
 
 }
 
-void Add(JobInfo &jobInfo, JobSeeker &jobSeeker) {
+void Add(JobInfo &jobInfo, JobSeeker &jobSeeker) { //TODO добавить заполнение списка
     fstream input_file;
     char temp = 0;
     int blocksCount = 0, symbolsCount = 0;
@@ -603,7 +603,7 @@ void Add(JobInfo &jobInfo, JobSeeker &jobSeeker) {
     input_file.close();
 }
 
-void Add(JobInfo &jobInfo, Employer &employer) {
+void Add(JobInfo &jobInfo, Employer &employer) { //TODO добавить заполнение списка
     fstream input_file;
     char temp = 0;
     int blocksCount = 0, symbolsCount = 0;
@@ -687,13 +687,17 @@ void Add(JobInfo &jobInfo, Employer &employer) {
     input_file.close();
 }
 
-void Add(JobInfo &jobInfo, Vacancy &vacancy) {
+void Add(JobInfo &jobInfo, Vacancy &vacancy) { //TODO добавить заполнение списка
     fstream input_file;
     char temp = 0;
-    int blocksCount = 0, symbolsCount = 0;
+    int blocksCount = 0, symbolsCount = 0, number_of_necessary_node = 0;
     input_file.open("../cmake-build-debug/AddingMode.txt", ios::in);
     input_file.unsetf(ios::skipws);
     int position = 0;
+
+    if(vacancy.head != vacancy.last) {
+        vacancy.MakeNewNode();
+    }
 
     position = input_file.tellg();
     symbolsCount = SymbolsCount(input_file, temp);
@@ -711,6 +715,7 @@ void Add(JobInfo &jobInfo, Vacancy &vacancy) {
         InputOneLine(jobInfo.position, symbolsCount, blocksCount, transit_line);
         jobInfo.position.last->symbols_in_line = symbolsCount;
     }
+    number_of_necessary_node = NumberOfNecessaryNode(jobInfo.position, transit_line, symbolsCount);
     delete[] transit_line;
 
     position = input_file.tellg();
@@ -729,6 +734,7 @@ void Add(JobInfo &jobInfo, Vacancy &vacancy) {
         InputOneLine(jobInfo.schedule, symbolsCount, blocksCount, transit_line);
         jobInfo.schedule.last->symbols_in_line = symbolsCount;
     }
+    number_of_necessary_node = NumberOfNecessaryNode(jobInfo.schedule, transit_line, symbolsCount);
     delete[] transit_line;
 
     position = input_file.tellg();
@@ -747,6 +753,7 @@ void Add(JobInfo &jobInfo, Vacancy &vacancy) {
         InputOneLine(jobInfo.salary, symbolsCount, blocksCount, transit_line);
         jobInfo.salary.last->symbols_in_line = symbolsCount;
     }
+    number_of_necessary_node = NumberOfNecessaryNode(jobInfo.salary, transit_line, symbolsCount);
     delete[] transit_line;
 
     position = input_file.tellg();
@@ -765,6 +772,7 @@ void Add(JobInfo &jobInfo, Vacancy &vacancy) {
         InputOneLine(jobInfo.education, symbolsCount, blocksCount, transit_line);
         jobInfo.education.last->symbols_in_line = symbolsCount;
     }
+    number_of_necessary_node = NumberOfNecessaryNode(jobInfo.education, transit_line, symbolsCount);
     delete[] transit_line;
 
     position = input_file.tellg();
@@ -783,6 +791,7 @@ void Add(JobInfo &jobInfo, Vacancy &vacancy) {
         InputOneLine(jobInfo.field_of_activity, symbolsCount, blocksCount, transit_line);
         jobInfo.field_of_activity.last->symbols_in_line = symbolsCount;
     }
+    number_of_necessary_node = NumberOfNecessaryNode(jobInfo.field_of_activity, transit_line, symbolsCount);
     delete[] transit_line;
 
     position = input_file.tellg();
@@ -801,6 +810,7 @@ void Add(JobInfo &jobInfo, Vacancy &vacancy) {
         InputOneLine(jobInfo.work_experience, symbolsCount, blocksCount, transit_line);
         jobInfo.work_experience.last->symbols_in_line = symbolsCount;
     }
+    number_of_necessary_node = NumberOfNecessaryNode(jobInfo.work_experience, transit_line, symbolsCount);
     delete[] transit_line;
 
     position = input_file.tellg();
@@ -818,10 +828,50 @@ void Add(JobInfo &jobInfo, Vacancy &vacancy) {
     if (!WordIsInList(jobInfo.title, transit_line, symbolsCount)) {
         cout << "Такой компании нет в базе данных" << endl;
     }
+    number_of_necessary_node = NumberOfNecessaryNode(jobInfo.title, transit_line, symbolsCount);
     delete[] transit_line;
 
     input_file.setf(ios::skipws);
     input_file.close();
+}
+
+int NumberOfNecessaryNode(Form &InJobInfo, const char *temp_line, int symbols_count_of_temp) {
+    FormBlock tempFormBlock;
+    InJobInfo.current = InJobInfo.head;
+    tempFormBlock.current = InJobInfo.current->line;
+    int number_of_necessary_node = 0;
+    bool word_is_already_in_list = false, word_fits = true;
+    int k = 0;
+    while (InJobInfo.current != nullptr) {
+        if (InJobInfo.current->symbols_in_line == symbols_count_of_temp) {
+            number_of_necessary_node++;
+            for (int i = 0; i < symbols_count_of_temp; i++, k++) {
+                if (tempFormBlock.current->block->symbols[k] != temp_line[i]) {
+                    InJobInfo.current = InJobInfo.current->next;
+                    tempFormBlock.current = InJobInfo.current->line;
+                    word_fits = false;
+                    break;
+                }
+                if ((k + 1) % 5 == 0) {
+                    tempFormBlock.current = tempFormBlock.current->next;
+                    k = -1; // Из за инкрементирования в начале каждой итерации
+                }
+            }
+            if (word_fits) {
+                word_is_already_in_list = true;
+                break;
+            }
+            word_fits = true;
+            k = 0;
+        } else {
+            InJobInfo.current = InJobInfo.current->next;
+            if (InJobInfo.current == nullptr)
+                break;
+            tempFormBlock.current = InJobInfo.current->line;
+            number_of_necessary_node++;
+        }
+    }
+    return number_of_necessary_node;
 }
 
 bool WordIsInList(Form &InJobInfo, const char *temp_line, int symbols_count_of_temp) {
