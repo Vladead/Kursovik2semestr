@@ -446,6 +446,7 @@ void add(JobInfo &jobInfo, JobSeeker &jobSeeker) { //TODO добавить за�
     inputFile.unsetf(ios::skipws);
     int position = 0;
 
+    jobSeeker.makeNewNode();
     position = inputFile.tellg();
     symbolsCount = countSymbols(inputFile, temp);
     blocksCount = countBlocksInLine(symbolsCount);
@@ -463,6 +464,7 @@ void add(JobInfo &jobInfo, JobSeeker &jobSeeker) { //TODO добавить за�
         jobInfo.surname.last->symbolsInLine = symbolsCount;
     }
     nodeNumber = findNumberOfNecessaryNode(jobInfo.surname, transitLine, symbolsCount);
+    jobSeeker.last->surname = returnPointToRequiredInfo(jobInfo.surname, nodeNumber);
     delete[] transitLine;
 
     position = inputFile.tellg();
@@ -629,6 +631,7 @@ void add(JobInfo &jobInfo, Employer &employer) { //TODO добавить зап�
     inputFile.unsetf(ios::skipws);
     int position = 0;
 
+    employer.MakeNewNode();
     position = inputFile.tellg();
     symbolsCount = countSymbols(inputFile, temp);
     blocksCount = countBlocksInLine(symbolsCount);
@@ -717,10 +720,7 @@ void add(JobInfo &jobInfo, Vacancy &vacancy) { //TODO добавить запо�
     inputFile.unsetf(ios::skipws);
     int position = 0;
 
-    if (vacancy.head != vacancy.last) {
-        vacancy.makeNewNode();
-    }
-
+    vacancy.makeNewNode();
     position = inputFile.tellg();
     symbolsCount = countSymbols(inputFile, temp);
     blocksCount = countBlocksInLine(symbolsCount);
@@ -855,6 +855,17 @@ void add(JobInfo &jobInfo, Vacancy &vacancy) { //TODO добавить запо�
 
     inputFile.setf(ios::skipws);
     inputFile.close();
+}
+
+List1 *returnPointToRequiredInfo(Form &inJobInfo, int nodeNumber) {
+    inJobInfo.current = inJobInfo.head;
+    for (int i = 0; i < nodeNumber; i++) {
+        if (i == nodeNumber - 1) {
+            break;
+        }
+        inJobInfo.current = inJobInfo.current->next;
+    }
+    return inJobInfo.current;
 }
 
 int findNumberOfNecessaryNode(Form &inJobInfo, const char *tempLine, int sizeOfTemp) {

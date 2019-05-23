@@ -13,17 +13,9 @@
   <component name="ChangeListManager">
     <list default="true" id="b575b7c0-3780-440a-aaf9-4ca55d660df1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JobInfo.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/JobInfo.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JobInfo.h" beforeDir="false" afterPath="$PROJECT_DIR$/JobInfo.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JobSeeker.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/JobSeeker.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/JobSeeker.h" beforeDir="false" afterPath="$PROJECT_DIR$/JobSeeker.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LineWithMarker.h" beforeDir="false" afterPath="$PROJECT_DIR$/LineWithMarker.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/List1.h" beforeDir="false" afterPath="$PROJECT_DIR$/List1.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Processing.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Processing.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Processing.h" beforeDir="false" afterPath="$PROJECT_DIR$/Processing.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vacancy.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Vacancy.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vacancy.h" beforeDir="false" afterPath="$PROJECT_DIR$/Vacancy.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -38,13 +30,62 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="174">
-              <caret line="18" selection-start-line="18" selection-end-line="18" />
+            <state relative-caret-position="368">
+              <caret line="31" column="19" selection-start-line="31" selection-start-column="19" selection-end-line="31" selection-end-column="19" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Processing.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="467" selection-start-line="467" selection-end-line="467" />
+              <folding>
+                <element signature="e#42#61#0" expanded="true" />
+                <element signature="e#327#7683#0" />
+                <element signature="e#7685#15524#0" />
+                <element signature="e#16227#16284#0" />
+                <element signature="e#23619#27091#0" />
+                <element signature="e#27093#32885#0" />
+                <element signature="e#32887#33191#0" />
+                <element signature="e#32887#34445#0" />
+                <element signature="e#34447#35926#0" />
+                <element signature="e#35928#37079#0" />
+                <element signature="e#37081#38651#0" />
+                <element signature="e#38653#39114#0" />
+                <element signature="e#39116#39575#0" />
+                <element signature="e#39577#40001#0" />
+                <element signature="e#40003#40638#0" />
+                <element signature="e#40640#41294#0" />
+                <element signature="e#41296#41661#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/JobSeeker.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="258">
+              <caret line="18" column="27" lean-forward="true" selection-start-line="18" selection-start-column="27" selection-end-line="18" selection-end-column="27" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Processing.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="406">
+              <caret line="31" column="66" selection-start-line="31" selection-start-column="66" selection-end-line="31" selection-end-column="66" />
+              <folding>
+                <element signature="e#104#122#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -85,19 +126,19 @@
         <option value="$PROJECT_DIR$/List1.h" />
         <option value="$PROJECT_DIR$/BlocksList.h" />
         <option value="$PROJECT_DIR$/JobInfo.h" />
-        <option value="$PROJECT_DIR$/JobSeeker.h" />
         <option value="$PROJECT_DIR$/Vacancy.h" />
+        <option value="$PROJECT_DIR$/LineWithMarker.h" />
         <option value="$PROJECT_DIR$/main.cpp" />
         <option value="$PROJECT_DIR$/Processing.h" />
-        <option value="$PROJECT_DIR$/LineWithMarker.h" />
+        <option value="$PROJECT_DIR$/JobSeeker.h" />
         <option value="$PROJECT_DIR$/Processing.cpp" />
       </list>
     </option>
   </component>
   <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="953" />
-    <option name="width" value="974" />
+    <option name="x" value="958" />
+    <option name="width" value="969" />
     <option name="height" value="1047" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -106,7 +147,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -118,6 +158,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -126,7 +167,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -184,24 +225,27 @@
       <workItem from="1558513298582" duration="2093000" />
       <workItem from="1558515947273" duration="7000" />
       <workItem from="1558521981423" duration="4711000" />
-      <workItem from="1558537813494" duration="3472000" />
+      <workItem from="1558537813494" duration="4279000" />
+      <workItem from="1558545338690" duration="289000" />
+      <workItem from="1558545814499" duration="8000" />
+      <workItem from="1558556082452" duration="109000" />
+      <workItem from="1558634796498" duration="1548000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="58956000" />
+    <option name="totallyTimeSpent" value="61717000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="953" y="0" width="974" height="1047" extended-state="0" />
-    <editor active="true" />
+    <frame x="958" y="0" width="969" height="1047" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18997912" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18048269" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32905984" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32910052" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.29700854" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.4017094" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -210,7 +254,7 @@
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="10" />
       <window_info anchor="bottom" id="CMake" order="11" />
-      <window_info anchor="bottom" id="Messages" order="12" weight="0.32169312" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.32158118" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -230,43 +274,43 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/Processing.cpp</url>
-          <line>734</line>
+          <line>736</line>
           <option name="timeStamp" value="11" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/Processing.cpp</url>
-          <line>753</line>
+          <line>755</line>
           <option name="timeStamp" value="16" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/Processing.cpp</url>
-          <line>772</line>
+          <line>774</line>
           <option name="timeStamp" value="17" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/Processing.cpp</url>
-          <line>791</line>
+          <line>793</line>
           <option name="timeStamp" value="18" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/Processing.cpp</url>
-          <line>810</line>
+          <line>812</line>
           <option name="timeStamp" value="19" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/Processing.cpp</url>
-          <line>829</line>
+          <line>831</line>
           <option name="timeStamp" value="20" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/Processing.cpp</url>
-          <line>848</line>
+          <line>850</line>
           <option name="timeStamp" value="21" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/main.cpp</url>
-          <line>17</line>
-          <option name="timeStamp" value="32" />
+          <url>file://$PROJECT_DIR$/Processing.cpp</url>
+          <line>464</line>
+          <option name="timeStamp" value="23" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -411,20 +455,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/JobInfo.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="10" selection-start-line="21" selection-start-column="10" selection-end-line="21" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/JobSeeker.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Vacancy.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="663">
@@ -453,43 +483,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Processing.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="446">
-          <caret line="33" column="5" selection-start-line="33" selection-start-column="5" selection-end-line="33" selection-end-column="5" />
-          <folding>
-            <element signature="e#104#122#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Processing.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="599">
-          <caret line="1015" selection-start-line="1015" selection-end-line="1015" />
-          <folding>
-            <element signature="e#42#61#0" expanded="true" />
-            <element signature="e#327#7888#0" />
-            <element signature="e#7890#15859#0" />
-            <element signature="e#15861#16560#0" />
-            <element signature="e#16562#16620#0" />
-            <element signature="e#16622#24173#0" />
-            <element signature="e#24175#27762#0" />
-            <element signature="e#27764#33730#0" />
-            <element signature="e#33732#35392#0" />
-            <element signature="e#35394#36927#0" />
-            <element signature="e#36929#38112#0" />
-            <element signature="e#38114#39693#0" />
-            <element signature="e#39695#40166#0" />
-            <element signature="e#40168#40641#0" />
-            <element signature="e#40643#41074#0" />
-            <element signature="e#41076#41718#0" />
-            <element signature="e#41720#42383#0" />
-            <element signature="e#42385#42750#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Vacancy.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
@@ -504,9 +497,29 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="31" column="19" selection-start-line="31" selection-start-column="19" selection-end-line="31" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Processing.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="406">
+          <caret line="31" column="66" selection-start-line="31" selection-start-column="66" selection-end-line="31" selection-end-column="66" />
+          <folding>
+            <element signature="e#104#122#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/JobInfo.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
+        <state relative-caret-position="520">
           <caret line="26" column="28" selection-start-line="26" selection-start-column="28" selection-end-line="26" selection-end-column="28" />
           <folding>
             <element signature="e#41#59#0" expanded="true" />
@@ -515,12 +528,42 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.cpp">
+    <entry file="file://$PROJECT_DIR$/JobInfo.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="174">
-          <caret line="18" selection-start-line="18" selection-end-line="18" />
+        <state relative-caret-position="420">
+          <caret line="21" column="10" selection-start-line="21" selection-start-column="10" selection-end-line="21" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JobSeeker.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="258">
+          <caret line="18" column="27" lean-forward="true" selection-start-line="18" selection-start-column="27" selection-end-line="18" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Processing.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="467" selection-start-line="467" selection-end-line="467" />
           <folding>
-            <element signature="e#0#19#0" expanded="true" />
+            <element signature="e#42#61#0" expanded="true" />
+            <element signature="e#327#7683#0" />
+            <element signature="e#7685#15524#0" />
+            <element signature="e#16227#16284#0" />
+            <element signature="e#23619#27091#0" />
+            <element signature="e#27093#32885#0" />
+            <element signature="e#32887#33191#0" />
+            <element signature="e#32887#34445#0" />
+            <element signature="e#34447#35926#0" />
+            <element signature="e#35928#37079#0" />
+            <element signature="e#37081#38651#0" />
+            <element signature="e#38653#39114#0" />
+            <element signature="e#39116#39575#0" />
+            <element signature="e#39577#40001#0" />
+            <element signature="e#40003#40638#0" />
+            <element signature="e#40640#41294#0" />
+            <element signature="e#41296#41661#0" />
           </folding>
         </state>
       </provider>

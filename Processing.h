@@ -29,6 +29,8 @@ void add(JobInfo &jobInfo, Employer &employer);
 
 void add(JobInfo &jobInfo, Vacancy &vacancy);
 
+List1 *returnPointToRequiredInfo(Form &inJobInfo, int nodeNumber);
+
 int findNumberOfNecessaryNode(Form &inJobInfo, const char *tempLine, int sizeOfTemp);
 
 bool wordIsInList(Form &inJobInfo, const char *tempLine, int sizeOfTemp);

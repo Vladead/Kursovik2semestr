@@ -12,15 +12,15 @@
 
 class NodeJobSeeker {
 public:
-    BlocksList *surname;
-    BlocksList *name;
-    BlocksList *patronymic;
-    BlocksList *position;
-    BlocksList *fieldOfActivity;
-    BlocksList *workExperience;
-    BlocksList *education;
-    BlocksList *schedule;
-    BlocksList *salary;
+    List1 *surname;
+    List1 *name;
+    List1 *patronymic;
+    List1 *position;
+    List1 *fieldOfActivity;
+    List1 *workExperience;
+    List1 *education;
+    List1 *schedule;
+    List1 *salary;
 
     NodeJobSeeker *next;
 
