@@ -6,9 +6,9 @@
 
 NodeEmp::NodeEmp() {
     title = nullptr;
-    field_of_activity = nullptr;
+    fieldOfActivity = nullptr;
     address = nullptr;
-    phone_number = nullptr;
+    phoneNumber = nullptr;
 
     next = nullptr;
 }

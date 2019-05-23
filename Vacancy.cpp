@@ -4,7 +4,7 @@
 
 #include "Vacancy.h"
 
-Node::Node() {
+NodeVacancy::NodeVacancy() {
     position = nullptr;
     schedule = nullptr;
     salary = nullptr;
@@ -18,7 +18,7 @@ Node::Node() {
     next = nullptr;
 }
 
-Node::~Node() = default;
+NodeVacancy::~NodeVacancy() = default;
 
 Vacancy::Vacancy() {
     head = nullptr;
@@ -26,7 +26,7 @@ Vacancy::Vacancy() {
 }
 
 Vacancy::~Vacancy() {
-    Node *temp;
+    NodeVacancy *temp;
     while (head) {
         temp = head->next;
         delete head;
@@ -35,7 +35,7 @@ Vacancy::~Vacancy() {
 }
 
 void Vacancy::makeNewNode() {
-    auto *temp = new Node;
+    auto *temp = new NodeVacancy;
     temp->next = nullptr;
 
     if (head != nullptr) {

@@ -10,28 +10,28 @@
 
 #pragma pack(push, 1)
 
-class Node {
+class NodeVacancy {
 public:
-    BlocksList *position;
-    BlocksList *schedule;
-    BlocksList *salary;
-    BlocksList *education;
-    BlocksList *workExperience;
-    BlocksList *fieldOfActivity;
-    BlocksList *employerApplications;
+    List1 *position;
+    List1 *schedule;
+    List1 *salary;
+    List1 *education;
+    List1 *workExperience;
+    List1 *fieldOfActivity;
+    List1 *employerApplications;
 
     char vacant;
 
-    Node *next;
+    NodeVacancy *next;
 
-    Node();
+    NodeVacancy();
 
-    ~Node();
+    ~NodeVacancy();
 };
 
 class Vacancy {
 public:
-    Node *head, *last;
+    NodeVacancy *head, *last;
 
     Vacancy();
 

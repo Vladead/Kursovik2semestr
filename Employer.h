@@ -12,10 +12,10 @@
 
 class NodeEmp {
 public:
-    BlocksList *title;
-    BlocksList *field_of_activity;
-    BlocksList *address;
-    BlocksList *phone_number;
+    List1 *title;
+    List1 *fieldOfActivity;
+    List1 *address;
+    List1 *phoneNumber;
 
     NodeEmp *next;
 

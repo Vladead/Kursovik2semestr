@@ -438,7 +438,7 @@ void satisfiedVacancyMode(Vacancy &satisfiedVacancy) {
 
 }
 
-void add(JobInfo &jobInfo, JobSeeker &jobSeeker) { //TODO добавить заполнение списка
+void add(JobInfo &jobInfo, JobSeeker &jobSeeker) {
     fstream inputFile;
     char temp = 0;
     int blocksCount = 0, symbolsCount = 0, nodeNumber = 0;
@@ -484,6 +484,7 @@ void add(JobInfo &jobInfo, JobSeeker &jobSeeker) { //TODO добавить за�
         jobInfo.name.last->symbolsInLine = symbolsCount;
     }
     nodeNumber = findNumberOfNecessaryNode(jobInfo.name, transitLine, symbolsCount);
+    jobSeeker.last->name = returnPointToRequiredInfo(jobInfo.name, nodeNumber);
     delete[] transitLine;
 
     position = inputFile.tellg();
@@ -503,6 +504,7 @@ void add(JobInfo &jobInfo, JobSeeker &jobSeeker) { //TODO добавить за�
         jobInfo.patronymic.last->symbolsInLine = symbolsCount;
     }
     nodeNumber = findNumberOfNecessaryNode(jobInfo.patronymic, transitLine, symbolsCount);
+    jobSeeker.last->patronymic = returnPointToRequiredInfo(jobInfo.patronymic, nodeNumber);
     delete[] transitLine;
 
     position = inputFile.tellg();
@@ -522,6 +524,7 @@ void add(JobInfo &jobInfo, JobSeeker &jobSeeker) { //TODO добавить за�
         jobInfo.position.last->symbolsInLine = symbolsCount;
     }
     nodeNumber = findNumberOfNecessaryNode(jobInfo.position, transitLine, symbolsCount);
+    jobSeeker.last->position = returnPointToRequiredInfo(jobInfo.position, nodeNumber);
     delete[] transitLine;
 
     position = inputFile.tellg();
@@ -541,6 +544,7 @@ void add(JobInfo &jobInfo, JobSeeker &jobSeeker) { //TODO добавить за�
         jobInfo.fieldOfActivity.last->symbolsInLine = symbolsCount;
     }
     nodeNumber = findNumberOfNecessaryNode(jobInfo.fieldOfActivity, transitLine, symbolsCount);
+    jobSeeker.last->fieldOfActivity = returnPointToRequiredInfo(jobInfo.fieldOfActivity, nodeNumber);
     delete[] transitLine;
 
     position = inputFile.tellg();
@@ -560,6 +564,7 @@ void add(JobInfo &jobInfo, JobSeeker &jobSeeker) { //TODO добавить за�
         jobInfo.workExperience.last->symbolsInLine = symbolsCount;
     }
     nodeNumber = findNumberOfNecessaryNode(jobInfo.workExperience, transitLine, symbolsCount);
+    jobSeeker.last->workExperience = returnPointToRequiredInfo(jobInfo.workExperience, nodeNumber);
     delete[] transitLine;
 
     position = inputFile.tellg();
@@ -579,6 +584,7 @@ void add(JobInfo &jobInfo, JobSeeker &jobSeeker) { //TODO добавить за�
         jobInfo.education.last->symbolsInLine = symbolsCount;
     }
     nodeNumber = findNumberOfNecessaryNode(jobInfo.education, transitLine, symbolsCount);
+    jobSeeker.last->education = returnPointToRequiredInfo(jobInfo.education, nodeNumber);
     delete[] transitLine;
 
     position = inputFile.tellg();
@@ -598,6 +604,7 @@ void add(JobInfo &jobInfo, JobSeeker &jobSeeker) { //TODO добавить за�
         jobInfo.schedule.last->symbolsInLine = symbolsCount;
     }
     nodeNumber = findNumberOfNecessaryNode(jobInfo.schedule, transitLine, symbolsCount);
+    jobSeeker.last->schedule = returnPointToRequiredInfo(jobInfo.schedule, nodeNumber);
     delete[] transitLine;
 
     position = inputFile.tellg();
@@ -617,13 +624,14 @@ void add(JobInfo &jobInfo, JobSeeker &jobSeeker) { //TODO добавить за�
         jobInfo.salary.last->symbolsInLine = symbolsCount;
     }
     nodeNumber = findNumberOfNecessaryNode(jobInfo.salary, transitLine, symbolsCount);
+    jobSeeker.last->salary = returnPointToRequiredInfo(jobInfo.salary, nodeNumber);
     delete[] transitLine;
 
     inputFile.setf(ios::skipws);
     inputFile.close();
 }
 
-void add(JobInfo &jobInfo, Employer &employer) { //TODO добавить заполнение списка
+void add(JobInfo &jobInfo, Employer &employer) {
     fstream inputFile;
     char temp = 0;
     int blocksCount = 0, symbolsCount = 0, nodeNumber = 0;
@@ -649,6 +657,7 @@ void add(JobInfo &jobInfo, Employer &employer) { //TODO добавить зап�
         jobInfo.title.last->symbolsInLine = symbolsCount;
     }
     nodeNumber = findNumberOfNecessaryNode(jobInfo.title, transitLine, symbolsCount);
+    employer.last->title = returnPointToRequiredInfo(jobInfo.title, nodeNumber);
     delete[] transitLine;
 
     position = inputFile.tellg();
@@ -668,6 +677,7 @@ void add(JobInfo &jobInfo, Employer &employer) { //TODO добавить зап�
         jobInfo.fieldOfActivity.last->symbolsInLine = symbolsCount;
     }
     nodeNumber = findNumberOfNecessaryNode(jobInfo.fieldOfActivity, transitLine, symbolsCount);
+    employer.last->fieldOfActivity = returnPointToRequiredInfo(jobInfo.fieldOfActivity, nodeNumber);
     delete[] transitLine;
 
     position = inputFile.tellg();
@@ -687,6 +697,7 @@ void add(JobInfo &jobInfo, Employer &employer) { //TODO добавить зап�
         jobInfo.address.last->symbolsInLine = symbolsCount;
     }
     nodeNumber = findNumberOfNecessaryNode(jobInfo.address, transitLine, symbolsCount);
+    employer.last->address = returnPointToRequiredInfo(jobInfo.address, nodeNumber);
     delete[] transitLine;
 
     position = inputFile.tellg();
@@ -706,13 +717,14 @@ void add(JobInfo &jobInfo, Employer &employer) { //TODO добавить зап�
         jobInfo.phoneNumber.last->symbolsInLine = symbolsCount;
     }
     nodeNumber = findNumberOfNecessaryNode(jobInfo.phoneNumber, transitLine, symbolsCount);
+    employer.last->phoneNumber = returnPointToRequiredInfo(jobInfo.phoneNumber, nodeNumber);
     delete[] transitLine;
 
     inputFile.setf(ios::skipws);
     inputFile.close();
 }
 
-void add(JobInfo &jobInfo, Vacancy &vacancy) { //TODO добавить заполнение списка
+void add(JobInfo &jobInfo, Vacancy &vacancy) {
     fstream inputFile;
     char temp = 0;
     int blocksCount = 0, symbolsCount = 0, nodeNumber = 0;
@@ -738,6 +750,7 @@ void add(JobInfo &jobInfo, Vacancy &vacancy) { //TODO добавить запо�
         jobInfo.position.last->symbolsInLine = symbolsCount;
     }
     nodeNumber = findNumberOfNecessaryNode(jobInfo.position, transitLine, symbolsCount);
+    vacancy.last->position = returnPointToRequiredInfo(jobInfo.position, nodeNumber);
     delete[] transitLine;
 
     position = inputFile.tellg();
@@ -757,6 +770,7 @@ void add(JobInfo &jobInfo, Vacancy &vacancy) { //TODO добавить запо�
         jobInfo.schedule.last->symbolsInLine = symbolsCount;
     }
     nodeNumber = findNumberOfNecessaryNode(jobInfo.schedule, transitLine, symbolsCount);
+    vacancy.last->schedule = returnPointToRequiredInfo(jobInfo.schedule, nodeNumber);
     delete[] transitLine;
 
     position = inputFile.tellg();
@@ -776,6 +790,7 @@ void add(JobInfo &jobInfo, Vacancy &vacancy) { //TODO добавить запо�
         jobInfo.salary.last->symbolsInLine = symbolsCount;
     }
     nodeNumber = findNumberOfNecessaryNode(jobInfo.salary, transitLine, symbolsCount);
+    vacancy.last->salary = returnPointToRequiredInfo(jobInfo.salary, nodeNumber);
     delete[] transitLine;
 
     position = inputFile.tellg();
@@ -795,6 +810,7 @@ void add(JobInfo &jobInfo, Vacancy &vacancy) { //TODO добавить запо�
         jobInfo.education.last->symbolsInLine = symbolsCount;
     }
     nodeNumber = findNumberOfNecessaryNode(jobInfo.education, transitLine, symbolsCount);
+    vacancy.last->education = returnPointToRequiredInfo(jobInfo.education, nodeNumber);
     delete[] transitLine;
 
     position = inputFile.tellg();
@@ -814,6 +830,7 @@ void add(JobInfo &jobInfo, Vacancy &vacancy) { //TODO добавить запо�
         jobInfo.fieldOfActivity.last->symbolsInLine = symbolsCount;
     }
     nodeNumber = findNumberOfNecessaryNode(jobInfo.fieldOfActivity, transitLine, symbolsCount);
+    vacancy.last->fieldOfActivity = returnPointToRequiredInfo(jobInfo.fieldOfActivity, nodeNumber);
     delete[] transitLine;
 
     position = inputFile.tellg();
@@ -833,6 +850,7 @@ void add(JobInfo &jobInfo, Vacancy &vacancy) { //TODO добавить запо�
         jobInfo.workExperience.last->symbolsInLine = symbolsCount;
     }
     nodeNumber = findNumberOfNecessaryNode(jobInfo.workExperience, transitLine, symbolsCount);
+    vacancy.last->workExperience = returnPointToRequiredInfo(jobInfo.workExperience, nodeNumber);
     delete[] transitLine;
 
     position = inputFile.tellg();
@@ -851,6 +869,8 @@ void add(JobInfo &jobInfo, Vacancy &vacancy) { //TODO добавить запо�
         cout << "Такой компании нет в базе данных" << endl;
     }
     nodeNumber = findNumberOfNecessaryNode(jobInfo.title, transitLine, symbolsCount);
+    //----------------------------------------TODO добавить возможность в вакансии ссылаться на нескольких работодателей
+    vacancy.last->employerApplications = returnPointToRequiredInfo(jobInfo.title, nodeNumber);
     delete[] transitLine;
 
     inputFile.setf(ios::skipws);
