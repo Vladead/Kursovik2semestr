@@ -23,11 +23,11 @@ void addingMode(JobInfo &jobInfo, JobSeeker &jobSeeker, Employer &employer, Vaca
 
 void satisfiedVacancyMode(Vacancy &satisfiedVacancy);
 
-void add(JobInfo &jobInfo, JobSeeker &jobSeeker);
+void add(JobInfo &jobInfo, JobSeeker &jobSeeker, std::fstream &inputFile);
 
-void add(JobInfo &jobInfo, Employer &employer);
+void add(JobInfo &jobInfo, Employer &employer, std::fstream &inputFile);
 
-void add(JobInfo &jobInfo, Vacancy &vacancy);
+void add(JobInfo &jobInfo, Vacancy &vacancy, std::fstream &inputFile);
 
 List1 *returnPointToRequiredInfo(Form &inJobInfo, int nodeNumber);
 

@@ -17,6 +17,17 @@
 
 using namespace std;
 
+void addFirstInfo(Vacancy &vacancy, Employer &employer, JobSeeker &jobSeeker) {
+    fstream inputFile;
+    inputFile.open("../cmake-build-debug/FirstInfo.txt", ios::in);
+    inputFile.unsetf(ios::skipws);
+
+
+
+    inputFile.setf(ios::skipws);
+    inputFile.close();
+}
+
 void jobSeekerMode(JobInfo &jobInfo, JobSeeker &jobSeeker, Vacancy &vacancy) { //TODO добавить поиск нужных вакансий
     fstream inputFile;
     char temp = 0;
@@ -305,6 +316,8 @@ void employerMode(JobInfo &jobInfo, Employer &employer, JobSeeker &jobSeeker) { 
 
 void addingMode(JobInfo &jobInfo, JobSeeker &jobSeeker, Employer &employer, Vacancy &vacancy) {
     //-----------------------------------------------------------------Режим добавления соискателя/работодателя/вакансии
+    fstream inputFile;
+    inputFile.open("../cmake-build-debug/AddingMode.txt", ios::in);
     int way = 0;
     cout << "1 - Соискателя\n"
          << "2 - Работодателя\n"
@@ -313,32 +326,31 @@ void addingMode(JobInfo &jobInfo, JobSeeker &jobSeeker, Employer &employer, Vaca
     cin >> way;
     switch (way) {
         case 1:
-            add(jobInfo, jobSeeker);
+            add(jobInfo, jobSeeker, inputFile);
             cout << "Соискатель добавлен" << endl;
             break;
         case 2:
-            add(jobInfo, employer);
+            add(jobInfo, employer, inputFile);
             cout << "Работодатель добавлен" << endl;
             break;
         case 3:
-            add(jobInfo, vacancy);
+            add(jobInfo, vacancy, inputFile);
             cout << "Вакансия добавлена" << endl;
             break;
         default:
             cout << "Неправильный ввод" << endl;
     }
+    inputFile.close();
 }
 
 void satisfiedVacancyMode(Vacancy &satisfiedVacancy) {
 
 }
 
-void add(JobInfo &jobInfo, JobSeeker &jobSeeker) {
+void add(JobInfo &jobInfo, JobSeeker &jobSeeker, fstream &inputFile) {
     //----------------------------------------------------------------------Добавляет соискателя из файла AddingMode.txt
-    fstream inputFile;
     char temp = 0;
     int blocksCount = 0, symbolsCount = 0, nodeNumber = 0;
-    inputFile.open("../cmake-build-debug/AddingMode.txt", ios::in);
     inputFile.unsetf(ios::skipws);
     int position = 0;
 
@@ -524,15 +536,12 @@ void add(JobInfo &jobInfo, JobSeeker &jobSeeker) {
     delete[] transitLine;
 
     inputFile.setf(ios::skipws);
-    inputFile.close();
 }
 
-void add(JobInfo &jobInfo, Employer &employer) {
+void add(JobInfo &jobInfo, Employer &employer, fstream &inputFile) {
     //--------------------------------------------------------------------Добавляет работодателя из файла AddingMode.txt
-    fstream inputFile;
     char temp = 0;
     int blocksCount = 0, symbolsCount = 0, nodeNumber = 0;
-    inputFile.open("../cmake-build-debug/AddingMode.txt", ios::in);
     inputFile.unsetf(ios::skipws);
     int position = 0;
 
@@ -618,15 +627,12 @@ void add(JobInfo &jobInfo, Employer &employer) {
     delete[] transitLine;
 
     inputFile.setf(ios::skipws);
-    inputFile.close();
 }
 
-void add(JobInfo &jobInfo, Vacancy &vacancy) {
+void add(JobInfo &jobInfo, Vacancy &vacancy, fstream &inputFile) {
     //------------------------------------------------------------------------Добавляет вакансию из файла AddingMode.txt
-    fstream inputFile;
     char temp = 0;
     int blocksCount = 0, symbolsCount = 0, nodeNumber = 0;
-    inputFile.open("../cmake-build-debug/AddingMode.txt", ios::in);
     inputFile.unsetf(ios::skipws);
     int position = 0;
 
@@ -772,7 +778,6 @@ void add(JobInfo &jobInfo, Vacancy &vacancy) {
     delete[] transitLine;
 
     inputFile.setf(ios::skipws);
-    inputFile.close();
 }
 
 List1 *returnPointToRequiredInfo(Form &inJobInfo, int nodeNumber) {
