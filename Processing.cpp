@@ -17,16 +17,17 @@
 
 using namespace std;
 
-void jobSeekerMode(JobInfo &jobInfo, JobSeeker &jobSeeker) { //TODO добавить заполнение списка, поменять файл
+void jobSeekerMode(JobInfo &jobInfo, JobSeeker &jobSeeker, Vacancy &vacancy) { //TODO добавить поиск нужных вакансий
     fstream inputFile;
     char temp = 0;
     int blocksCount = 0, symbolsCount = 0, nodeNumber = 0;
-    inputFile.open("../cmake-build-debug/AddingMode.txt", ios::in);
+    inputFile.open("../cmake-build-debug/JobSeekerMode.txt", ios::in);
     inputFile.unsetf(ios::skipws);
     int position = 0;
 
+    jobSeeker.makeNewNode();
     position = inputFile.tellg();
-    symbolsCount = countSymbols(inputFile, temp);
+    symbolsCount = countSymbols(inputFile);
     blocksCount = countBlocksInLine(symbolsCount);
     auto transitLine = new char[symbolsCount + 1];
     for (int j = 0; j < symbolsCount + 1; j++)
@@ -42,10 +43,11 @@ void jobSeekerMode(JobInfo &jobInfo, JobSeeker &jobSeeker) { //TODO добави
         jobInfo.surname.last->symbolsInLine = symbolsCount;
     }
     nodeNumber = findNumberOfNecessaryNode(jobInfo.surname, transitLine, symbolsCount);
+    jobSeeker.last->surname = returnPointToRequiredInfo(jobInfo.surname, nodeNumber);
     delete[] transitLine;
 
     position = inputFile.tellg();
-    symbolsCount = countSymbols(inputFile, temp);
+    symbolsCount = countSymbols(inputFile);
     blocksCount = countBlocksInLine(symbolsCount);
     transitLine = new char[symbolsCount + 1];
     for (int j = 0; j < symbolsCount + 1; j++)
@@ -61,10 +63,11 @@ void jobSeekerMode(JobInfo &jobInfo, JobSeeker &jobSeeker) { //TODO добави
         jobInfo.name.last->symbolsInLine = symbolsCount;
     }
     nodeNumber = findNumberOfNecessaryNode(jobInfo.name, transitLine, symbolsCount);
+    jobSeeker.last->name = returnPointToRequiredInfo(jobInfo.name, nodeNumber);
     delete[] transitLine;
 
     position = inputFile.tellg();
-    symbolsCount = countSymbols(inputFile, temp);
+    symbolsCount = countSymbols(inputFile);
     blocksCount = countBlocksInLine(symbolsCount);
     transitLine = new char[symbolsCount + 1];
     for (int j = 0; j < symbolsCount + 1; j++)
@@ -80,10 +83,11 @@ void jobSeekerMode(JobInfo &jobInfo, JobSeeker &jobSeeker) { //TODO добави
         jobInfo.patronymic.last->symbolsInLine = symbolsCount;
     }
     nodeNumber = findNumberOfNecessaryNode(jobInfo.patronymic, transitLine, symbolsCount);
+    jobSeeker.last->patronymic = returnPointToRequiredInfo(jobInfo.patronymic, nodeNumber);
     delete[] transitLine;
 
     position = inputFile.tellg();
-    symbolsCount = countSymbols(inputFile, temp);
+    symbolsCount = countSymbols(inputFile);
     blocksCount = countBlocksInLine(symbolsCount);
     transitLine = new char[symbolsCount + 1];
     for (int j = 0; j < symbolsCount + 1; j++)
@@ -99,10 +103,11 @@ void jobSeekerMode(JobInfo &jobInfo, JobSeeker &jobSeeker) { //TODO добави
         jobInfo.position.last->symbolsInLine = symbolsCount;
     }
     nodeNumber = findNumberOfNecessaryNode(jobInfo.position, transitLine, symbolsCount);
+    jobSeeker.last->position = returnPointToRequiredInfo(jobInfo.position, nodeNumber);
     delete[] transitLine;
 
     position = inputFile.tellg();
-    symbolsCount = countSymbols(inputFile, temp);
+    symbolsCount = countSymbols(inputFile);
     blocksCount = countBlocksInLine(symbolsCount);
     transitLine = new char[symbolsCount + 1];
     for (int j = 0; j < symbolsCount + 1; j++)
@@ -118,10 +123,11 @@ void jobSeekerMode(JobInfo &jobInfo, JobSeeker &jobSeeker) { //TODO добави
         jobInfo.fieldOfActivity.last->symbolsInLine = symbolsCount;
     }
     nodeNumber = findNumberOfNecessaryNode(jobInfo.fieldOfActivity, transitLine, symbolsCount);
+    jobSeeker.last->fieldOfActivity = returnPointToRequiredInfo(jobInfo.fieldOfActivity, nodeNumber);
     delete[] transitLine;
 
     position = inputFile.tellg();
-    symbolsCount = countSymbols(inputFile, temp);
+    symbolsCount = countSymbols(inputFile);
     blocksCount = countBlocksInLine(symbolsCount);
     transitLine = new char[symbolsCount + 1];
     for (int j = 0; j < symbolsCount + 1; j++)
@@ -137,10 +143,11 @@ void jobSeekerMode(JobInfo &jobInfo, JobSeeker &jobSeeker) { //TODO добави
         jobInfo.workExperience.last->symbolsInLine = symbolsCount;
     }
     nodeNumber = findNumberOfNecessaryNode(jobInfo.workExperience, transitLine, symbolsCount);
+    jobSeeker.last->workExperience = returnPointToRequiredInfo(jobInfo.workExperience, nodeNumber);
     delete[] transitLine;
 
     position = inputFile.tellg();
-    symbolsCount = countSymbols(inputFile, temp);
+    symbolsCount = countSymbols(inputFile);
     blocksCount = countBlocksInLine(symbolsCount);
     transitLine = new char[symbolsCount + 1];
     for (int j = 0; j < symbolsCount + 1; j++)
@@ -156,10 +163,11 @@ void jobSeekerMode(JobInfo &jobInfo, JobSeeker &jobSeeker) { //TODO добави
         jobInfo.education.last->symbolsInLine = symbolsCount;
     }
     nodeNumber = findNumberOfNecessaryNode(jobInfo.education, transitLine, symbolsCount);
+    jobSeeker.last->education = returnPointToRequiredInfo(jobInfo.education, nodeNumber);
     delete[] transitLine;
 
     position = inputFile.tellg();
-    symbolsCount = countSymbols(inputFile, temp);
+    symbolsCount = countSymbols(inputFile);
     blocksCount = countBlocksInLine(symbolsCount);
     transitLine = new char[symbolsCount + 1];
     for (int j = 0; j < symbolsCount + 1; j++)
@@ -175,10 +183,11 @@ void jobSeekerMode(JobInfo &jobInfo, JobSeeker &jobSeeker) { //TODO добави
         jobInfo.schedule.last->symbolsInLine = symbolsCount;
     }
     nodeNumber = findNumberOfNecessaryNode(jobInfo.schedule, transitLine, symbolsCount);
+    jobSeeker.last->schedule = returnPointToRequiredInfo(jobInfo.schedule, nodeNumber);
     delete[] transitLine;
 
     position = inputFile.tellg();
-    symbolsCount = countSymbols(inputFile, temp);
+    symbolsCount = countSymbols(inputFile);
     blocksCount = countBlocksInLine(symbolsCount);
     transitLine = new char[symbolsCount + 1];
     for (int j = 0; j < symbolsCount + 1; j++)
@@ -194,22 +203,24 @@ void jobSeekerMode(JobInfo &jobInfo, JobSeeker &jobSeeker) { //TODO добави
         jobInfo.salary.last->symbolsInLine = symbolsCount;
     }
     nodeNumber = findNumberOfNecessaryNode(jobInfo.salary, transitLine, symbolsCount);
+    jobSeeker.last->salary = returnPointToRequiredInfo(jobInfo.salary, nodeNumber);
     delete[] transitLine;
 
     inputFile.setf(ios::skipws);
     inputFile.close();
 }
 
-void employerMode(JobInfo &jobInfo, Employer &employer) { //TODO добавить заполнение списка
+void employerMode(JobInfo &jobInfo, Employer &employer, JobSeeker &jobSeeker) { //TODO добавить поиск нужных соискателей
     fstream inputFile;
     char temp = 0;
-    int blocksCount = 0, symbolsCount = 0;
+    int blocksCount = 0, symbolsCount = 0, nodeNumber = 0;
     inputFile.open("../cmake-build-debug/EmployerMode.txt", ios::in);
     inputFile.unsetf(ios::skipws);
     int position = 0;
 
+    employer.MakeNewNode();
     position = inputFile.tellg();
-    symbolsCount = countSymbols(inputFile, temp);
+    symbolsCount = countSymbols(inputFile);
     blocksCount = countBlocksInLine(symbolsCount);
     auto transitLine = new char[symbolsCount + 1];
     for (int j = 0; j < symbolsCount + 1; j++)
@@ -224,10 +235,12 @@ void employerMode(JobInfo &jobInfo, Employer &employer) { //TODO добавит�
         inputOneLine(jobInfo.title, symbolsCount, blocksCount, transitLine);
         jobInfo.title.last->symbolsInLine = symbolsCount;
     }
+    nodeNumber = findNumberOfNecessaryNode(jobInfo.title, transitLine, symbolsCount);
+    employer.last->title = returnPointToRequiredInfo(jobInfo.title, nodeNumber);
     delete[] transitLine;
 
     position = inputFile.tellg();
-    symbolsCount = countSymbols(inputFile, temp);
+    symbolsCount = countSymbols(inputFile);
     blocksCount = countBlocksInLine(symbolsCount);
     transitLine = new char[symbolsCount + 1];
     for (int j = 0; j < symbolsCount + 1; j++)
@@ -242,10 +255,12 @@ void employerMode(JobInfo &jobInfo, Employer &employer) { //TODO добавит�
         inputOneLine(jobInfo.fieldOfActivity, symbolsCount, blocksCount, transitLine);
         jobInfo.fieldOfActivity.last->symbolsInLine = symbolsCount;
     }
+    nodeNumber = findNumberOfNecessaryNode(jobInfo.fieldOfActivity, transitLine, symbolsCount);
+    employer.last->fieldOfActivity = returnPointToRequiredInfo(jobInfo.fieldOfActivity, nodeNumber);
     delete[] transitLine;
 
     position = inputFile.tellg();
-    symbolsCount = countSymbols(inputFile, temp);
+    symbolsCount = countSymbols(inputFile);
     blocksCount = countBlocksInLine(symbolsCount);
     transitLine = new char[symbolsCount + 1];
     for (int j = 0; j < symbolsCount + 1; j++)
@@ -260,10 +275,12 @@ void employerMode(JobInfo &jobInfo, Employer &employer) { //TODO добавит�
         inputOneLine(jobInfo.address, symbolsCount, blocksCount, transitLine);
         jobInfo.address.last->symbolsInLine = symbolsCount;
     }
+    nodeNumber = findNumberOfNecessaryNode(jobInfo.address, transitLine, symbolsCount);
+    employer.last->address = returnPointToRequiredInfo(jobInfo.address, nodeNumber);
     delete[] transitLine;
 
     position = inputFile.tellg();
-    symbolsCount = countSymbols(inputFile, temp);
+    symbolsCount = countSymbols(inputFile);
     blocksCount = countBlocksInLine(symbolsCount);
     transitLine = new char[symbolsCount + 1];
     for (int j = 0; j < symbolsCount + 1; j++)
@@ -278,131 +295,8 @@ void employerMode(JobInfo &jobInfo, Employer &employer) { //TODO добавит�
         inputOneLine(jobInfo.phoneNumber, symbolsCount, blocksCount, transitLine);
         jobInfo.phoneNumber.last->symbolsInLine = symbolsCount;
     }
-    delete[] transitLine;
-
-    position = inputFile.tellg();
-    symbolsCount = countSymbols(inputFile, temp);
-    blocksCount = countBlocksInLine(symbolsCount);
-    transitLine = new char[symbolsCount + 1];
-    for (int j = 0; j < symbolsCount + 1; j++)
-        transitLine[j] = 0;
-    inputFile.clear();
-    inputFile.seekg(position);
-    for (int j = 0; j < symbolsCount; j++)
-        inputFile >> transitLine[j];
-    inputFile >> temp;
-    inputFile >> temp;
-    if (!wordIsInList(jobInfo.position, transitLine, symbolsCount)) {
-        inputOneLine(jobInfo.position, symbolsCount, blocksCount, transitLine);
-        jobInfo.position.last->symbolsInLine = symbolsCount;
-    }
-    delete[] transitLine;
-
-    position = inputFile.tellg();
-    symbolsCount = countSymbols(inputFile, temp);
-    blocksCount = countBlocksInLine(symbolsCount);
-    transitLine = new char[symbolsCount + 1];
-    for (int j = 0; j < symbolsCount + 1; j++)
-        transitLine[j] = 0;
-    inputFile.clear();
-    inputFile.seekg(position);
-    for (int j = 0; j < symbolsCount; j++)
-        inputFile >> transitLine[j];
-    inputFile >> temp;
-    inputFile >> temp;
-    if (!wordIsInList(jobInfo.schedule, transitLine, symbolsCount)) {
-        inputOneLine(jobInfo.schedule, symbolsCount, blocksCount, transitLine);
-        jobInfo.schedule.last->symbolsInLine = symbolsCount;
-    }
-    delete[] transitLine;
-
-    position = inputFile.tellg();
-    symbolsCount = countSymbols(inputFile, temp);
-    blocksCount = countBlocksInLine(symbolsCount);
-    transitLine = new char[symbolsCount + 1];
-    for (int j = 0; j < symbolsCount + 1; j++)
-        transitLine[j] = 0;
-    inputFile.clear();
-    inputFile.seekg(position);
-    for (int j = 0; j < symbolsCount; j++)
-        inputFile >> transitLine[j];
-    inputFile >> temp;
-    inputFile >> temp;
-    if (!wordIsInList(jobInfo.salary, transitLine, symbolsCount)) {
-        inputOneLine(jobInfo.salary, symbolsCount, blocksCount, transitLine);
-        jobInfo.salary.last->symbolsInLine = symbolsCount;
-    }
-    delete[] transitLine;
-
-    position = inputFile.tellg();
-    symbolsCount = countSymbols(inputFile, temp);
-    blocksCount = countBlocksInLine(symbolsCount);
-    transitLine = new char[symbolsCount + 1];
-    for (int j = 0; j < symbolsCount + 1; j++)
-        transitLine[j] = 0;
-    inputFile.clear();
-    inputFile.seekg(position);
-    for (int j = 0; j < symbolsCount; j++)
-        inputFile >> transitLine[j];
-    inputFile >> temp;
-    inputFile >> temp;
-    if (!wordIsInList(jobInfo.education, transitLine, symbolsCount)) {
-        inputOneLine(jobInfo.education, symbolsCount, blocksCount, transitLine);
-        jobInfo.education.last->symbolsInLine = symbolsCount;
-    }
-    delete[] transitLine;
-
-    position = inputFile.tellg();
-    symbolsCount = countSymbols(inputFile, temp);
-    blocksCount = countBlocksInLine(symbolsCount);
-    transitLine = new char[symbolsCount + 1];
-    for (int j = 0; j < symbolsCount + 1; j++)
-        transitLine[j] = 0;
-    inputFile.clear();
-    inputFile.seekg(position);
-    for (int j = 0; j < symbolsCount; j++)
-        inputFile >> transitLine[j];
-    inputFile >> temp;
-    inputFile >> temp;
-    if (!wordIsInList(jobInfo.fieldOfActivity, transitLine, symbolsCount)) {
-        inputOneLine(jobInfo.fieldOfActivity, symbolsCount, blocksCount, transitLine);
-        jobInfo.fieldOfActivity.last->symbolsInLine = symbolsCount;
-    }
-    delete[] transitLine;
-
-    position = inputFile.tellg();
-    symbolsCount = countSymbols(inputFile, temp);
-    blocksCount = countBlocksInLine(symbolsCount);
-    transitLine = new char[symbolsCount + 1];
-    for (int j = 0; j < symbolsCount + 1; j++)
-        transitLine[j] = 0;
-    inputFile.clear();
-    inputFile.seekg(position);
-    for (int j = 0; j < symbolsCount; j++)
-        inputFile >> transitLine[j];
-    inputFile >> temp;
-    inputFile >> temp;
-    if (!wordIsInList(jobInfo.workExperience, transitLine, symbolsCount)) {
-        inputOneLine(jobInfo.workExperience, symbolsCount, blocksCount, transitLine);
-        jobInfo.workExperience.last->symbolsInLine = symbolsCount;
-    }
-    delete[] transitLine;
-
-    position = inputFile.tellg();
-    symbolsCount = countSymbols(inputFile, temp);
-    blocksCount = countBlocksInLine(symbolsCount);
-    transitLine = new char[symbolsCount + 1];
-    for (int j = 0; j < symbolsCount + 1; j++)
-        transitLine[j] = 0;
-    inputFile.clear();
-    inputFile.seekg(position);
-    for (int j = 0; j < symbolsCount; j++)
-        inputFile >> transitLine[j];
-    inputFile >> temp;
-    inputFile >> temp;
-    if (!wordIsInList(jobInfo.title, transitLine, symbolsCount)) {
-        cout << "Такой компании нет в базе данных" << endl; //TODO довести до ума
-    }
+    nodeNumber = findNumberOfNecessaryNode(jobInfo.phoneNumber, transitLine, symbolsCount);
+    employer.last->phoneNumber = returnPointToRequiredInfo(jobInfo.phoneNumber, nodeNumber);
     delete[] transitLine;
 
     inputFile.setf(ios::skipws);
@@ -410,6 +304,7 @@ void employerMode(JobInfo &jobInfo, Employer &employer) { //TODO добавит�
 }
 
 void addingMode(JobInfo &jobInfo, JobSeeker &jobSeeker, Employer &employer, Vacancy &vacancy) {
+    //-----------------------------------------------------------------Режим добавления соискателя/работодателя/вакансии
     int way = 0;
     cout << "1 - Соискателя\n"
          << "2 - Работодателя\n"
@@ -439,6 +334,7 @@ void satisfiedVacancyMode(Vacancy &satisfiedVacancy) {
 }
 
 void add(JobInfo &jobInfo, JobSeeker &jobSeeker) {
+    //----------------------------------------------------------------------Добавляет соискателя из файла AddingMode.txt
     fstream inputFile;
     char temp = 0;
     int blocksCount = 0, symbolsCount = 0, nodeNumber = 0;
@@ -448,7 +344,7 @@ void add(JobInfo &jobInfo, JobSeeker &jobSeeker) {
 
     jobSeeker.makeNewNode();
     position = inputFile.tellg();
-    symbolsCount = countSymbols(inputFile, temp);
+    symbolsCount = countSymbols(inputFile);
     blocksCount = countBlocksInLine(symbolsCount);
     auto transitLine = new char[symbolsCount + 1];
     for (int j = 0; j < symbolsCount + 1; j++)
@@ -468,7 +364,7 @@ void add(JobInfo &jobInfo, JobSeeker &jobSeeker) {
     delete[] transitLine;
 
     position = inputFile.tellg();
-    symbolsCount = countSymbols(inputFile, temp);
+    symbolsCount = countSymbols(inputFile);
     blocksCount = countBlocksInLine(symbolsCount);
     transitLine = new char[symbolsCount + 1];
     for (int j = 0; j < symbolsCount + 1; j++)
@@ -488,7 +384,7 @@ void add(JobInfo &jobInfo, JobSeeker &jobSeeker) {
     delete[] transitLine;
 
     position = inputFile.tellg();
-    symbolsCount = countSymbols(inputFile, temp);
+    symbolsCount = countSymbols(inputFile);
     blocksCount = countBlocksInLine(symbolsCount);
     transitLine = new char[symbolsCount + 1];
     for (int j = 0; j < symbolsCount + 1; j++)
@@ -508,7 +404,7 @@ void add(JobInfo &jobInfo, JobSeeker &jobSeeker) {
     delete[] transitLine;
 
     position = inputFile.tellg();
-    symbolsCount = countSymbols(inputFile, temp);
+    symbolsCount = countSymbols(inputFile);
     blocksCount = countBlocksInLine(symbolsCount);
     transitLine = new char[symbolsCount + 1];
     for (int j = 0; j < symbolsCount + 1; j++)
@@ -528,7 +424,7 @@ void add(JobInfo &jobInfo, JobSeeker &jobSeeker) {
     delete[] transitLine;
 
     position = inputFile.tellg();
-    symbolsCount = countSymbols(inputFile, temp);
+    symbolsCount = countSymbols(inputFile);
     blocksCount = countBlocksInLine(symbolsCount);
     transitLine = new char[symbolsCount + 1];
     for (int j = 0; j < symbolsCount + 1; j++)
@@ -548,7 +444,7 @@ void add(JobInfo &jobInfo, JobSeeker &jobSeeker) {
     delete[] transitLine;
 
     position = inputFile.tellg();
-    symbolsCount = countSymbols(inputFile, temp);
+    symbolsCount = countSymbols(inputFile);
     blocksCount = countBlocksInLine(symbolsCount);
     transitLine = new char[symbolsCount + 1];
     for (int j = 0; j < symbolsCount + 1; j++)
@@ -568,7 +464,7 @@ void add(JobInfo &jobInfo, JobSeeker &jobSeeker) {
     delete[] transitLine;
 
     position = inputFile.tellg();
-    symbolsCount = countSymbols(inputFile, temp);
+    symbolsCount = countSymbols(inputFile);
     blocksCount = countBlocksInLine(symbolsCount);
     transitLine = new char[symbolsCount + 1];
     for (int j = 0; j < symbolsCount + 1; j++)
@@ -588,7 +484,7 @@ void add(JobInfo &jobInfo, JobSeeker &jobSeeker) {
     delete[] transitLine;
 
     position = inputFile.tellg();
-    symbolsCount = countSymbols(inputFile, temp);
+    symbolsCount = countSymbols(inputFile);
     blocksCount = countBlocksInLine(symbolsCount);
     transitLine = new char[symbolsCount + 1];
     for (int j = 0; j < symbolsCount + 1; j++)
@@ -608,7 +504,7 @@ void add(JobInfo &jobInfo, JobSeeker &jobSeeker) {
     delete[] transitLine;
 
     position = inputFile.tellg();
-    symbolsCount = countSymbols(inputFile, temp);
+    symbolsCount = countSymbols(inputFile);
     blocksCount = countBlocksInLine(symbolsCount);
     transitLine = new char[symbolsCount + 1];
     for (int j = 0; j < symbolsCount + 1; j++)
@@ -632,6 +528,7 @@ void add(JobInfo &jobInfo, JobSeeker &jobSeeker) {
 }
 
 void add(JobInfo &jobInfo, Employer &employer) {
+    //--------------------------------------------------------------------Добавляет работодателя из файла AddingMode.txt
     fstream inputFile;
     char temp = 0;
     int blocksCount = 0, symbolsCount = 0, nodeNumber = 0;
@@ -641,7 +538,7 @@ void add(JobInfo &jobInfo, Employer &employer) {
 
     employer.MakeNewNode();
     position = inputFile.tellg();
-    symbolsCount = countSymbols(inputFile, temp);
+    symbolsCount = countSymbols(inputFile);
     blocksCount = countBlocksInLine(symbolsCount);
     auto transitLine = new char[symbolsCount + 1];
     for (int j = 0; j < symbolsCount + 1; j++)
@@ -661,7 +558,7 @@ void add(JobInfo &jobInfo, Employer &employer) {
     delete[] transitLine;
 
     position = inputFile.tellg();
-    symbolsCount = countSymbols(inputFile, temp);
+    symbolsCount = countSymbols(inputFile);
     blocksCount = countBlocksInLine(symbolsCount);
     transitLine = new char[symbolsCount + 1];
     for (int j = 0; j < symbolsCount + 1; j++)
@@ -681,7 +578,7 @@ void add(JobInfo &jobInfo, Employer &employer) {
     delete[] transitLine;
 
     position = inputFile.tellg();
-    symbolsCount = countSymbols(inputFile, temp);
+    symbolsCount = countSymbols(inputFile);
     blocksCount = countBlocksInLine(symbolsCount);
     transitLine = new char[symbolsCount + 1];
     for (int j = 0; j < symbolsCount + 1; j++)
@@ -701,7 +598,7 @@ void add(JobInfo &jobInfo, Employer &employer) {
     delete[] transitLine;
 
     position = inputFile.tellg();
-    symbolsCount = countSymbols(inputFile, temp);
+    symbolsCount = countSymbols(inputFile);
     blocksCount = countBlocksInLine(symbolsCount);
     transitLine = new char[symbolsCount + 1];
     for (int j = 0; j < symbolsCount + 1; j++)
@@ -725,6 +622,7 @@ void add(JobInfo &jobInfo, Employer &employer) {
 }
 
 void add(JobInfo &jobInfo, Vacancy &vacancy) {
+    //------------------------------------------------------------------------Добавляет вакансию из файла AddingMode.txt
     fstream inputFile;
     char temp = 0;
     int blocksCount = 0, symbolsCount = 0, nodeNumber = 0;
@@ -734,7 +632,7 @@ void add(JobInfo &jobInfo, Vacancy &vacancy) {
 
     vacancy.makeNewNode();
     position = inputFile.tellg();
-    symbolsCount = countSymbols(inputFile, temp);
+    symbolsCount = countSymbols(inputFile);
     blocksCount = countBlocksInLine(symbolsCount);
     auto transitLine = new char[symbolsCount + 1];
     for (int j = 0; j < symbolsCount + 1; j++)
@@ -754,7 +652,7 @@ void add(JobInfo &jobInfo, Vacancy &vacancy) {
     delete[] transitLine;
 
     position = inputFile.tellg();
-    symbolsCount = countSymbols(inputFile, temp);
+    symbolsCount = countSymbols(inputFile);
     blocksCount = countBlocksInLine(symbolsCount);
     transitLine = new char[symbolsCount + 1];
     for (int j = 0; j < symbolsCount + 1; j++)
@@ -774,7 +672,7 @@ void add(JobInfo &jobInfo, Vacancy &vacancy) {
     delete[] transitLine;
 
     position = inputFile.tellg();
-    symbolsCount = countSymbols(inputFile, temp);
+    symbolsCount = countSymbols(inputFile);
     blocksCount = countBlocksInLine(symbolsCount);
     transitLine = new char[symbolsCount + 1];
     for (int j = 0; j < symbolsCount + 1; j++)
@@ -794,7 +692,7 @@ void add(JobInfo &jobInfo, Vacancy &vacancy) {
     delete[] transitLine;
 
     position = inputFile.tellg();
-    symbolsCount = countSymbols(inputFile, temp);
+    symbolsCount = countSymbols(inputFile);
     blocksCount = countBlocksInLine(symbolsCount);
     transitLine = new char[symbolsCount + 1];
     for (int j = 0; j < symbolsCount + 1; j++)
@@ -814,7 +712,7 @@ void add(JobInfo &jobInfo, Vacancy &vacancy) {
     delete[] transitLine;
 
     position = inputFile.tellg();
-    symbolsCount = countSymbols(inputFile, temp);
+    symbolsCount = countSymbols(inputFile);
     blocksCount = countBlocksInLine(symbolsCount);
     transitLine = new char[symbolsCount + 1];
     for (int j = 0; j < symbolsCount + 1; j++)
@@ -834,7 +732,7 @@ void add(JobInfo &jobInfo, Vacancy &vacancy) {
     delete[] transitLine;
 
     position = inputFile.tellg();
-    symbolsCount = countSymbols(inputFile, temp);
+    symbolsCount = countSymbols(inputFile);
     blocksCount = countBlocksInLine(symbolsCount);
     transitLine = new char[symbolsCount + 1];
     for (int j = 0; j < symbolsCount + 1; j++)
@@ -854,7 +752,7 @@ void add(JobInfo &jobInfo, Vacancy &vacancy) {
     delete[] transitLine;
 
     position = inputFile.tellg();
-    symbolsCount = countSymbols(inputFile, temp);
+    symbolsCount = countSymbols(inputFile);
     blocksCount = countBlocksInLine(symbolsCount);
     transitLine = new char[symbolsCount + 1];
     for (int j = 0; j < symbolsCount + 1; j++)
@@ -878,6 +776,7 @@ void add(JobInfo &jobInfo, Vacancy &vacancy) {
 }
 
 List1 *returnPointToRequiredInfo(Form &inJobInfo, int nodeNumber) {
+    //-----------------------------------------------------------------Возвращает указатель на узел с номером nodeNumber
     inJobInfo.current = inJobInfo.head;
     for (int i = 0; i < nodeNumber; i++) {
         if (i == nodeNumber - 1) {
@@ -889,7 +788,7 @@ List1 *returnPointToRequiredInfo(Form &inJobInfo, int nodeNumber) {
 }
 
 int findNumberOfNecessaryNode(Form &inJobInfo, const char *tempLine, int sizeOfTemp) {
-    //---------------------------------------------------------------------Находит номер узла, в котором лежит tempLine
+    //----------------------------------------------------------------------Находит номер узла, в котором лежит tempLine
     FormBlock tempFormBlock;
     inJobInfo.current = inJobInfo.head;
     tempFormBlock.current = inJobInfo.current->line;
@@ -929,7 +828,7 @@ int findNumberOfNecessaryNode(Form &inJobInfo, const char *tempLine, int sizeOfT
 }
 
 bool wordIsInList(Form &inJobInfo, const char *tempLine, int sizeOfTemp) {
-    //-------------------------------------------------------------------Проверяет, есть ли в inJobInfo строка tempLine
+    //--------------------------------------------------------------------Проверяет, есть ли в inJobInfo строка tempLine
     FormBlock tempFormBlock;
     inJobInfo.current = inJobInfo.head;
     tempFormBlock.current = inJobInfo.current->line;
@@ -979,7 +878,7 @@ void getInfoFromFile(Form &form, fstream &inputFile) {
     lineCountFromInput = lineCount(inputFile);
     for (int i = 0; i < lineCountFromInput; i++) {
         position = inputFile.tellg();
-        symbolsCount = countSymbols(inputFile, temp);
+        symbolsCount = countSymbols(inputFile);
         blocksCount = countBlocksInLine(symbolsCount);
         auto transitLine = new char[symbolsCount + 1];
         for (int j = 0; j < symbolsCount + 1; j++)
@@ -1079,8 +978,9 @@ int countBlocksInLine(int symbolsCount) {
     return shouldBeBlocks;
 }
 
-int countSymbols(fstream &inputFile, char temp) {
+int countSymbols(fstream &inputFile) {
     //------------------------------------------------------------------------Находит количество символов в строке файла
+    char temp = 0;
     int symbolsCount = 0;
     do {
         inputFile >> temp;

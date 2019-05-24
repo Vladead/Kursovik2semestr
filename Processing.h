@@ -15,9 +15,9 @@
 #include "JobSeeker.h"
 #include "Employer.h"
 
-void jobSeekerMode(JobInfo &jobInfo, JobSeeker &jobSeeker);
+void jobSeekerMode(JobInfo &jobInfo, JobSeeker &jobSeeker, Vacancy &vacancy);
 
-void employerMode(JobInfo &jobInfo, Employer &employer);
+void employerMode(JobInfo &jobInfo, Employer &employer, JobSeeker &jobSeeker);
 
 void addingMode(JobInfo &jobInfo, JobSeeker &jobSeeker, Employer &employer, Vacancy &vacancy);
 
@@ -43,7 +43,7 @@ int lineCount(std::fstream &inputFile);
 
 int countBlocksInLine(int symbolsCount);
 
-int countSymbols(std::fstream &inputFile, char temp);
+int countSymbols(std::fstream &inputFile);
 
 bool checkFile(std::fstream &inputFile);
 
