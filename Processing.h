@@ -15,6 +15,8 @@
 #include "JobSeeker.h"
 #include "Employer.h"
 
+void addFirstInfo(Vacancy &vacancy, Employer &employer, JobSeeker &jobSeeker, JobInfo &jobInfo);
+
 void jobSeekerMode(JobInfo &jobInfo, JobSeeker &jobSeeker, Vacancy &vacancy);
 
 void employerMode(JobInfo &jobInfo, Employer &employer, JobSeeker &jobSeeker);

@@ -17,12 +17,19 @@
 
 using namespace std;
 
-void addFirstInfo(Vacancy &vacancy, Employer &employer, JobSeeker &jobSeeker) {
+void addFirstInfo(Vacancy &vacancy, Employer &employer, JobSeeker &jobSeeker, JobInfo &jobInfo) {
     fstream inputFile;
+    char temp = 0;
     inputFile.open("../cmake-build-debug/FirstInfo.txt", ios::in);
     inputFile.unsetf(ios::skipws);
 
-
+    for (int i = 0; i < 10; i++) {
+        add(jobInfo, vacancy, inputFile);
+        inputFile >> temp;
+        if (temp == '\r') {
+            inputFile >> temp;
+        }
+    }
 
     inputFile.setf(ios::skipws);
     inputFile.close();
@@ -318,6 +325,7 @@ void addingMode(JobInfo &jobInfo, JobSeeker &jobSeeker, Employer &employer, Vaca
     //-----------------------------------------------------------------Режим добавления соискателя/работодателя/вакансии
     fstream inputFile;
     inputFile.open("../cmake-build-debug/AddingMode.txt", ios::in);
+    inputFile.unsetf(ios::skipws);
     int way = 0;
     cout << "1 - Соискателя\n"
          << "2 - Работодателя\n"
@@ -340,6 +348,7 @@ void addingMode(JobInfo &jobInfo, JobSeeker &jobSeeker, Employer &employer, Vaca
         default:
             cout << "Неправильный ввод" << endl;
     }
+    inputFile.setf(ios::skipws);
     inputFile.close();
 }
 
@@ -349,9 +358,9 @@ void satisfiedVacancyMode(Vacancy &satisfiedVacancy) {
 
 void add(JobInfo &jobInfo, JobSeeker &jobSeeker, fstream &inputFile) {
     //----------------------------------------------------------------------Добавляет соискателя из файла AddingMode.txt
+    //------------------------------------------------------Если таких данных нет в JobInfo, то они будут туда добавлены
     char temp = 0;
     int blocksCount = 0, symbolsCount = 0, nodeNumber = 0;
-    inputFile.unsetf(ios::skipws);
     int position = 0;
 
     jobSeeker.makeNewNode();
@@ -534,15 +543,13 @@ void add(JobInfo &jobInfo, JobSeeker &jobSeeker, fstream &inputFile) {
     nodeNumber = findNumberOfNecessaryNode(jobInfo.salary, transitLine, symbolsCount);
     jobSeeker.last->salary = returnPointToRequiredInfo(jobInfo.salary, nodeNumber);
     delete[] transitLine;
-
-    inputFile.setf(ios::skipws);
 }
 
 void add(JobInfo &jobInfo, Employer &employer, fstream &inputFile) {
     //--------------------------------------------------------------------Добавляет работодателя из файла AddingMode.txt
+    //------------------------------------------------------Если таких данных нет в JobInfo, то они будут туда добавлены
     char temp = 0;
     int blocksCount = 0, symbolsCount = 0, nodeNumber = 0;
-    inputFile.unsetf(ios::skipws);
     int position = 0;
 
     employer.MakeNewNode();
@@ -625,15 +632,13 @@ void add(JobInfo &jobInfo, Employer &employer, fstream &inputFile) {
     nodeNumber = findNumberOfNecessaryNode(jobInfo.phoneNumber, transitLine, symbolsCount);
     employer.last->phoneNumber = returnPointToRequiredInfo(jobInfo.phoneNumber, nodeNumber);
     delete[] transitLine;
-
-    inputFile.setf(ios::skipws);
 }
 
 void add(JobInfo &jobInfo, Vacancy &vacancy, fstream &inputFile) {
     //------------------------------------------------------------------------Добавляет вакансию из файла AddingMode.txt
+    //------------------------------------------------------Если таких данных нет в JobInfo, то они будут туда добавлены
     char temp = 0;
     int blocksCount = 0, symbolsCount = 0, nodeNumber = 0;
-    inputFile.unsetf(ios::skipws);
     int position = 0;
 
     vacancy.makeNewNode();
@@ -648,7 +653,8 @@ void add(JobInfo &jobInfo, Vacancy &vacancy, fstream &inputFile) {
     for (int j = 0; j < symbolsCount; j++)
         inputFile >> transitLine[j];
     inputFile >> temp;
-    inputFile >> temp;
+    if (temp == '\r')
+        inputFile >> temp;
     if (!wordIsInList(jobInfo.position, transitLine, symbolsCount)) {
         inputOneLine(jobInfo.position, symbolsCount, blocksCount, transitLine);
         jobInfo.position.last->symbolsInLine = symbolsCount;
@@ -668,7 +674,8 @@ void add(JobInfo &jobInfo, Vacancy &vacancy, fstream &inputFile) {
     for (int j = 0; j < symbolsCount; j++)
         inputFile >> transitLine[j];
     inputFile >> temp;
-    inputFile >> temp;
+    if (temp == '\r')
+        inputFile >> temp;
     if (!wordIsInList(jobInfo.schedule, transitLine, symbolsCount)) {
         inputOneLine(jobInfo.schedule, symbolsCount, blocksCount, transitLine);
         jobInfo.schedule.last->symbolsInLine = symbolsCount;
@@ -688,7 +695,8 @@ void add(JobInfo &jobInfo, Vacancy &vacancy, fstream &inputFile) {
     for (int j = 0; j < symbolsCount; j++)
         inputFile >> transitLine[j];
     inputFile >> temp;
-    inputFile >> temp;
+    if (temp == '\r')
+        inputFile >> temp;
     if (!wordIsInList(jobInfo.salary, transitLine, symbolsCount)) {
         inputOneLine(jobInfo.salary, symbolsCount, blocksCount, transitLine);
         jobInfo.salary.last->symbolsInLine = symbolsCount;
@@ -708,7 +716,8 @@ void add(JobInfo &jobInfo, Vacancy &vacancy, fstream &inputFile) {
     for (int j = 0; j < symbolsCount; j++)
         inputFile >> transitLine[j];
     inputFile >> temp;
-    inputFile >> temp;
+    if (temp == '\r')
+        inputFile >> temp;
     if (!wordIsInList(jobInfo.education, transitLine, symbolsCount)) {
         inputOneLine(jobInfo.education, symbolsCount, blocksCount, transitLine);
         jobInfo.education.last->symbolsInLine = symbolsCount;
@@ -728,7 +737,8 @@ void add(JobInfo &jobInfo, Vacancy &vacancy, fstream &inputFile) {
     for (int j = 0; j < symbolsCount; j++)
         inputFile >> transitLine[j];
     inputFile >> temp;
-    inputFile >> temp;
+    if (temp == '\r')
+        inputFile >> temp;
     if (!wordIsInList(jobInfo.fieldOfActivity, transitLine, symbolsCount)) {
         inputOneLine(jobInfo.fieldOfActivity, symbolsCount, blocksCount, transitLine);
         jobInfo.fieldOfActivity.last->symbolsInLine = symbolsCount;
@@ -748,7 +758,8 @@ void add(JobInfo &jobInfo, Vacancy &vacancy, fstream &inputFile) {
     for (int j = 0; j < symbolsCount; j++)
         inputFile >> transitLine[j];
     inputFile >> temp;
-    inputFile >> temp;
+    if (temp == '\r')
+        inputFile >> temp;
     if (!wordIsInList(jobInfo.workExperience, transitLine, symbolsCount)) {
         inputOneLine(jobInfo.workExperience, symbolsCount, blocksCount, transitLine);
         jobInfo.workExperience.last->symbolsInLine = symbolsCount;
@@ -768,7 +779,8 @@ void add(JobInfo &jobInfo, Vacancy &vacancy, fstream &inputFile) {
     for (int j = 0; j < symbolsCount; j++)
         inputFile >> transitLine[j];
     inputFile >> temp;
-    inputFile >> temp;
+    if (temp == '\r')
+        inputFile >> temp;
     if (!wordIsInList(jobInfo.title, transitLine, symbolsCount)) {
         cout << "Такой компании нет в базе данных" << endl;
     }
@@ -776,8 +788,6 @@ void add(JobInfo &jobInfo, Vacancy &vacancy, fstream &inputFile) {
     //----------------------------------------TODO добавить возможность в вакансии ссылаться на нескольких работодателей
     vacancy.last->employerApplications = returnPointToRequiredInfo(jobInfo.title, nodeNumber);
     delete[] transitLine;
-
-    inputFile.setf(ios::skipws);
 }
 
 List1 *returnPointToRequiredInfo(Form &inJobInfo, int nodeNumber) {
@@ -804,7 +814,7 @@ int findNumberOfNecessaryNode(Form &inJobInfo, const char *tempLine, int sizeOfT
         if (inJobInfo.current->symbolsInLine == sizeOfTemp) {
             nodeNumber++;
             for (int i = 0; i < sizeOfTemp; i++, k++) {
-                if (tempFormBlock.current->block->symbols[k] != tempLine[i]) {
+                if (tempFormBlock.current->block->symbols[k] != tempLine[i] && inJobInfo.current->next != nullptr) {
                     inJobInfo.current = inJobInfo.current->next;
                     tempFormBlock.current = inJobInfo.current->line;
                     wordFits = false;
@@ -842,7 +852,7 @@ bool wordIsInList(Form &inJobInfo, const char *tempLine, int sizeOfTemp) {
     while (inJobInfo.current != nullptr) {
         if (inJobInfo.current->symbolsInLine == sizeOfTemp) {
             for (int i = 0; i < sizeOfTemp; i++, k++) {
-                if (tempFormBlock.current->block->symbols[k] != tempLine[i]) {
+                if (tempFormBlock.current->block->symbols[k] != tempLine[i] && inJobInfo.current->next != nullptr) {
                     inJobInfo.current = inJobInfo.current->next;
                     tempFormBlock.current = inJobInfo.current->line;
                     wordFits = false;
@@ -893,6 +903,9 @@ void getInfoFromFile(Form &form, fstream &inputFile) {
         for (int j = 0; j < symbolsCount; j++)
             inputFile >> transitLine[j];
         inputFile >> temp;
+        if (temp == '\r') {
+            inputFile >> temp;
+        }
         inputOneLine(form, symbolsCount, blocksCount, transitLine);
         form.last->symbolsInLine = symbolsCount;
         delete[] transitLine;

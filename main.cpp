@@ -17,6 +17,7 @@ int main() {
     jobInfo.fillJobInfo();
     int way = 0;
     bool stop = false;
+    addFirstInfo(listOfVacancy, listOfEmployers, listOfJobSeekers, jobInfo);
     while (!stop) {
         cout << "1 - Соискатель\n"
              << "2 - Работодатель\n"
