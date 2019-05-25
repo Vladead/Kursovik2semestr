@@ -30,6 +30,28 @@ void addFirstInfo(Vacancy &vacancy, Employer &employer, JobSeeker &jobSeeker, Jo
             inputFile >> temp;
         }
     }
+    inputFile >> temp;
+    if (temp == '\r') {
+        inputFile >> temp;
+    }
+    for (int i = 0; i < 10; i++) {
+        add(jobInfo, employer, inputFile);
+        inputFile >> temp;
+        if (temp == '\r') {
+            inputFile >> temp;
+        }
+    }
+    inputFile >> temp;
+    if (temp == '\r') {
+        inputFile >> temp;
+    }
+    for (int i = 0; i < 10; i++) {
+        add(jobInfo, jobSeeker, inputFile);
+        inputFile >> temp;
+        if (temp == '\r') {
+            inputFile >> temp;
+        }
+    }
 
     inputFile.setf(ios::skipws);
     inputFile.close();
@@ -334,19 +356,45 @@ void addingMode(JobInfo &jobInfo, JobSeeker &jobSeeker, Employer &employer, Vaca
     cin >> way;
     switch (way) {
         case 1:
+            cout << "Ввод будет осуществлен таким образом: \n"
+                 << "Фамилия \n"
+                 << "Имя \n"
+                 << "Отчество \n"
+                 << "Должность \n"
+                 << "Область деятельности \n"
+                 << "Опыт \n"
+                 << "Образование \n"
+                 << "График \n"
+                 << "Заработная плата \n"
+                 << endl;
             add(jobInfo, jobSeeker, inputFile);
-            cout << "Соискатель добавлен" << endl;
+            cout << "Соискатель добавлен \n" << endl;
             break;
         case 2:
+            cout << "Ввод будет осуществлен таким образом: \n"
+                 << "Название \n"
+                 << "Область деятельности \n"
+                 << "Адресс \n"
+                 << "Телефон \n"
+                 << endl;
             add(jobInfo, employer, inputFile);
-            cout << "Работодатель добавлен" << endl;
+            cout << "Работодатель добавлен \n" << endl;
             break;
         case 3:
+            cout << "Ввод будет осуществлен таким образом: \n"
+                 << "Должность \n"
+                 << "График \n"
+                 << "Зарплата \n"
+                 << "Образование \n"
+                 << "Область деятельности \n"
+                 << "Опыт \n"
+                 << "Предложения компаний \n"
+                 << endl;
             add(jobInfo, vacancy, inputFile);
-            cout << "Вакансия добавлена" << endl;
+            cout << "Вакансия добавлена \n" << endl;
             break;
         default:
-            cout << "Неправильный ввод" << endl;
+            cout << "Неправильный ввод \n" << endl;
     }
     inputFile.setf(ios::skipws);
     inputFile.close();
@@ -785,7 +833,7 @@ void add(JobInfo &jobInfo, Vacancy &vacancy, fstream &inputFile) {
         cout << "Такой компании нет в базе данных" << endl;
     }
     nodeNumber = findNumberOfNecessaryNode(jobInfo.title, transitLine, symbolsCount);
-    //----------------------------------------TODO добавить возможность в вакансии ссылаться на нескольких работодателей
+    //-----------------------TODO добавить возможность в вакансии ссылаться на нескольких работодателей. Доп. функционал
     vacancy.last->employerApplications = returnPointToRequiredInfo(jobInfo.title, nodeNumber);
     delete[] transitLine;
 }

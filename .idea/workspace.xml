@@ -14,8 +14,6 @@
     <list default="true" id="b575b7c0-3780-440a-aaf9-4ca55d660df1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Processing.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Processing.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Processing.h" beforeDir="false" afterPath="$PROJECT_DIR$/Processing.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,10 +28,10 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="400">
+            <state relative-caret-position="204">
               <caret line="20" selection-start-line="20" selection-end-line="20" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
@@ -42,42 +40,32 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Processing.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="304">
-              <caret line="19" column="96" selection-start-line="19" selection-start-column="96" selection-end-line="19" selection-end-column="96" />
+            <state relative-caret-position="731">
+              <caret line="53" column="5" lean-forward="true" selection-start-line="53" selection-start-column="5" selection-end-line="53" selection-end-column="5" />
               <folding>
                 <element signature="e#42#61#0" expanded="true" />
-                <element signature="e#327#806#0" />
-                <element signature="e#594#8745#0" />
-                <element signature="e#8747#12623#0" />
-                <element signature="e#12625#13592#0" />
-                <element signature="e#13594#13651#0" />
-                <element signature="e#13653#21762#0" />
-                <element signature="e#21764#25593#0" />
-                <element signature="e#25595#32043#0" />
-                <element signature="e#32045#32471#0" />
-                <element signature="e#32473#34032#0" />
-                <element signature="e#34034#35514#0" />
-                <element signature="e#35516#36661#0" />
-                <element signature="e#36663#38233#0" />
-                <element signature="e#38235#38696#0" />
-                <element signature="e#38698#39157#0" />
-                <element signature="e#39159#39591#0" />
-                <element signature="e#39593#40228#0" />
-                <element signature="e#40230#40884#0" />
-                <element signature="e#40886#41251#0" />
+                <element signature="e#1330#9481#0" />
+                <element signature="e#9483#13359#0" />
+                <element signature="e#13361#15398#0" />
+                <element signature="e#15400#15457#0" />
+                <element signature="e#15459#23620#0" />
+                <element signature="e#23622#27503#0" />
+                <element signature="e#27505#34187#0" />
+                <element signature="e#34189#34615#0" />
+                <element signature="e#34617#36214#0" />
+                <element signature="e#36216#37734#0" />
+                <element signature="e#37736#38950#0" />
+                <element signature="e#38952#40522#0" />
+                <element signature="e#40524#40985#0" />
+                <element signature="e#40987#41446#0" />
+                <element signature="e#41448#41880#0" />
+                <element signature="e#41882#42517#0" />
+                <element signature="e#42519#43173#0" />
+                <element signature="e#43175#43540#0" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cmake-build-debug/FirstInfo.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="6" column="9" selection-start-line="6" selection-start-column="9" selection-end-line="6" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -85,7 +73,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Processing.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="188">
+            <state relative-caret-position="340">
               <caret line="17" column="96" selection-start-line="17" selection-start-column="96" selection-end-line="17" selection-end-column="96" />
               <folding>
                 <element signature="e#104#122#0" expanded="true" />
@@ -104,14 +92,11 @@
       <list>
         <option value="$PROJECT_DIR$/BlockList.h" />
         <option value="$PROJECT_DIR$/cmake-build-debug/Adress.txt" />
-        <option value="$PROJECT_DIR$/cmake-build-debug/Address.txt" />
-        <option value="$PROJECT_DIR$/cmake-build-debug/Phone_number.txt" />
         <option value="$PROJECT_DIR$/cmake-build-debug/Surname" />
         <option value="$PROJECT_DIR$/cmake-build-debug/Name.txt" />
         <option value="$PROJECT_DIR$/cmake-build-debug/Patronymic.txt" />
         <option value="$PROJECT_DIR$/cmake-build-debug/Education.txt" />
         <option value="$PROJECT_DIR$/cmake-build-debug/Field_of_activity.txt" />
-        <option value="$PROJECT_DIR$/cmake-build-debug/Work_experience.txt" />
         <option value="$PROJECT_DIR$/cmake-build-debug/Shedule.txt" />
         <option value="$PROJECT_DIR$/cmake-build-debug/Salary.txt" />
         <option value="$PROJECT_DIR$/cmake-build-debug/Schedule.txt" />
@@ -133,17 +118,20 @@
         <option value="$PROJECT_DIR$/Employer.h" />
         <option value="$PROJECT_DIR$/cmake-build-debug/EmployerMode.txt" />
         <option value="$PROJECT_DIR$/cmake-build-debug/AddingMode.txt" />
-        <option value="$PROJECT_DIR$/cmake-build-debug/FirstInfo.txt" />
         <option value="$PROJECT_DIR$/Processing.h" />
         <option value="$PROJECT_DIR$/main.cpp" />
+        <option value="$PROJECT_DIR$/cmake-build-debug/Address.txt" />
+        <option value="$PROJECT_DIR$/cmake-build-debug/Phone_number.txt" />
         <option value="$PROJECT_DIR$/Processing.cpp" />
+        <option value="$PROJECT_DIR$/cmake-build-debug/Surname.txt" />
+        <option value="$PROJECT_DIR$/cmake-build-debug/Work_experience.txt" />
+        <option value="$PROJECT_DIR$/cmake-build-debug/FirstInfo.txt" />
       </list>
     </option>
   </component>
   <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="614" />
-    <option name="y" value="-17" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="953" />
     <option name="width" value="974" />
     <option name="height" value="1047" />
   </component>
@@ -153,7 +141,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -161,10 +148,16 @@
               <item name="Kursovik" type="b2602c69:ProjectViewProjectNode" />
               <item name="Kursovik" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="Kursovik" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Kursovik" type="462c0819:PsiDirectoryNode" />
+              <item name="cmake-build-debug" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -239,24 +232,25 @@
       <workItem from="1558637963490" duration="2865000" />
       <workItem from="1558685417968" duration="4133000" />
       <workItem from="1558721381154" duration="2593000" />
-      <workItem from="1558784807116" duration="7303000" />
+      <workItem from="1558784807116" duration="11213000" />
+      <workItem from="1558810949335" duration="1989000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="79429000" />
+    <option name="totallyTimeSpent" value="85328000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="953" y="0" width="974" height="1047" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21927084" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21920668" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32905984" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32910052" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.25079367" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.29807693" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -265,7 +259,7 @@
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" weight="0.32905984" />
       <window_info anchor="bottom" id="Version Control" order="10" weight="0.32910052" />
       <window_info anchor="bottom" id="CMake" order="11" />
-      <window_info anchor="bottom" id="Messages" order="12" weight="0.3195767" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.31944445" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -281,44 +275,13 @@
     <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/cmake-build-debug/Address.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="31" selection-start-line="9" selection-start-column="31" selection-end-line="9" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/cmake-build-debug/Surname" />
-    <entry file="file://$PROJECT_DIR$/cmake-build-debug/Phone_number.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="15" lean-forward="true" selection-start-line="4" selection-start-column="15" selection-end-line="4" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/cmake-build-debug/output_file.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="14" lean-forward="true" selection-start-column="14" selection-end-column="14" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cmake-build-debug/Patronymic.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="9" lean-forward="true" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cmake-build-debug/Name.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="5" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cmake-build-debug/Surname.txt">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/FormBlock.h">
       <provider selected="true" editor-type-id="text-editor">
@@ -332,41 +295,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" column="19" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cmake-build-debug/Schedule.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="12" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cmake-build-debug/Education.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="17" selection-start-column="17" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cmake-build-debug/Field_of_activity.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="6" selection-start-column="6" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cmake-build-debug/Work_experience.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="16" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cmake-build-debug/Position.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="6" lean-forward="true" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
         </state>
       </provider>
     </entry>
@@ -426,13 +354,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cmake-build-debug/Salary.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="9" column="4" lean-forward="true" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Vacancy.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
@@ -461,39 +382,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cmake-build-debug/AddingMode.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="6" column="6" lean-forward="true" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Processing.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="17" column="96" selection-start-line="17" selection-start-column="96" selection-end-line="17" selection-end-column="96" />
-          <folding>
-            <element signature="e#104#122#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/JobInfo.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="161">
           <caret line="64" selection-start-line="64" selection-end-line="64" />
           <folding>
             <element signature="e#41#59#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="20" selection-start-line="20" selection-end-line="20" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -505,38 +399,141 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cmake-build-debug/FirstInfo.txt">
+    <entry file="file://$PROJECT_DIR$/cmake-build-debug/AddingMode.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
-          <caret line="6" column="9" selection-start-line="6" selection-start-column="9" selection-end-line="6" selection-end-column="9" />
+          <caret line="6" column="6" lean-forward="true" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Processing.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="17" column="96" selection-start-line="17" selection-start-column="96" selection-end-line="17" selection-end-column="96" />
+          <folding>
+            <element signature="e#104#122#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cmake-build-debug/Address.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="9" selection-start-line="9" selection-end-line="9" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cmake-build-debug/Phone_number.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cmake-build-debug/Surname.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="7" column="7" lean-forward="true" selection-start-line="7" selection-start-column="7" selection-end-line="7" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cmake-build-debug/Name.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="3" column="9" lean-forward="true" selection-start-line="3" selection-start-column="9" selection-end-line="3" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cmake-build-debug/Patronymic.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="8" column="10" lean-forward="true" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cmake-build-debug/Position.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="9" column="6" lean-forward="true" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cmake-build-debug/Field_of_activity.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="9" column="7" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cmake-build-debug/Work_experience.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cmake-build-debug/Education.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40">
+          <caret line="2" column="16" lean-forward="true" selection-start-line="2" selection-start-column="16" selection-end-line="2" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cmake-build-debug/Schedule.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="3" column="12" lean-forward="true" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cmake-build-debug/Salary.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="9" column="4" lean-forward="true" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cmake-build-debug/FirstInfo.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="791">
+          <caret line="230" column="4" selection-start-line="230" selection-start-column="4" selection-end-line="230" selection-end-column="4" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Processing.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="19" column="96" selection-start-line="19" selection-start-column="96" selection-end-line="19" selection-end-column="96" />
+        <state relative-caret-position="731">
+          <caret line="53" column="5" lean-forward="true" selection-start-line="53" selection-start-column="5" selection-end-line="53" selection-end-column="5" />
           <folding>
             <element signature="e#42#61#0" expanded="true" />
-            <element signature="e#327#806#0" />
-            <element signature="e#594#8745#0" />
-            <element signature="e#8747#12623#0" />
-            <element signature="e#12625#13592#0" />
-            <element signature="e#13594#13651#0" />
-            <element signature="e#13653#21762#0" />
-            <element signature="e#21764#25593#0" />
-            <element signature="e#25595#32043#0" />
-            <element signature="e#32045#32471#0" />
-            <element signature="e#32473#34032#0" />
-            <element signature="e#34034#35514#0" />
-            <element signature="e#35516#36661#0" />
-            <element signature="e#36663#38233#0" />
-            <element signature="e#38235#38696#0" />
-            <element signature="e#38698#39157#0" />
-            <element signature="e#39159#39591#0" />
-            <element signature="e#39593#40228#0" />
-            <element signature="e#40230#40884#0" />
-            <element signature="e#40886#41251#0" />
+            <element signature="e#1330#9481#0" />
+            <element signature="e#9483#13359#0" />
+            <element signature="e#13361#15398#0" />
+            <element signature="e#15400#15457#0" />
+            <element signature="e#15459#23620#0" />
+            <element signature="e#23622#27503#0" />
+            <element signature="e#27505#34187#0" />
+            <element signature="e#34189#34615#0" />
+            <element signature="e#34617#36214#0" />
+            <element signature="e#36216#37734#0" />
+            <element signature="e#37736#38950#0" />
+            <element signature="e#38952#40522#0" />
+            <element signature="e#40524#40985#0" />
+            <element signature="e#40987#41446#0" />
+            <element signature="e#41448#41880#0" />
+            <element signature="e#41882#42517#0" />
+            <element signature="e#42519#43173#0" />
+            <element signature="e#43175#43540#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="20" selection-start-line="20" selection-end-line="20" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
           </folding>
         </state>
       </provider>
