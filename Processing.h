@@ -15,7 +15,8 @@
 #include "JobSeeker.h"
 #include "Employer.h"
 
-void addFirstInfo(Vacancy &vacancy, Employer &employer, JobSeeker &jobSeeker, JobInfo &jobInfo);
+void
+addFirstInfo(Vacancy &vacancy, Employer &employer, JobSeeker &jobSeeker, JobInfo &jobInfo, std::fstream &protocolFile);
 
 void jobSeekerMode(JobInfo &jobInfo, JobSeeker &jobSeeker, Vacancy &vacancy);
 
@@ -49,7 +50,7 @@ int countSymbols(std::fstream &inputFile);
 
 bool checkFile(std::fstream &inputFile);
 
-void printForm(Form &form);
+void printForm(Form &form, std::fstream &outputFile);
 
 void deleteList(Form &form);
 

@@ -17,7 +17,9 @@
 
 using namespace std;
 
-void addFirstInfo(Vacancy &vacancy, Employer &employer, JobSeeker &jobSeeker, JobInfo &jobInfo) {
+void addFirstInfo(Vacancy &vacancy, Employer &employer, JobSeeker &jobSeeker, JobInfo &jobInfo, fstream &protocolFile) {
+    //----------------------------------------------------------Вносит первоначальные Вакансии/Соискателей/Работодателей
+    //-----------------------------------------------------------------Выводит все первоначальные данные в выходной файл
     fstream inputFile;
     char temp = 0;
     inputFile.open("../cmake-build-debug/FirstInfo.txt", ios::in);
@@ -52,6 +54,80 @@ void addFirstInfo(Vacancy &vacancy, Employer &employer, JobSeeker &jobSeeker, Jo
             inputFile >> temp;
         }
     }
+
+    protocolFile << "Исходные данные по работе: " << endl;
+    protocolFile << "Адреса: " << endl;
+    printForm(jobInfo.address, protocolFile);
+    protocolFile << endl;
+    protocolFile << endl;
+    protocolFile << "Образование: " << endl;
+    printForm(jobInfo.education, protocolFile);
+    protocolFile << endl;
+    protocolFile << endl;
+    protocolFile << "Сферы деятельности: " << endl;
+    printForm(jobInfo.fieldOfActivity, protocolFile);
+    protocolFile << endl;
+    protocolFile << endl;
+    protocolFile << "Номера телефонов: " << endl;
+    printForm(jobInfo.phoneNumber, protocolFile);
+    protocolFile << endl;
+    protocolFile << endl;
+    protocolFile << "Должности: " << endl;
+    printForm(jobInfo.position, protocolFile);
+    protocolFile << endl;
+    protocolFile << endl;
+    protocolFile << "Оклады: " << endl;
+    printForm(jobInfo.salary, protocolFile);
+    protocolFile << endl;
+    protocolFile << endl;
+    protocolFile << "Графики работы: " << endl;
+    printForm(jobInfo.schedule, protocolFile);
+    protocolFile << endl;
+    protocolFile << endl;
+    protocolFile << "Названия: " << endl;
+    printForm(jobInfo.title, protocolFile);
+    protocolFile << endl;
+    protocolFile << endl;
+    protocolFile << "Опыт работы: " << endl;
+    printForm(jobInfo.workExperience, protocolFile);
+    protocolFile << endl;
+    protocolFile << endl;
+    protocolFile << "Фамилии: " << endl;
+    printForm(jobInfo.surname, protocolFile);
+    protocolFile << endl;
+    protocolFile << endl;
+    protocolFile << "Имена: " << endl;
+    printForm(jobInfo.name, protocolFile);
+    protocolFile << endl;
+    protocolFile << endl;
+    protocolFile << "Отчества: " << endl;
+    printForm(jobInfo.patronymic, protocolFile);
+    protocolFile << endl;
+    protocolFile << endl;
+    protocolFile << endl;
+    protocolFile << endl;
+
+    protocolFile << "Первоначальные вакансии: " << endl;
+    for (int k = 1; k <= 10; k++) {
+        vacancy.printVacancy(k, protocolFile);
+        protocolFile << endl;
+    }
+    protocolFile << endl;
+    protocolFile << endl;
+    protocolFile << "Первоначальные работодатели: " << endl;
+    for (int k = 1; k <= 10; k++) {
+        employer.printEmployer(k, protocolFile);
+        protocolFile << endl;
+    }
+    protocolFile << endl;
+    protocolFile << endl;
+    protocolFile << "Первоначальные соискатели: " << endl;
+    for (int k = 1; k <= 10; k++) {
+        jobSeeker.printJobSeeker(k, protocolFile);
+        protocolFile << endl;
+    }
+    protocolFile << endl;
+    protocolFile << endl;
 
     inputFile.setf(ios::skipws);
     inputFile.close();
@@ -826,7 +902,7 @@ bool checkFile(fstream &inputFile) {
     return true;
 }
 
-void printForm(Form &form, fstream outputFile) {
+void printForm(Form &form, fstream &outputFile) {
     auto temp = form.head;
     auto temp1 = form.head->line;
     while (temp != nullptr) {

@@ -10,6 +10,7 @@
 using namespace std;
 
 int main() {
+    fstream protocolFile;
     Vacancy listOfVacancy, listOfSatisfiedVacancy;
     Employer listOfEmployers;
     JobSeeker listOfJobSeekers;
@@ -17,15 +18,8 @@ int main() {
     jobInfo.fillJobInfo();
     int way = 0;
     bool stop = false;
-    addFirstInfo(listOfVacancy, listOfEmployers, listOfJobSeekers, jobInfo);
-    fstream output;
-    output.open("outputFile.txt", ios::out);
-    listOfVacancy.printVacancy(3, output);
-    output << endl;
-    listOfJobSeekers.printJobSeeker(4, output);
-    output << endl;
-    listOfEmployers.printEmployer(8, output);
-    output.close();
+    protocolFile.open("protocolFile.txt", ios::out);
+    addFirstInfo(listOfVacancy, listOfEmployers, listOfJobSeekers, jobInfo, protocolFile);
     while (!stop) {
         cout << "1 - Соискатель\n"
              << "2 - Работодатель\n"
@@ -60,5 +54,6 @@ int main() {
         }
     }
 
+    protocolFile.close();
     return 0;
 }
