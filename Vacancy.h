@@ -6,6 +6,7 @@
 #define KURSOVIK_VACANCY_H
 
 
+#include <fstream>
 #include "List1.h"
 
 #pragma pack(push, 1)
@@ -31,13 +32,15 @@ public:
 
 class Vacancy {
 public:
-    NodeVacancy *head, *last;
+    NodeVacancy *head, *last, *current;
 
     Vacancy();
 
     ~Vacancy();
 
     void makeNewNode();
+
+    void printVacancy(int numberOfRequiredVacancy, std::fstream &outputFile);
 };
 
 #pragma pack(pop)

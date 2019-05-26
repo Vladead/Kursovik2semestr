@@ -66,6 +66,7 @@ void jobSeekerMode(JobInfo &jobInfo, JobSeeker &jobSeeker, Vacancy &vacancy) { /
     int position = 0;
 
     add(jobInfo, jobSeeker, inputFile);
+    jobSeeker.current = jobSeeker.last;
 
     inputFile.setf(ios::skipws);
     inputFile.close();
@@ -80,6 +81,7 @@ void employerMode(JobInfo &jobInfo, Employer &employer, JobSeeker &jobSeeker) { 
     int position = 0;
 
     add(jobInfo, employer, inputFile);
+    employer.current = employer.last;
 
     inputFile.setf(ios::skipws);
     inputFile.close();
@@ -824,13 +826,9 @@ bool checkFile(fstream &inputFile) {
     return true;
 }
 
-void printForm(Form &form) { // Надо дописать
-    fstream outputFile;
-    outputFile.open("output_file.txt", std::ios::out);
-
+void printForm(Form &form, fstream outputFile) {
     auto temp = form.head;
     auto temp1 = form.head->line;
-    outputFile << "Первый список: " << endl;
     while (temp != nullptr) {
         for (int i = 0; temp1->block->symbols[i] != temp1->block->marker; i++) {
             outputFile << temp1->block->symbols[i];
@@ -844,8 +842,6 @@ void printForm(Form &form) { // Надо дописать
         if (temp != nullptr)
             temp1 = temp->line;
     }
-
-    outputFile.close();
 }
 
 void deleteList(Form &form) {

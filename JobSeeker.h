@@ -31,13 +31,15 @@ public:
 
 class JobSeeker {
 public:
-    NodeJobSeeker *head, *last;
+    NodeJobSeeker *head, *last, *current;
 
     JobSeeker();
 
     ~JobSeeker();
 
     void makeNewNode();
+
+    void printJobSeeker(int numberOfRequiredVacancy, std::fstream &outputFile);
 };
 
 #pragma pack(pop)

@@ -26,13 +26,15 @@ public:
 
 class Employer {
 public:
-    NodeEmp *head, *last;
+    NodeEmp *head, *last, *current;
 
     Employer();
 
     ~Employer();
 
     void MakeNewNode();
+
+    void printEmployer(int numberOfRequiredVacancy, std::fstream &outputFile);
 };
 
 #pragma pack(pop)

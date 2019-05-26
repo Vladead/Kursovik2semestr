@@ -18,6 +18,14 @@ int main() {
     int way = 0;
     bool stop = false;
     addFirstInfo(listOfVacancy, listOfEmployers, listOfJobSeekers, jobInfo);
+    fstream output;
+    output.open("outputFile.txt", ios::out);
+    listOfVacancy.printVacancy(3, output);
+    output << endl;
+    listOfJobSeekers.printJobSeeker(4, output);
+    output << endl;
+    listOfEmployers.printEmployer(8, output);
+    output.close();
     while (!stop) {
         cout << "1 - Соискатель\n"
              << "2 - Работодатель\n"
