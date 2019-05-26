@@ -18,9 +18,14 @@
 void
 addFirstInfo(Vacancy &vacancy, Employer &employer, JobSeeker &jobSeeker, JobInfo &jobInfo, std::fstream &protocolFile);
 
-void jobSeekerMode(JobInfo &jobInfo, JobSeeker &jobSeeker, Vacancy &vacancy);
+void jobSeekerMode(JobInfo &jobInfo, JobSeeker &jobSeeker, Vacancy &vacancy, Vacancy &listOfSatisfiedVacancy);
 
-void employerMode(JobInfo &jobInfo, Employer &employer, JobSeeker &jobSeeker);
+void findRequiredVacancy(NodeJobSeeker *currentJobSeeker, Vacancy &vacancy, Vacancy &listOfSatisfiedVacancy);
+
+void employerMode(JobInfo &jobInfo, Employer &employer, JobSeeker &jobSeeker, Vacancy &vacancy,
+                  Vacancy &listOfSatisfiedVacancy);
+
+void findRequiredJobSeeker(NodeVacancy *currentVacancy, JobSeeker &jobSeeker, Vacancy &listOfSatisfiedVacancy);
 
 void addingMode(JobInfo &jobInfo, JobSeeker &jobSeeker, Employer &employer, Vacancy &vacancy);
 

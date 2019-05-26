@@ -30,11 +30,11 @@ int main() {
         switch (way) {
             case 1:
                 cout << "Режим соискателя" << endl;
-                jobSeekerMode(jobInfo, listOfJobSeekers, listOfVacancy);
+                jobSeekerMode(jobInfo, listOfJobSeekers, listOfVacancy, listOfSatisfiedVacancy);
                 break;
             case 2:
                 cout << "Режим работодателя" << endl;
-                employerMode(jobInfo, listOfEmployers, listOfJobSeekers);
+                employerMode(jobInfo, listOfEmployers, listOfJobSeekers, listOfVacancy, listOfSatisfiedVacancy);
                 break;
             case 3:
                 cout << "Режим добавления" << endl;

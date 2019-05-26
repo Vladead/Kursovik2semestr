@@ -14,7 +14,7 @@ NodeVacancy::NodeVacancy() {
     fieldOfActivity = nullptr;
     employerApplications = nullptr;
 
-    vacant = 'n';
+    vacant = 'y';
 
     next = nullptr;
 }

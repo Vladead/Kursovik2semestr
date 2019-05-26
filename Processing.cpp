@@ -133,7 +133,8 @@ void addFirstInfo(Vacancy &vacancy, Employer &employer, JobSeeker &jobSeeker, Jo
     inputFile.close();
 }
 
-void jobSeekerMode(JobInfo &jobInfo, JobSeeker &jobSeeker, Vacancy &vacancy) { //TODO добавить поиск нужных вакансий
+void jobSeekerMode(JobInfo &jobInfo, JobSeeker &jobSeeker, Vacancy &vacancy,
+                   Vacancy &listOfSatisfiedVacancy) { //TODO добавить поиск нужных вакансий
     fstream inputFile;
     char temp = 0;
     int blocksCount = 0, symbolsCount = 0, nodeNumber = 0;
@@ -143,12 +144,38 @@ void jobSeekerMode(JobInfo &jobInfo, JobSeeker &jobSeeker, Vacancy &vacancy) { /
 
     add(jobInfo, jobSeeker, inputFile);
     jobSeeker.current = jobSeeker.last;
+    findRequiredVacancy(jobSeeker.current, vacancy, listOfSatisfiedVacancy);
 
     inputFile.setf(ios::skipws);
     inputFile.close();
 }
 
-void employerMode(JobInfo &jobInfo, Employer &employer, JobSeeker &jobSeeker) { //TODO добавить поиск нужных соискателей
+void findRequiredVacancy(NodeJobSeeker *currentJobSeeker, Vacancy &vacancy, Vacancy &listOfSatisfiedVacancy) {
+    cout << "Режим в разработке" << endl;
+    vacancy.current = vacancy.head;
+    while (vacancy.current != nullptr) {
+        if (currentJobSeeker->fieldOfActivity == vacancy.current->fieldOfActivity &&
+            currentJobSeeker->workExperience == vacancy.current->workExperience &&
+            currentJobSeeker->position == vacancy.current->position &&
+            currentJobSeeker->schedule == vacancy.current->schedule &&
+            currentJobSeeker->salary == vacancy.current->salary &&
+            currentJobSeeker->education == vacancy.current->education) {
+
+            listOfSatisfiedVacancy.makeNewNode();
+            listOfSatisfiedVacancy.last = vacancy.current;
+            listOfSatisfiedVacancy.last->vacant = 'n'; // 'n' значит занята, когда свободна 'y'
+        }
+        if (currentJobSeeker->fieldOfActivity == vacancy.current->fieldOfActivity &&
+            currentJobSeeker->workExperience == vacancy.current->workExperience &&
+            currentJobSeeker->position == vacancy.current->position) {
+
+
+        }
+    }
+}
+
+void employerMode(JobInfo &jobInfo, Employer &employer, JobSeeker &jobSeeker, Vacancy &vacancy,
+                  Vacancy &listOfSatisfiedVacancy) { //TODO добавить поиск нужных соискателей
     fstream inputFile;
     char temp = 0;
     int blocksCount = 0, symbolsCount = 0, nodeNumber = 0;
@@ -157,10 +184,24 @@ void employerMode(JobInfo &jobInfo, Employer &employer, JobSeeker &jobSeeker) { 
     int position = 0;
 
     add(jobInfo, employer, inputFile);
-    employer.current = employer.last;
+    inputFile >> temp;
+    if (temp == '\r') {
+        inputFile >> temp;
+    }
+    add(jobInfo, vacancy, inputFile);
+    vacancy.current = vacancy.last;
+    findRequiredJobSeeker(vacancy.current, jobSeeker, listOfSatisfiedVacancy);
 
     inputFile.setf(ios::skipws);
     inputFile.close();
+}
+
+void findRequiredJobSeeker(NodeVacancy *currentVacancy, JobSeeker &jobSeeker, Vacancy &listOfSatisfiedVacancy) {
+    cout << "Режим в разработке" << endl;
+    jobSeeker.current = jobSeeker.head;
+    while (jobSeeker.current != nullptr) {
+
+    }
 }
 
 void addingMode(JobInfo &jobInfo, JobSeeker &jobSeeker, Employer &employer, Vacancy &vacancy) {
