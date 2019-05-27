@@ -134,7 +134,7 @@ void addFirstInfo(Vacancy &vacancy, Employer &employer, JobSeeker &jobSeeker, Jo
 }
 
 void jobSeekerMode(JobInfo &jobInfo, JobSeeker &jobSeeker, Vacancy &vacancy,
-                   Vacancy &listOfSatisfiedVacancy) { //TODO добавить поиск нужных вакансий
+                   Vacancy &listOfSatisfiedVacancy) {
     fstream inputFile;
     char temp = 0;
     int blocksCount = 0, symbolsCount = 0, nodeNumber = 0;
@@ -151,7 +151,8 @@ void jobSeekerMode(JobInfo &jobInfo, JobSeeker &jobSeeker, Vacancy &vacancy,
 }
 
 void findRequiredVacancy(NodeJobSeeker *currentJobSeeker, Vacancy &vacancy, Vacancy &listOfSatisfiedVacancy) {
-    cout << "Режим в разработке" << endl;
+    char temp = 0;
+    NodeVacancy *previousVacancy = nullptr;
     vacancy.current = vacancy.head;
     while (vacancy.current != nullptr) {
         if (currentJobSeeker->fieldOfActivity == vacancy.current->fieldOfActivity &&
@@ -161,16 +162,63 @@ void findRequiredVacancy(NodeJobSeeker *currentJobSeeker, Vacancy &vacancy, Vaca
             currentJobSeeker->salary == vacancy.current->salary &&
             currentJobSeeker->education == vacancy.current->education) {
 
-            listOfSatisfiedVacancy.makeNewNode();
-            listOfSatisfiedVacancy.last = vacancy.current;
-            listOfSatisfiedVacancy.last->vacant = 'n'; // 'n' значит занята, когда свободна 'y'
-        }
-        if (currentJobSeeker->fieldOfActivity == vacancy.current->fieldOfActivity &&
-            currentJobSeeker->workExperience == vacancy.current->workExperience &&
-            currentJobSeeker->position == vacancy.current->position) {
+            if (listOfSatisfiedVacancy.head != nullptr) {
+                listOfSatisfiedVacancy.last->next = vacancy.current;
+                listOfSatisfiedVacancy.last->next->vacant = 'n'; // 'n' значит занята, когда свободна 'y'
+                listOfSatisfiedVacancy.last = vacancy.current;
+                listOfSatisfiedVacancy.last->next = nullptr;
+            } else {
+                listOfSatisfiedVacancy.head = listOfSatisfiedVacancy.last = vacancy.current;
+                listOfSatisfiedVacancy.head->vacant = 'n'; // 'n' значит занята, когда свободна 'y'
+            }
 
+            if (vacancy.current == vacancy.last) {
+                vacancy.last = previousVacancy;
+                previousVacancy->next = nullptr;
+                break;
+            } else if (previousVacancy != nullptr) {
+                previousVacancy->next = vacancy.current->next;
+                vacancy.current->next = nullptr;
+                vacancy.current = previousVacancy->next;
+                continue;
+            } else {
+                vacancy.head = vacancy.current->next;
+                vacancy.current->next = nullptr;
+                continue;
+            }
+        } else if (currentJobSeeker->fieldOfActivity == vacancy.current->fieldOfActivity &&
+                   currentJobSeeker->workExperience == vacancy.current->workExperience &&
+                   currentJobSeeker->position == vacancy.current->position) {
+            cout << "Найдена вакансия, которая практически вам подходит. Желаете ее занять y/n" << endl;
+            cin >> temp;
+            vacancy.current->vacant = (temp = 'y') ? 'n' : 'y';
+            if (vacancy.current->vacant == 'n') {
+                if (listOfSatisfiedVacancy.head != nullptr) {
+                    listOfSatisfiedVacancy.last->next = vacancy.current;
+                    listOfSatisfiedVacancy.last = vacancy.current;
+                    listOfSatisfiedVacancy.last->next = nullptr;
+                } else {
+                    listOfSatisfiedVacancy.head = listOfSatisfiedVacancy.last = vacancy.current;
+                }
 
+                if (vacancy.current == vacancy.last) {
+                    vacancy.last = previousVacancy;
+                    previousVacancy->next = nullptr;
+                    break;
+                } else if (previousVacancy != nullptr) {
+                    previousVacancy->next = vacancy.current->next;
+                    vacancy.current->next = nullptr;
+                    vacancy.current = previousVacancy->next;
+                    continue;
+                } else {
+                    vacancy.head = vacancy.current->next;
+                    vacancy.current->next = nullptr;
+                    continue;
+                }
+            }
         }
+        previousVacancy = vacancy.current; // Хранит адрес предыдущего элемента
+        vacancy.current = previousVacancy->next;
     }
 }
 
