@@ -310,7 +310,25 @@ void addingMode(JobInfo &jobInfo, JobSeeker &jobSeeker, Employer &employer, Vaca
 }
 
 void satisfiedVacancyMode(Vacancy &satisfiedVacancy) {
+    fstream outputFile;
+    int k = 1; // Счетчик узлов
+    outputFile.open("satisfiedVacancyFile.txt", ios::out);
 
+    satisfiedVacancy.current = satisfiedVacancy.head;
+    if(satisfiedVacancy.head == nullptr) {
+        cout << "Удовлетворенных вакансий еще нет " << endl;
+        outputFile << "Удовлетворенных вакансий еще нет " << endl;
+    } else {
+        outputFile << "Удовлетворенные вакансии: " << endl;
+        while (satisfiedVacancy.current != nullptr) {
+            satisfiedVacancy.printVacancy(k, outputFile);
+            outputFile << endl;
+            k++;
+            satisfiedVacancy.current = satisfiedVacancy.current->next;
+        }
+    }
+
+    outputFile.close();
 }
 
 void add(JobInfo &jobInfo, JobSeeker &jobSeeker, fstream &inputFile) {
