@@ -164,12 +164,12 @@ void findRequiredVacancy(NodeJobSeeker *currentJobSeeker, Vacancy &vacancy, Vaca
 
             if (listOfSatisfiedVacancy.head != nullptr) {
                 listOfSatisfiedVacancy.last->next = vacancy.current;
-                listOfSatisfiedVacancy.last->next->vacant = 'n'; // 'n' значит занята, когда свободна 'y'
+                listOfSatisfiedVacancy.last->next->vacant = 'n'; // 'n' значит занята, свободна 'y'
                 listOfSatisfiedVacancy.last = vacancy.current;
                 listOfSatisfiedVacancy.last->next = nullptr;
             } else {
                 listOfSatisfiedVacancy.head = listOfSatisfiedVacancy.last = vacancy.current;
-                listOfSatisfiedVacancy.head->vacant = 'n'; // 'n' значит занята, когда свободна 'y'
+                listOfSatisfiedVacancy.head->vacant = 'n'; // 'n' значит занята, свободна 'y'
             }
 
             if (vacancy.current == vacancy.last) {
@@ -189,7 +189,8 @@ void findRequiredVacancy(NodeJobSeeker *currentJobSeeker, Vacancy &vacancy, Vaca
         } else if (currentJobSeeker->fieldOfActivity == vacancy.current->fieldOfActivity &&
                    currentJobSeeker->workExperience == vacancy.current->workExperience &&
                    currentJobSeeker->position == vacancy.current->position) {
-            cout << "Найдена вакансия, которая практически вам подходит. Желаете ее занять y/n" << endl;
+
+            cout << "Найдена вакансия, которая практически вам подходит. Желаете ее занять? y/n" << endl;
             cin >> temp;
             vacancy.current->vacant = (temp = 'y') ? 'n' : 'y';
             if (vacancy.current->vacant == 'n') {
@@ -223,32 +224,96 @@ void findRequiredVacancy(NodeJobSeeker *currentJobSeeker, Vacancy &vacancy, Vaca
 }
 
 void employerMode(JobInfo &jobInfo, Employer &employer, JobSeeker &jobSeeker, Vacancy &vacancy,
-                  Vacancy &listOfSatisfiedVacancy) { //TODO добавить поиск нужных соискателей
+                  Vacancy &listOfSatisfiedVacancy, fstream &outputFile) { //TODO добавить поиск нужных соискателей
     fstream inputFile;
     char temp = 0;
     int blocksCount = 0, symbolsCount = 0, nodeNumber = 0;
     inputFile.open("../cmake-build-debug/EmployerMode.txt", ios::in);
     inputFile.unsetf(ios::skipws);
-    int position = 0;
+//    int position = 0;
 
     add(jobInfo, employer, inputFile);
     inputFile >> temp;
     if (temp == '\r') {
         inputFile >> temp;
     }
+    vacancy.current = vacancy.last; //Для того, чтобы сохранить предыдущий элемент, после добавления вакансии
     add(jobInfo, vacancy, inputFile);
-    vacancy.current = vacancy.last;
-    findRequiredJobSeeker(vacancy.current, jobSeeker, listOfSatisfiedVacancy);
-
     inputFile.setf(ios::skipws);
     inputFile.close();
+    outputFile << "Работа режима работодателя: " << endl;
+
+    findRequiredJobSeeker(vacancy, jobSeeker, listOfSatisfiedVacancy, outputFile);
+    outputFile << endl;
+    outputFile << endl;
 }
 
-void findRequiredJobSeeker(NodeVacancy *currentVacancy, JobSeeker &jobSeeker, Vacancy &listOfSatisfiedVacancy) {
-    cout << "Режим в разработке" << endl;
+void
+findRequiredJobSeeker(Vacancy &vacancy, JobSeeker &jobSeeker, Vacancy &listOfSatisfiedVacancy, fstream &outputFile) {
+    char temp = 0;
+    int k = 1; // Для счетчика соискателей
+    NodeVacancy *previousVacancy = vacancy.current;
+    vacancy.current = vacancy.last;
     jobSeeker.current = jobSeeker.head;
     while (jobSeeker.current != nullptr) {
+        if (vacancy.current->fieldOfActivity == jobSeeker.current->fieldOfActivity &&
+            vacancy.current->workExperience == jobSeeker.current->workExperience &&
+            vacancy.current->position == jobSeeker.current->position &&
+            vacancy.current->schedule == jobSeeker.current->schedule &&
+            vacancy.current->salary == jobSeeker.current->salary &&
+            vacancy.current->education == jobSeeker.current->education) {
 
+            outputFile << "Подошел соискатель " << endl;
+            jobSeeker.printJobSeeker(k, outputFile);
+            outputFile << endl;
+
+            if (vacancy.current->vacant == 'y') {
+                if (listOfSatisfiedVacancy.head != nullptr) {
+                    listOfSatisfiedVacancy.last->next = vacancy.current;
+                    listOfSatisfiedVacancy.last->next->vacant = 'n'; // 'n' значит занята, свободна 'y'
+                    listOfSatisfiedVacancy.last = vacancy.current;
+                    listOfSatisfiedVacancy.last->next = nullptr;
+                } else {
+                    listOfSatisfiedVacancy.head = listOfSatisfiedVacancy.last = vacancy.current;
+                    listOfSatisfiedVacancy.head->vacant = 'n'; // 'n' значит занята, свободна 'y'
+                }
+                vacancy.last = previousVacancy;
+                previousVacancy->next = nullptr;
+            }
+
+        } else if (vacancy.current->fieldOfActivity == jobSeeker.current->fieldOfActivity &&
+                   vacancy.current->workExperience == jobSeeker.current->workExperience &&
+                   vacancy.current->position == jobSeeker.current->position) {
+
+            cout << "Найден соискатель, который практически вам подходит. Желаете занять его? y/n" << endl;
+            cin >> temp;
+
+            if (temp == 'y') {
+                outputFile << "Подошел соискатель " << endl;
+                jobSeeker.printJobSeeker(k, outputFile);
+                outputFile << endl;
+
+                if (vacancy.current->vacant == 'y') {
+                    if (listOfSatisfiedVacancy.head != nullptr) {
+                        listOfSatisfiedVacancy.last->next = vacancy.current;
+                        listOfSatisfiedVacancy.last->next->vacant = 'n'; // 'n' значит занята, свободна 'y'
+                        listOfSatisfiedVacancy.last = vacancy.current;
+                        listOfSatisfiedVacancy.last->next = nullptr;
+                    } else {
+                        listOfSatisfiedVacancy.head = listOfSatisfiedVacancy.last = vacancy.current;
+                        listOfSatisfiedVacancy.head->vacant = 'n'; // 'n' значит занята, свободна 'y'
+                    }
+                    vacancy.last = previousVacancy;
+                    previousVacancy->next = nullptr;
+                }
+            }
+        }
+        jobSeeker.current = jobSeeker.current->next;
+        k++;
+    }
+
+    if (vacancy.current->vacant == 'y') {
+        outputFile << "К сожалению, по вашему запросу нет подходящих соискателей" << endl;
     }
 }
 
@@ -315,7 +380,7 @@ void satisfiedVacancyMode(Vacancy &satisfiedVacancy) {
     outputFile.open("satisfiedVacancyFile.txt", ios::out);
 
     satisfiedVacancy.current = satisfiedVacancy.head;
-    if(satisfiedVacancy.head == nullptr) {
+    if (satisfiedVacancy.head == nullptr) {
         cout << "Удовлетворенных вакансий еще нет " << endl;
         outputFile << "Удовлетворенных вакансий еще нет " << endl;
     } else {
@@ -760,7 +825,6 @@ void add(JobInfo &jobInfo, Vacancy &vacancy, fstream &inputFile) {
         cout << "Такой компании нет в базе данных" << endl;
     }
     nodeNumber = findNumberOfNecessaryNode(jobInfo.title, transitLine, symbolsCount);
-    //-----------------------TODO добавить возможность в вакансии ссылаться на нескольких работодателей. Доп. функционал
     vacancy.last->employerApplications = returnPointToRequiredInfo(jobInfo.title, nodeNumber);
     delete[] transitLine;
 }
