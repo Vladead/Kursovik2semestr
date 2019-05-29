@@ -56,6 +56,7 @@ int main() {
         }
     }
 
+    outputProtocol(jobInfo, listOfVacancy, listOfJobSeekers, listOfEmployers, protocolFile);
     protocolFile.close();
     outputFile.close();
     return 0;

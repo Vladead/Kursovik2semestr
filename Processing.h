@@ -61,5 +61,9 @@ void printForm(Form &form, std::fstream &outputFile);
 
 void deleteList(Form &form);
 
+void
+outputProtocol(JobInfo &jobInfo, Vacancy &vacancy, JobSeeker &jobSeeker, Employer &employer,
+               std::fstream &protocolFile);
+
 
 #endif //KURSOVIK_PROCESSING_H

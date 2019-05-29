@@ -224,13 +224,12 @@ void findRequiredVacancy(NodeJobSeeker *currentJobSeeker, Vacancy &vacancy, Vaca
 }
 
 void employerMode(JobInfo &jobInfo, Employer &employer, JobSeeker &jobSeeker, Vacancy &vacancy,
-                  Vacancy &listOfSatisfiedVacancy, fstream &outputFile) { //TODO добавить поиск нужных соискателей
+                  Vacancy &listOfSatisfiedVacancy, fstream &outputFile) {
     fstream inputFile;
     char temp = 0;
     int blocksCount = 0, symbolsCount = 0, nodeNumber = 0;
     inputFile.open("../cmake-build-debug/EmployerMode.txt", ios::in);
     inputFile.unsetf(ios::skipws);
-//    int position = 0;
 
     add(jobInfo, employer, inputFile);
     inputFile >> temp;
@@ -323,52 +322,65 @@ void addingMode(JobInfo &jobInfo, JobSeeker &jobSeeker, Employer &employer, Vaca
     inputFile.open("../cmake-build-debug/AddingMode.txt", ios::in);
     inputFile.unsetf(ios::skipws);
     int way = 0;
-    cout << "1 - Соискателя\n"
-         << "2 - Работодателя\n"
-         << "3 - Вакансии\n"
-         << endl;
-    cin >> way;
-    switch (way) {
-        case 1:
-            cout << "Ввод будет осуществлен таким образом: \n"
-                 << "Фамилия \n"
-                 << "Имя \n"
-                 << "Отчество \n"
-                 << "Должность \n"
-                 << "Область деятельности \n"
-                 << "Опыт \n"
-                 << "Образование \n"
-                 << "График \n"
-                 << "Заработная плата \n"
-                 << endl;
-            add(jobInfo, jobSeeker, inputFile);
-            cout << "Соискатель добавлен \n" << endl;
-            break;
-        case 2:
-            cout << "Ввод будет осуществлен таким образом: \n"
-                 << "Название \n"
-                 << "Область деятельности \n"
-                 << "Адресс \n"
-                 << "Телефон \n"
-                 << endl;
-            add(jobInfo, employer, inputFile);
-            cout << "Работодатель добавлен \n" << endl;
-            break;
-        case 3:
-            cout << "Ввод будет осуществлен таким образом: \n"
-                 << "Должность \n"
-                 << "График \n"
-                 << "Зарплата \n"
-                 << "Образование \n"
-                 << "Область деятельности \n"
-                 << "Опыт \n"
-                 << "Предложения компаний \n"
-                 << endl;
-            add(jobInfo, vacancy, inputFile);
-            cout << "Вакансия добавлена \n" << endl;
-            break;
-        default:
-            cout << "Неправильный ввод \n" << endl;
+    bool stop = false;
+
+    while (!stop) {
+        cout << "1 - Соискателя\n"
+             << "2 - Работодателя\n"
+             << "3 - Вакансии\n"
+             << "4 - Выход\n"
+             << endl;
+        cin >> way;
+        switch (way) {
+            case 1:
+                cout << "Ввод будет осуществлен таким образом: \n"
+                     << "Фамилия \n"
+                     << "Имя \n"
+                     << "Отчество \n"
+                     << "Должность \n"
+                     << "Область деятельности \n"
+                     << "Опыт \n"
+                     << "Образование \n"
+                     << "График \n"
+                     << "Заработная плата \n"
+                     << endl;
+                add(jobInfo, jobSeeker, inputFile);
+                cout << "Соискатель добавлен \n" << endl;
+                stop = true;
+                break;
+            case 2:
+                cout << "Ввод будет осуществлен таким образом: \n"
+                     << "Название \n"
+                     << "Область деятельности \n"
+                     << "Адресс \n"
+                     << "Телефон \n"
+                     << endl;
+                add(jobInfo, employer, inputFile);
+                cout << "Работодатель добавлен \n" << endl;
+                stop = true;
+                break;
+            case 3:
+                cout << "Ввод будет осуществлен таким образом: \n"
+                     << "Должность \n"
+                     << "График \n"
+                     << "Зарплата \n"
+                     << "Образование \n"
+                     << "Область деятельности \n"
+                     << "Опыт \n"
+                     << "Предложения компаний \n"
+                     << endl;
+                add(jobInfo, vacancy, inputFile);
+                cout << "Вакансия добавлена \n" << endl;
+                stop = true;
+                break;
+            case 4:
+                cout << "Выход" << endl;
+                stop = true;
+                break;
+            default:
+                cout << "Попробуйте снова" << endl;
+                continue;
+        }
     }
     inputFile.setf(ios::skipws);
     inputFile.close();
@@ -1101,4 +1113,379 @@ void deleteList(Form &form) {
     delete form.head;
     delete form.current;
     form.last = nullptr;
+}
+
+void
+outputProtocol(JobInfo &jobInfo, Vacancy &vacancy, JobSeeker &jobSeeker, Employer &employer, fstream &protocolFile) {
+    protocolFile << "Данные по работе, добавленые во время работы программы: " << endl;
+
+    protocolFile << "Адреса: " << endl;
+    int v = 0;
+    jobInfo.address.current = jobInfo.address.head;
+    while(v != 10) {
+        jobInfo.address.current = jobInfo.address.current->next;
+        v++;
+    }
+
+    auto temp = jobInfo.address.current;
+    auto temp1 = jobInfo.address.current->line;
+    while (temp != nullptr) {
+        for (int i = 0; temp1->block->symbols[i] != temp1->block->marker; i++) {
+            protocolFile << temp1->block->symbols[i];
+            if (i == 4) {
+                temp1 = temp1->next;
+                i = -1;
+            }
+        }
+        protocolFile << endl;
+        temp = temp->next;
+        if (temp != nullptr)
+            temp1 = temp->line;
+    }
+
+    protocolFile << endl;
+    protocolFile << endl;
+    protocolFile << "Образование: " << endl;
+
+    v = 0;
+    jobInfo.education.current = jobInfo.education.head;
+    while(v != 3) {
+        jobInfo.education.current = jobInfo.education.current->next;
+        v++;
+    }
+
+    temp = jobInfo.education.current;
+    temp1 = jobInfo.education.current->line;
+    while (temp != nullptr) {
+        for (int i = 0; temp1->block->symbols[i] != temp1->block->marker; i++) {
+            protocolFile << temp1->block->symbols[i];
+            if (i == 4) {
+                temp1 = temp1->next;
+                i = -1;
+            }
+        }
+        protocolFile << endl;
+        temp = temp->next;
+        if (temp != nullptr)
+            temp1 = temp->line;
+    }
+
+    protocolFile << endl;
+    protocolFile << endl;
+    protocolFile << "Сферы деятельности: " << endl;
+
+    v = 0;
+    jobInfo.fieldOfActivity.current = jobInfo.fieldOfActivity.head;
+    while(v != 10) {
+        jobInfo.fieldOfActivity.current = jobInfo.fieldOfActivity.current->next;
+        v++;
+    }
+
+    temp = jobInfo.fieldOfActivity.current;
+    temp1 = jobInfo.fieldOfActivity.current->line;
+    while (temp != nullptr) {
+        for (int i = 0; temp1->block->symbols[i] != temp1->block->marker; i++) {
+            protocolFile << temp1->block->symbols[i];
+            if (i == 4) {
+                temp1 = temp1->next;
+                i = -1;
+            }
+        }
+        protocolFile << endl;
+        temp = temp->next;
+        if (temp != nullptr)
+            temp1 = temp->line;
+    }
+
+    protocolFile << endl;
+    protocolFile << endl;
+    protocolFile << "Номера телефонов: " << endl;
+
+    v = 0;
+    jobInfo.phoneNumber.current = jobInfo.phoneNumber.head;
+    while(v != 10) {
+        jobInfo.phoneNumber.current = jobInfo.phoneNumber.current->next;
+        v++;
+    }
+
+    temp = jobInfo.phoneNumber.current;
+    temp1 = jobInfo.phoneNumber.current->line;
+    while (temp != nullptr) {
+        for (int i = 0; temp1->block->symbols[i] != temp1->block->marker; i++) {
+            protocolFile << temp1->block->symbols[i];
+            if (i == 4) {
+                temp1 = temp1->next;
+                i = -1;
+            }
+        }
+        protocolFile << endl;
+        temp = temp->next;
+        if (temp != nullptr)
+            temp1 = temp->line;
+    }
+
+    protocolFile << endl;
+    protocolFile << endl;
+    protocolFile << "Должности: " << endl;
+
+    v = 0;
+    jobInfo.position.current = jobInfo.position.head;
+    while(v != 10) {
+        jobInfo.position.current = jobInfo.position.current->next;
+        v++;
+    }
+
+    temp = jobInfo.position.current;
+    temp1 = jobInfo.position.current->line;
+    while (temp != nullptr) {
+        for (int i = 0; temp1->block->symbols[i] != temp1->block->marker; i++) {
+            protocolFile << temp1->block->symbols[i];
+            if (i == 4) {
+                temp1 = temp1->next;
+                i = -1;
+            }
+        }
+        protocolFile << endl;
+        temp = temp->next;
+        if (temp != nullptr)
+            temp1 = temp->line;
+    }
+
+    protocolFile << endl;
+    protocolFile << endl;
+    protocolFile << "Оклады: " << endl;
+
+    v = 0;
+    jobInfo.salary.current = jobInfo.salary.head;
+    while(v != 10) {
+        jobInfo.salary.current = jobInfo.salary.current->next;
+        v++;
+    }
+
+    temp = jobInfo.salary.current;
+    temp1 = jobInfo.salary.current->line;
+    while (temp != nullptr) {
+        for (int i = 0; temp1->block->symbols[i] != temp1->block->marker; i++) {
+            protocolFile << temp1->block->symbols[i];
+            if (i == 4) {
+                temp1 = temp1->next;
+                i = -1;
+            }
+        }
+        protocolFile << endl;
+        temp = temp->next;
+        if (temp != nullptr)
+            temp1 = temp->line;
+    }
+
+    protocolFile << endl;
+    protocolFile << endl;
+    protocolFile << "Графики работы: " << endl;
+
+    v = 0;
+    jobInfo.schedule.current = jobInfo.schedule.head;
+    while(v != 4) {
+        jobInfo.schedule.current = jobInfo.schedule.current->next;
+        v++;
+    }
+
+    temp = jobInfo.schedule.current;
+    temp1 = jobInfo.schedule.current->line;
+    while (temp != nullptr) {
+        for (int i = 0; temp1->block->symbols[i] != temp1->block->marker; i++) {
+            protocolFile << temp1->block->symbols[i];
+            if (i == 4) {
+                temp1 = temp1->next;
+                i = -1;
+            }
+        }
+        protocolFile << endl;
+        temp = temp->next;
+        if (temp != nullptr)
+            temp1 = temp->line;
+    }
+
+    protocolFile << endl;
+    protocolFile << endl;
+    protocolFile << "Названия: " << endl;
+
+    v = 0;
+    jobInfo.title.current = jobInfo.title.head;
+    while(v != 10) {
+        jobInfo.title.current = jobInfo.title.current->next;
+        v++;
+    }
+
+    temp = jobInfo.title.current;
+    temp1 = jobInfo.title.current->line;
+    while (temp != nullptr) {
+        for (int i = 0; temp1->block->symbols[i] != temp1->block->marker; i++) {
+            protocolFile << temp1->block->symbols[i];
+            if (i == 4) {
+                temp1 = temp1->next;
+                i = -1;
+            }
+        }
+        protocolFile << endl;
+        temp = temp->next;
+        if (temp != nullptr)
+            temp1 = temp->line;
+    }
+
+    protocolFile << endl;
+    protocolFile << endl;
+    protocolFile << "Опыт работы: " << endl;
+
+    v = 0;
+    jobInfo.workExperience.current = jobInfo.workExperience.head;
+    while(v != 5) {
+        jobInfo.workExperience.current = jobInfo.workExperience.current->next;
+        v++;
+    }
+
+    temp = jobInfo.workExperience.current;
+    temp1 = jobInfo.workExperience.current->line;
+    while (temp != nullptr) {
+        for (int i = 0; temp1->block->symbols[i] != temp1->block->marker; i++) {
+            protocolFile << temp1->block->symbols[i];
+            if (i == 4) {
+                temp1 = temp1->next;
+                i = -1;
+            }
+        }
+        protocolFile << endl;
+        temp = temp->next;
+        if (temp != nullptr)
+            temp1 = temp->line;
+    }
+
+    protocolFile << endl;
+    protocolFile << endl;
+    protocolFile << "Фамилии: " << endl;
+
+    v = 0;
+    jobInfo.surname.current = jobInfo.surname.head;
+    while(v != 10) {
+        jobInfo.surname.current = jobInfo.surname.current->next;
+        v++;
+    }
+
+    temp = jobInfo.surname.current;
+    temp1 = jobInfo.surname.current->line;
+    while (temp != nullptr) {
+        for (int i = 0; temp1->block->symbols[i] != temp1->block->marker; i++) {
+            protocolFile << temp1->block->symbols[i];
+            if (i == 4) {
+                temp1 = temp1->next;
+                i = -1;
+            }
+        }
+        protocolFile << endl;
+        temp = temp->next;
+        if (temp != nullptr)
+            temp1 = temp->line;
+    }
+
+    protocolFile << endl;
+    protocolFile << endl;
+    protocolFile << "Имена: " << endl;
+
+    v = 0;
+    jobInfo.name.current = jobInfo.name.head;
+    while(v != 10) {
+        jobInfo.name.current = jobInfo.name.current->next;
+        v++;
+    }
+
+    temp = jobInfo.name.current;
+    temp1 = jobInfo.name.current->line;
+    while (temp != nullptr) {
+        for (int i = 0; temp1->block->symbols[i] != temp1->block->marker; i++) {
+            protocolFile << temp1->block->symbols[i];
+            if (i == 4) {
+                temp1 = temp1->next;
+                i = -1;
+            }
+        }
+        protocolFile << endl;
+        temp = temp->next;
+        if (temp != nullptr)
+            temp1 = temp->line;
+    }
+
+    protocolFile << endl;
+    protocolFile << endl;
+    protocolFile << "Отчества: " << endl;
+
+    v = 0;
+    jobInfo.patronymic.current = jobInfo.patronymic.head;
+    while(v != 10) {
+        jobInfo.patronymic.current = jobInfo.patronymic.current->next;
+        v++;
+    }
+
+    temp = jobInfo.patronymic.current;
+    temp1 = jobInfo.patronymic.current->line;
+    while (temp != nullptr) {
+        for (int i = 0; temp1->block->symbols[i] != temp1->block->marker; i++) {
+            protocolFile << temp1->block->symbols[i];
+            if (i == 4) {
+                temp1 = temp1->next;
+                i = -1;
+            }
+        }
+        protocolFile << endl;
+        temp = temp->next;
+        if (temp != nullptr)
+            temp1 = temp->line;
+    }
+
+    protocolFile << endl;
+    protocolFile << endl;
+    protocolFile << endl;
+    protocolFile << endl;
+
+    int m = 1;
+    protocolFile << "Неудовлетворенные вакансии: " << endl;
+    vacancy.current = vacancy.head;
+    while(vacancy.current != nullptr) {
+        vacancy.printVacancy(m, protocolFile);
+        protocolFile << endl;
+        m++;
+        vacancy.current = vacancy.current->next;
+    }
+    protocolFile << endl;
+    protocolFile << endl;
+    protocolFile << "Добавленые работодатели: " << endl;
+    m = 0;
+    employer.current = employer.head;
+    while(m != 10) {
+        employer.current = employer.current->next;
+        m++;
+    }
+    m++;
+    while(employer.current != nullptr) {
+        employer.printEmployer(m, protocolFile);
+        protocolFile << endl;
+        m++;
+        employer.current = employer.current->next;
+    }
+    protocolFile << endl;
+    protocolFile << endl;
+    protocolFile << "Добавленые соискатели: " << endl;
+    m = 0;
+    jobSeeker.current = jobSeeker.head;
+    while(m != 10) {
+        jobSeeker.current = jobSeeker.current->next;
+        m++;
+    }
+    m++;
+    while(jobSeeker.current != nullptr) {
+        jobSeeker.printJobSeeker(m, protocolFile);
+        protocolFile << endl;
+        m++;
+        jobSeeker.current = jobSeeker.current->next;
+    }
+    protocolFile << endl;
+    protocolFile << endl;
 }
