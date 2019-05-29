@@ -31,7 +31,7 @@ int main() {
         switch (way) {
             case 1:
                 cout << "Режим соискателя" << endl;
-                jobSeekerMode(jobInfo, listOfJobSeekers, listOfVacancy, listOfSatisfiedVacancy);
+                jobSeekerMode(jobInfo, listOfJobSeekers, listOfVacancy, listOfSatisfiedVacancy, outputFile);
                 break;
             case 2:
                 cout << "Режим работодателя" << endl;
@@ -56,8 +56,8 @@ int main() {
         }
     }
 
+    outputFile.close();
     outputProtocol(jobInfo, listOfVacancy, listOfJobSeekers, listOfEmployers, protocolFile);
     protocolFile.close();
-    outputFile.close();
     return 0;
 }

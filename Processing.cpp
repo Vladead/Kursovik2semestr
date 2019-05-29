@@ -134,7 +134,7 @@ void addFirstInfo(Vacancy &vacancy, Employer &employer, JobSeeker &jobSeeker, Jo
 }
 
 void jobSeekerMode(JobInfo &jobInfo, JobSeeker &jobSeeker, Vacancy &vacancy,
-                   Vacancy &listOfSatisfiedVacancy) {
+                   Vacancy &listOfSatisfiedVacancy, fstream &outputFile) {
     fstream inputFile;
     char temp = 0;
     int blocksCount = 0, symbolsCount = 0, nodeNumber = 0;
@@ -144,14 +144,20 @@ void jobSeekerMode(JobInfo &jobInfo, JobSeeker &jobSeeker, Vacancy &vacancy,
 
     add(jobInfo, jobSeeker, inputFile);
     jobSeeker.current = jobSeeker.last;
-    findRequiredVacancy(jobSeeker.current, vacancy, listOfSatisfiedVacancy);
+
+    outputFile << "Работа режима соискателя: " << endl;
+    findRequiredVacancy(jobSeeker.current, vacancy, listOfSatisfiedVacancy, outputFile);
+    outputFile << endl;
+    outputFile << endl;
 
     inputFile.setf(ios::skipws);
     inputFile.close();
 }
 
-void findRequiredVacancy(NodeJobSeeker *currentJobSeeker, Vacancy &vacancy, Vacancy &listOfSatisfiedVacancy) {
+void findRequiredVacancy(NodeJobSeeker *currentJobSeeker, Vacancy &vacancy, Vacancy &listOfSatisfiedVacancy,
+                         fstream &outputFile) {
     char temp = 0;
+    int k = 1; // Для счетчиа вакансий
     NodeVacancy *previousVacancy = nullptr;
     vacancy.current = vacancy.head;
     while (vacancy.current != nullptr) {
@@ -161,6 +167,10 @@ void findRequiredVacancy(NodeJobSeeker *currentJobSeeker, Vacancy &vacancy, Vaca
             currentJobSeeker->schedule == vacancy.current->schedule &&
             currentJobSeeker->salary == vacancy.current->salary &&
             currentJobSeeker->education == vacancy.current->education) {
+
+            outputFile << "Подошела вакансия" << endl;
+            vacancy.printVacancy(k, outputFile);
+            outputFile << endl;
 
             if (listOfSatisfiedVacancy.head != nullptr) {
                 listOfSatisfiedVacancy.last->next = vacancy.current;
@@ -194,6 +204,11 @@ void findRequiredVacancy(NodeJobSeeker *currentJobSeeker, Vacancy &vacancy, Vaca
             cin >> temp;
             vacancy.current->vacant = (temp = 'y') ? 'n' : 'y';
             if (vacancy.current->vacant == 'n') {
+
+                outputFile << "Подошела вакансия" << endl;
+                vacancy.printVacancy(k, outputFile);
+                outputFile << endl;
+
                 if (listOfSatisfiedVacancy.head != nullptr) {
                     listOfSatisfiedVacancy.last->next = vacancy.current;
                     listOfSatisfiedVacancy.last = vacancy.current;
@@ -205,21 +220,25 @@ void findRequiredVacancy(NodeJobSeeker *currentJobSeeker, Vacancy &vacancy, Vaca
                 if (vacancy.current == vacancy.last) {
                     vacancy.last = previousVacancy;
                     previousVacancy->next = nullptr;
+                    k++;
                     break;
                 } else if (previousVacancy != nullptr) {
                     previousVacancy->next = vacancy.current->next;
                     vacancy.current->next = nullptr;
                     vacancy.current = previousVacancy->next;
+                    k++;
                     continue;
                 } else {
                     vacancy.head = vacancy.current->next;
                     vacancy.current->next = nullptr;
+                    k++;
                     continue;
                 }
             }
         }
         previousVacancy = vacancy.current; // Хранит адрес предыдущего элемента
         vacancy.current = previousVacancy->next;
+        k++;
     }
 }
 
@@ -240,8 +259,8 @@ void employerMode(JobInfo &jobInfo, Employer &employer, JobSeeker &jobSeeker, Va
     add(jobInfo, vacancy, inputFile);
     inputFile.setf(ios::skipws);
     inputFile.close();
-    outputFile << "Работа режима работодателя: " << endl;
 
+    outputFile << "Работа режима работодателя: " << endl;
     findRequiredJobSeeker(vacancy, jobSeeker, listOfSatisfiedVacancy, outputFile);
     outputFile << endl;
     outputFile << endl;
@@ -1117,329 +1136,367 @@ void deleteList(Form &form) {
 
 void
 outputProtocol(JobInfo &jobInfo, Vacancy &vacancy, JobSeeker &jobSeeker, Employer &employer, fstream &protocolFile) {
+    List1 *temp;
+    BlocksList *temp1;
     protocolFile << "Данные по работе, добавленые во время работы программы: " << endl;
 
     protocolFile << "Адреса: " << endl;
     int v = 0;
     jobInfo.address.current = jobInfo.address.head;
-    while(v != 10) {
+    while (v != 10) {
         jobInfo.address.current = jobInfo.address.current->next;
         v++;
     }
 
-    auto temp = jobInfo.address.current;
-    auto temp1 = jobInfo.address.current->line;
-    while (temp != nullptr) {
-        for (int i = 0; temp1->block->symbols[i] != temp1->block->marker; i++) {
-            protocolFile << temp1->block->symbols[i];
-            if (i == 4) {
-                temp1 = temp1->next;
-                i = -1;
+    if(jobInfo.address.current != nullptr) {
+        temp = jobInfo.address.current;
+        temp1 = jobInfo.address.current->line;
+        while (temp != nullptr) {
+            for (int i = 0; temp1->block->symbols[i] != temp1->block->marker; i++) {
+                protocolFile << temp1->block->symbols[i];
+                if (i == 4) {
+                    temp1 = temp1->next;
+                    i = -1;
+                }
             }
+            protocolFile << endl;
+            temp = temp->next;
+            if (temp != nullptr)
+                temp1 = temp->line;
         }
-        protocolFile << endl;
-        temp = temp->next;
-        if (temp != nullptr)
-            temp1 = temp->line;
+    } else {
+        protocolFile << "Не было добавлено новых данных" << endl;
     }
-
     protocolFile << endl;
     protocolFile << endl;
     protocolFile << "Образование: " << endl;
 
     v = 0;
     jobInfo.education.current = jobInfo.education.head;
-    while(v != 3) {
+    while (v != 3) {
         jobInfo.education.current = jobInfo.education.current->next;
         v++;
     }
 
-    temp = jobInfo.education.current;
-    temp1 = jobInfo.education.current->line;
-    while (temp != nullptr) {
-        for (int i = 0; temp1->block->symbols[i] != temp1->block->marker; i++) {
-            protocolFile << temp1->block->symbols[i];
-            if (i == 4) {
-                temp1 = temp1->next;
-                i = -1;
+    if(jobInfo.education.current != nullptr) {
+        temp = jobInfo.education.current;
+        temp1 = jobInfo.education.current->line;
+        while (temp != nullptr) {
+            for (int i = 0; temp1->block->symbols[i] != temp1->block->marker; i++) {
+                protocolFile << temp1->block->symbols[i];
+                if (i == 4) {
+                    temp1 = temp1->next;
+                    i = -1;
+                }
             }
+            protocolFile << endl;
+            temp = temp->next;
+            if (temp != nullptr)
+                temp1 = temp->line;
         }
-        protocolFile << endl;
-        temp = temp->next;
-        if (temp != nullptr)
-            temp1 = temp->line;
+    } else {
+        protocolFile << "Не было добавлено новых данных" << endl;
     }
-
     protocolFile << endl;
     protocolFile << endl;
     protocolFile << "Сферы деятельности: " << endl;
 
     v = 0;
     jobInfo.fieldOfActivity.current = jobInfo.fieldOfActivity.head;
-    while(v != 10) {
+    while (v != 10) {
         jobInfo.fieldOfActivity.current = jobInfo.fieldOfActivity.current->next;
         v++;
     }
 
-    temp = jobInfo.fieldOfActivity.current;
-    temp1 = jobInfo.fieldOfActivity.current->line;
-    while (temp != nullptr) {
-        for (int i = 0; temp1->block->symbols[i] != temp1->block->marker; i++) {
-            protocolFile << temp1->block->symbols[i];
-            if (i == 4) {
-                temp1 = temp1->next;
-                i = -1;
+    if(jobInfo.fieldOfActivity.current != nullptr) {
+        temp = jobInfo.fieldOfActivity.current;
+        temp1 = jobInfo.fieldOfActivity.current->line;
+        while (temp != nullptr) {
+            for (int i = 0; temp1->block->symbols[i] != temp1->block->marker; i++) {
+                protocolFile << temp1->block->symbols[i];
+                if (i == 4) {
+                    temp1 = temp1->next;
+                    i = -1;
+                }
             }
+            protocolFile << endl;
+            temp = temp->next;
+            if (temp != nullptr)
+                temp1 = temp->line;
         }
-        protocolFile << endl;
-        temp = temp->next;
-        if (temp != nullptr)
-            temp1 = temp->line;
+    } else {
+        protocolFile << "Не было добавлено новых данных" << endl;
     }
-
     protocolFile << endl;
     protocolFile << endl;
     protocolFile << "Номера телефонов: " << endl;
 
     v = 0;
     jobInfo.phoneNumber.current = jobInfo.phoneNumber.head;
-    while(v != 10) {
+    while (v != 10) {
         jobInfo.phoneNumber.current = jobInfo.phoneNumber.current->next;
         v++;
     }
 
-    temp = jobInfo.phoneNumber.current;
-    temp1 = jobInfo.phoneNumber.current->line;
-    while (temp != nullptr) {
-        for (int i = 0; temp1->block->symbols[i] != temp1->block->marker; i++) {
-            protocolFile << temp1->block->symbols[i];
-            if (i == 4) {
-                temp1 = temp1->next;
-                i = -1;
+    if(jobInfo.phoneNumber.current != nullptr) {
+        temp = jobInfo.phoneNumber.current;
+        temp1 = jobInfo.phoneNumber.current->line;
+        while (temp != nullptr) {
+            for (int i = 0; temp1->block->symbols[i] != temp1->block->marker; i++) {
+                protocolFile << temp1->block->symbols[i];
+                if (i == 4) {
+                    temp1 = temp1->next;
+                    i = -1;
+                }
             }
+            protocolFile << endl;
+            temp = temp->next;
+            if (temp != nullptr)
+                temp1 = temp->line;
         }
-        protocolFile << endl;
-        temp = temp->next;
-        if (temp != nullptr)
-            temp1 = temp->line;
+    } else {
+        protocolFile << "Не было добавлено новых данных" << endl;
     }
-
     protocolFile << endl;
     protocolFile << endl;
     protocolFile << "Должности: " << endl;
 
     v = 0;
     jobInfo.position.current = jobInfo.position.head;
-    while(v != 10) {
+    while (v != 10) {
         jobInfo.position.current = jobInfo.position.current->next;
         v++;
     }
 
-    temp = jobInfo.position.current;
-    temp1 = jobInfo.position.current->line;
-    while (temp != nullptr) {
-        for (int i = 0; temp1->block->symbols[i] != temp1->block->marker; i++) {
-            protocolFile << temp1->block->symbols[i];
-            if (i == 4) {
-                temp1 = temp1->next;
-                i = -1;
+    if(jobInfo.position.current != nullptr) {
+        temp = jobInfo.position.current;
+        temp1 = jobInfo.position.current->line;
+        while (temp != nullptr) {
+            for (int i = 0; temp1->block->symbols[i] != temp1->block->marker; i++) {
+                protocolFile << temp1->block->symbols[i];
+                if (i == 4) {
+                    temp1 = temp1->next;
+                    i = -1;
+                }
             }
+            protocolFile << endl;
+            temp = temp->next;
+            if (temp != nullptr)
+                temp1 = temp->line;
         }
-        protocolFile << endl;
-        temp = temp->next;
-        if (temp != nullptr)
-            temp1 = temp->line;
+    } else {
+        protocolFile << "Не было добавлено новых данных" << endl;
     }
-
     protocolFile << endl;
     protocolFile << endl;
     protocolFile << "Оклады: " << endl;
 
     v = 0;
     jobInfo.salary.current = jobInfo.salary.head;
-    while(v != 10) {
+    while (v != 10) {
         jobInfo.salary.current = jobInfo.salary.current->next;
         v++;
     }
 
-    temp = jobInfo.salary.current;
-    temp1 = jobInfo.salary.current->line;
-    while (temp != nullptr) {
-        for (int i = 0; temp1->block->symbols[i] != temp1->block->marker; i++) {
-            protocolFile << temp1->block->symbols[i];
-            if (i == 4) {
-                temp1 = temp1->next;
-                i = -1;
+    if(jobInfo.salary.current != nullptr) {
+        temp = jobInfo.salary.current;
+        temp1 = jobInfo.salary.current->line;
+        while (temp != nullptr) {
+            for (int i = 0; temp1->block->symbols[i] != temp1->block->marker; i++) {
+                protocolFile << temp1->block->symbols[i];
+                if (i == 4) {
+                    temp1 = temp1->next;
+                    i = -1;
+                }
             }
+            protocolFile << endl;
+            temp = temp->next;
+            if (temp != nullptr)
+                temp1 = temp->line;
         }
-        protocolFile << endl;
-        temp = temp->next;
-        if (temp != nullptr)
-            temp1 = temp->line;
+    } else {
+        protocolFile << "Не было добавлено новых данных" << endl;
     }
-
     protocolFile << endl;
     protocolFile << endl;
     protocolFile << "Графики работы: " << endl;
 
     v = 0;
     jobInfo.schedule.current = jobInfo.schedule.head;
-    while(v != 4) {
+    while (v != 4) {
         jobInfo.schedule.current = jobInfo.schedule.current->next;
         v++;
     }
 
-    temp = jobInfo.schedule.current;
-    temp1 = jobInfo.schedule.current->line;
-    while (temp != nullptr) {
-        for (int i = 0; temp1->block->symbols[i] != temp1->block->marker; i++) {
-            protocolFile << temp1->block->symbols[i];
-            if (i == 4) {
-                temp1 = temp1->next;
-                i = -1;
+    if(jobInfo.schedule.current != nullptr) {
+        temp = jobInfo.schedule.current;
+        temp1 = jobInfo.schedule.current->line;
+        while (temp != nullptr) {
+            for (int i = 0; temp1->block->symbols[i] != temp1->block->marker; i++) {
+                protocolFile << temp1->block->symbols[i];
+                if (i == 4) {
+                    temp1 = temp1->next;
+                    i = -1;
+                }
             }
+            protocolFile << endl;
+            temp = temp->next;
+            if (temp != nullptr)
+                temp1 = temp->line;
         }
-        protocolFile << endl;
-        temp = temp->next;
-        if (temp != nullptr)
-            temp1 = temp->line;
+    } else {
+        protocolFile << "Не было добавлено новых данных" << endl;
     }
-
     protocolFile << endl;
     protocolFile << endl;
     protocolFile << "Названия: " << endl;
 
     v = 0;
     jobInfo.title.current = jobInfo.title.head;
-    while(v != 10) {
+    while (v != 10) {
         jobInfo.title.current = jobInfo.title.current->next;
         v++;
     }
 
-    temp = jobInfo.title.current;
-    temp1 = jobInfo.title.current->line;
-    while (temp != nullptr) {
-        for (int i = 0; temp1->block->symbols[i] != temp1->block->marker; i++) {
-            protocolFile << temp1->block->symbols[i];
-            if (i == 4) {
-                temp1 = temp1->next;
-                i = -1;
+    if(jobInfo.title.current != nullptr) {
+        temp = jobInfo.title.current;
+        temp1 = jobInfo.title.current->line;
+        while (temp != nullptr) {
+            for (int i = 0; temp1->block->symbols[i] != temp1->block->marker; i++) {
+                protocolFile << temp1->block->symbols[i];
+                if (i == 4) {
+                    temp1 = temp1->next;
+                    i = -1;
+                }
             }
+            protocolFile << endl;
+            temp = temp->next;
+            if (temp != nullptr)
+                temp1 = temp->line;
         }
-        protocolFile << endl;
-        temp = temp->next;
-        if (temp != nullptr)
-            temp1 = temp->line;
+    } else {
+        protocolFile << "Не было добавлено новых данных" << endl;
     }
-
     protocolFile << endl;
     protocolFile << endl;
     protocolFile << "Опыт работы: " << endl;
 
     v = 0;
     jobInfo.workExperience.current = jobInfo.workExperience.head;
-    while(v != 5) {
+    while (v != 5) {
         jobInfo.workExperience.current = jobInfo.workExperience.current->next;
         v++;
     }
 
-    temp = jobInfo.workExperience.current;
-    temp1 = jobInfo.workExperience.current->line;
-    while (temp != nullptr) {
-        for (int i = 0; temp1->block->symbols[i] != temp1->block->marker; i++) {
-            protocolFile << temp1->block->symbols[i];
-            if (i == 4) {
-                temp1 = temp1->next;
-                i = -1;
+    if(jobInfo.workExperience.current != nullptr) {
+        temp = jobInfo.workExperience.current;
+        temp1 = jobInfo.workExperience.current->line;
+        while (temp != nullptr) {
+            for (int i = 0; temp1->block->symbols[i] != temp1->block->marker; i++) {
+                protocolFile << temp1->block->symbols[i];
+                if (i == 4) {
+                    temp1 = temp1->next;
+                    i = -1;
+                }
             }
+            protocolFile << endl;
+            temp = temp->next;
+            if (temp != nullptr)
+                temp1 = temp->line;
         }
-        protocolFile << endl;
-        temp = temp->next;
-        if (temp != nullptr)
-            temp1 = temp->line;
+    } else {
+        protocolFile << "Не было добавлено новых данных" << endl;
     }
-
     protocolFile << endl;
     protocolFile << endl;
     protocolFile << "Фамилии: " << endl;
 
     v = 0;
     jobInfo.surname.current = jobInfo.surname.head;
-    while(v != 10) {
+    while (v != 10) {
         jobInfo.surname.current = jobInfo.surname.current->next;
         v++;
     }
 
-    temp = jobInfo.surname.current;
-    temp1 = jobInfo.surname.current->line;
-    while (temp != nullptr) {
-        for (int i = 0; temp1->block->symbols[i] != temp1->block->marker; i++) {
-            protocolFile << temp1->block->symbols[i];
-            if (i == 4) {
-                temp1 = temp1->next;
-                i = -1;
+    if(jobInfo.surname.current != nullptr) {
+        temp = jobInfo.surname.current;
+        temp1 = jobInfo.surname.current->line;
+        while (temp != nullptr) {
+            for (int i = 0; temp1->block->symbols[i] != temp1->block->marker; i++) {
+                protocolFile << temp1->block->symbols[i];
+                if (i == 4) {
+                    temp1 = temp1->next;
+                    i = -1;
+                }
             }
+            protocolFile << endl;
+            temp = temp->next;
+            if (temp != nullptr)
+                temp1 = temp->line;
         }
-        protocolFile << endl;
-        temp = temp->next;
-        if (temp != nullptr)
-            temp1 = temp->line;
+    } else {
+        protocolFile << "Не было добавлено новых данных" << endl;
     }
-
     protocolFile << endl;
     protocolFile << endl;
     protocolFile << "Имена: " << endl;
 
     v = 0;
     jobInfo.name.current = jobInfo.name.head;
-    while(v != 10) {
+    while (v != 10) {
         jobInfo.name.current = jobInfo.name.current->next;
         v++;
     }
 
-    temp = jobInfo.name.current;
-    temp1 = jobInfo.name.current->line;
-    while (temp != nullptr) {
-        for (int i = 0; temp1->block->symbols[i] != temp1->block->marker; i++) {
-            protocolFile << temp1->block->symbols[i];
-            if (i == 4) {
-                temp1 = temp1->next;
-                i = -1;
+    if(jobInfo.name.current != nullptr) {
+        temp = jobInfo.name.current;
+        temp1 = jobInfo.name.current->line;
+        while (temp != nullptr) {
+            for (int i = 0; temp1->block->symbols[i] != temp1->block->marker; i++) {
+                protocolFile << temp1->block->symbols[i];
+                if (i == 4) {
+                    temp1 = temp1->next;
+                    i = -1;
+                }
             }
+            protocolFile << endl;
+            temp = temp->next;
+            if (temp != nullptr)
+                temp1 = temp->line;
         }
-        protocolFile << endl;
-        temp = temp->next;
-        if (temp != nullptr)
-            temp1 = temp->line;
+    } else {
+        protocolFile << "Не было добавлено новых данных" << endl;
     }
-
     protocolFile << endl;
     protocolFile << endl;
     protocolFile << "Отчества: " << endl;
 
     v = 0;
     jobInfo.patronymic.current = jobInfo.patronymic.head;
-    while(v != 10) {
+    while (v != 10) {
         jobInfo.patronymic.current = jobInfo.patronymic.current->next;
         v++;
     }
 
-    temp = jobInfo.patronymic.current;
-    temp1 = jobInfo.patronymic.current->line;
-    while (temp != nullptr) {
-        for (int i = 0; temp1->block->symbols[i] != temp1->block->marker; i++) {
-            protocolFile << temp1->block->symbols[i];
-            if (i == 4) {
-                temp1 = temp1->next;
-                i = -1;
+    if(jobInfo.patronymic.current != nullptr) {
+        temp = jobInfo.patronymic.current;
+        temp1 = jobInfo.patronymic.current->line;
+        while (temp != nullptr) {
+            for (int i = 0; temp1->block->symbols[i] != temp1->block->marker; i++) {
+                protocolFile << temp1->block->symbols[i];
+                if (i == 4) {
+                    temp1 = temp1->next;
+                    i = -1;
+                }
             }
+            protocolFile << endl;
+            temp = temp->next;
+            if (temp != nullptr)
+                temp1 = temp->line;
         }
-        protocolFile << endl;
-        temp = temp->next;
-        if (temp != nullptr)
-            temp1 = temp->line;
+    } else {
+        protocolFile << "Не было добавлено новых данных" << endl;
     }
-
     protocolFile << endl;
     protocolFile << endl;
     protocolFile << endl;
@@ -1448,7 +1505,7 @@ outputProtocol(JobInfo &jobInfo, Vacancy &vacancy, JobSeeker &jobSeeker, Employe
     int m = 1;
     protocolFile << "Неудовлетворенные вакансии: " << endl;
     vacancy.current = vacancy.head;
-    while(vacancy.current != nullptr) {
+    while (vacancy.current != nullptr) {
         vacancy.printVacancy(m, protocolFile);
         protocolFile << endl;
         m++;
@@ -1459,12 +1516,12 @@ outputProtocol(JobInfo &jobInfo, Vacancy &vacancy, JobSeeker &jobSeeker, Employe
     protocolFile << "Добавленые работодатели: " << endl;
     m = 0;
     employer.current = employer.head;
-    while(m != 10) {
+    while (m != 10) {
         employer.current = employer.current->next;
         m++;
     }
     m++;
-    while(employer.current != nullptr) {
+    while (employer.current != nullptr) {
         employer.printEmployer(m, protocolFile);
         protocolFile << endl;
         m++;
@@ -1475,12 +1532,12 @@ outputProtocol(JobInfo &jobInfo, Vacancy &vacancy, JobSeeker &jobSeeker, Employe
     protocolFile << "Добавленые соискатели: " << endl;
     m = 0;
     jobSeeker.current = jobSeeker.head;
-    while(m != 10) {
+    while (m != 10) {
         jobSeeker.current = jobSeeker.current->next;
         m++;
     }
     m++;
-    while(jobSeeker.current != nullptr) {
+    while (jobSeeker.current != nullptr) {
         jobSeeker.printJobSeeker(m, protocolFile);
         protocolFile << endl;
         m++;
