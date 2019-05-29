@@ -135,6 +135,7 @@ void addFirstInfo(Vacancy &vacancy, Employer &employer, JobSeeker &jobSeeker, Jo
 
 void jobSeekerMode(JobInfo &jobInfo, JobSeeker &jobSeeker, Vacancy &vacancy,
                    Vacancy &listOfSatisfiedVacancy, fstream &outputFile) {
+    //--------------------------------------------------------------------------------------------------Режим соискателя
     fstream inputFile;
     char temp = 0;
     int blocksCount = 0, symbolsCount = 0, nodeNumber = 0;
@@ -156,8 +157,9 @@ void jobSeekerMode(JobInfo &jobInfo, JobSeeker &jobSeeker, Vacancy &vacancy,
 
 void findRequiredVacancy(NodeJobSeeker *currentJobSeeker, Vacancy &vacancy, Vacancy &listOfSatisfiedVacancy,
                          fstream &outputFile) {
+    //----------------------------------------------------------------------------------------Нахождение нужной вакансии
     char temp = 0;
-    int k = 1; // Для счетчиа вакансий
+    int k = 1; // Для счетчика вакансий
     NodeVacancy *previousVacancy = nullptr;
     vacancy.current = vacancy.head;
     while (vacancy.current != nullptr) {
@@ -168,14 +170,14 @@ void findRequiredVacancy(NodeJobSeeker *currentJobSeeker, Vacancy &vacancy, Vaca
             currentJobSeeker->salary == vacancy.current->salary &&
             currentJobSeeker->education == vacancy.current->education) {
 
-            outputFile << "Подошела вакансия" << endl;
+            outputFile << "Подошла вакансия" << endl;
             vacancy.printVacancy(k, outputFile);
             outputFile << endl;
 
             if (listOfSatisfiedVacancy.head != nullptr) {
                 listOfSatisfiedVacancy.last->next = vacancy.current;
                 listOfSatisfiedVacancy.last->next->vacant = 'n'; // 'n' значит занята, свободна 'y'
-                listOfSatisfiedVacancy.last = vacancy.current;
+                listOfSatisfiedVacancy.last = listOfSatisfiedVacancy.last->next;
                 listOfSatisfiedVacancy.last->next = nullptr;
             } else {
                 listOfSatisfiedVacancy.head = listOfSatisfiedVacancy.last = vacancy.current;
@@ -188,7 +190,7 @@ void findRequiredVacancy(NodeJobSeeker *currentJobSeeker, Vacancy &vacancy, Vaca
                 break;
             } else if (previousVacancy != nullptr) {
                 previousVacancy->next = vacancy.current->next;
-                vacancy.current->next = nullptr;
+                vacancy.current = nullptr;
                 vacancy.current = previousVacancy->next;
                 continue;
             } else {
@@ -220,18 +222,15 @@ void findRequiredVacancy(NodeJobSeeker *currentJobSeeker, Vacancy &vacancy, Vaca
                 if (vacancy.current == vacancy.last) {
                     vacancy.last = previousVacancy;
                     previousVacancy->next = nullptr;
-                    k++;
                     break;
                 } else if (previousVacancy != nullptr) {
                     previousVacancy->next = vacancy.current->next;
-                    vacancy.current->next = nullptr;
+                    vacancy.current = nullptr;
                     vacancy.current = previousVacancy->next;
-                    k++;
                     continue;
                 } else {
                     vacancy.head = vacancy.current->next;
                     vacancy.current->next = nullptr;
-                    k++;
                     continue;
                 }
             }
@@ -244,6 +243,7 @@ void findRequiredVacancy(NodeJobSeeker *currentJobSeeker, Vacancy &vacancy, Vaca
 
 void employerMode(JobInfo &jobInfo, Employer &employer, JobSeeker &jobSeeker, Vacancy &vacancy,
                   Vacancy &listOfSatisfiedVacancy, fstream &outputFile) {
+    //------------------------------------------------------------------------------------------------Режим работодателя
     fstream inputFile;
     char temp = 0;
     int blocksCount = 0, symbolsCount = 0, nodeNumber = 0;
@@ -268,6 +268,7 @@ void employerMode(JobInfo &jobInfo, Employer &employer, JobSeeker &jobSeeker, Va
 
 void
 findRequiredJobSeeker(Vacancy &vacancy, JobSeeker &jobSeeker, Vacancy &listOfSatisfiedVacancy, fstream &outputFile) {
+    //-------------------------------------------------------------------------------------Нахождение нужного соискателя
     char temp = 0;
     int k = 1; // Для счетчика соискателей
     NodeVacancy *previousVacancy = vacancy.current;
@@ -406,6 +407,7 @@ void addingMode(JobInfo &jobInfo, JobSeeker &jobSeeker, Employer &employer, Vaca
 }
 
 void satisfiedVacancyMode(Vacancy &satisfiedVacancy) {
+    //------------------------------------------------------------------------------------Вывод удовлетворенных вакансий
     fstream outputFile;
     int k = 1; // Счетчик узлов
     outputFile.open("satisfiedVacancyFile.txt", ios::out);
@@ -1136,6 +1138,7 @@ void deleteList(Form &form) {
 
 void
 outputProtocol(JobInfo &jobInfo, Vacancy &vacancy, JobSeeker &jobSeeker, Employer &employer, fstream &protocolFile) {
+    //-------------------------------------------------------------------------------------------Вывод данных в протокол
     List1 *temp;
     BlocksList *temp1;
     protocolFile << "Данные по работе, добавленые во время работы программы: " << endl;
@@ -1148,7 +1151,7 @@ outputProtocol(JobInfo &jobInfo, Vacancy &vacancy, JobSeeker &jobSeeker, Employe
         v++;
     }
 
-    if(jobInfo.address.current != nullptr) {
+    if (jobInfo.address.current != nullptr) {
         temp = jobInfo.address.current;
         temp1 = jobInfo.address.current->line;
         while (temp != nullptr) {
@@ -1178,7 +1181,7 @@ outputProtocol(JobInfo &jobInfo, Vacancy &vacancy, JobSeeker &jobSeeker, Employe
         v++;
     }
 
-    if(jobInfo.education.current != nullptr) {
+    if (jobInfo.education.current != nullptr) {
         temp = jobInfo.education.current;
         temp1 = jobInfo.education.current->line;
         while (temp != nullptr) {
@@ -1208,7 +1211,7 @@ outputProtocol(JobInfo &jobInfo, Vacancy &vacancy, JobSeeker &jobSeeker, Employe
         v++;
     }
 
-    if(jobInfo.fieldOfActivity.current != nullptr) {
+    if (jobInfo.fieldOfActivity.current != nullptr) {
         temp = jobInfo.fieldOfActivity.current;
         temp1 = jobInfo.fieldOfActivity.current->line;
         while (temp != nullptr) {
@@ -1238,7 +1241,7 @@ outputProtocol(JobInfo &jobInfo, Vacancy &vacancy, JobSeeker &jobSeeker, Employe
         v++;
     }
 
-    if(jobInfo.phoneNumber.current != nullptr) {
+    if (jobInfo.phoneNumber.current != nullptr) {
         temp = jobInfo.phoneNumber.current;
         temp1 = jobInfo.phoneNumber.current->line;
         while (temp != nullptr) {
@@ -1268,7 +1271,7 @@ outputProtocol(JobInfo &jobInfo, Vacancy &vacancy, JobSeeker &jobSeeker, Employe
         v++;
     }
 
-    if(jobInfo.position.current != nullptr) {
+    if (jobInfo.position.current != nullptr) {
         temp = jobInfo.position.current;
         temp1 = jobInfo.position.current->line;
         while (temp != nullptr) {
@@ -1298,7 +1301,7 @@ outputProtocol(JobInfo &jobInfo, Vacancy &vacancy, JobSeeker &jobSeeker, Employe
         v++;
     }
 
-    if(jobInfo.salary.current != nullptr) {
+    if (jobInfo.salary.current != nullptr) {
         temp = jobInfo.salary.current;
         temp1 = jobInfo.salary.current->line;
         while (temp != nullptr) {
@@ -1328,7 +1331,7 @@ outputProtocol(JobInfo &jobInfo, Vacancy &vacancy, JobSeeker &jobSeeker, Employe
         v++;
     }
 
-    if(jobInfo.schedule.current != nullptr) {
+    if (jobInfo.schedule.current != nullptr) {
         temp = jobInfo.schedule.current;
         temp1 = jobInfo.schedule.current->line;
         while (temp != nullptr) {
@@ -1358,7 +1361,7 @@ outputProtocol(JobInfo &jobInfo, Vacancy &vacancy, JobSeeker &jobSeeker, Employe
         v++;
     }
 
-    if(jobInfo.title.current != nullptr) {
+    if (jobInfo.title.current != nullptr) {
         temp = jobInfo.title.current;
         temp1 = jobInfo.title.current->line;
         while (temp != nullptr) {
@@ -1388,7 +1391,7 @@ outputProtocol(JobInfo &jobInfo, Vacancy &vacancy, JobSeeker &jobSeeker, Employe
         v++;
     }
 
-    if(jobInfo.workExperience.current != nullptr) {
+    if (jobInfo.workExperience.current != nullptr) {
         temp = jobInfo.workExperience.current;
         temp1 = jobInfo.workExperience.current->line;
         while (temp != nullptr) {
@@ -1418,7 +1421,7 @@ outputProtocol(JobInfo &jobInfo, Vacancy &vacancy, JobSeeker &jobSeeker, Employe
         v++;
     }
 
-    if(jobInfo.surname.current != nullptr) {
+    if (jobInfo.surname.current != nullptr) {
         temp = jobInfo.surname.current;
         temp1 = jobInfo.surname.current->line;
         while (temp != nullptr) {
@@ -1448,7 +1451,7 @@ outputProtocol(JobInfo &jobInfo, Vacancy &vacancy, JobSeeker &jobSeeker, Employe
         v++;
     }
 
-    if(jobInfo.name.current != nullptr) {
+    if (jobInfo.name.current != nullptr) {
         temp = jobInfo.name.current;
         temp1 = jobInfo.name.current->line;
         while (temp != nullptr) {
@@ -1478,7 +1481,7 @@ outputProtocol(JobInfo &jobInfo, Vacancy &vacancy, JobSeeker &jobSeeker, Employe
         v++;
     }
 
-    if(jobInfo.patronymic.current != nullptr) {
+    if (jobInfo.patronymic.current != nullptr) {
         temp = jobInfo.patronymic.current;
         temp1 = jobInfo.patronymic.current->line;
         while (temp != nullptr) {
